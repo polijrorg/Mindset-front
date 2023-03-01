@@ -1,8 +1,10 @@
 import { NextPage } from 'next';
-import HomeTemplate from 'template/Home';
+import Footer from 'components/Footer';
+import Header from 'components/Header';
+import Button from 'components/Button1';
 
 const Home: NextPage = () => {
-    return <HomeTemplate />;
+    return <Header />;
 };
 
 export default Home;

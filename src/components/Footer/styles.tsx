@@ -7,8 +7,12 @@ export const Title = styled.h1`
 
 export const Container = styled.div`
     display: flex;
-    height: 100vh;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 104px;
+    background: #272727;
+`;
+export const Logo = styled.img`
+    padding-top: 8px;
+    padding-left: 4px;
 `;
