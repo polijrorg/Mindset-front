@@ -9,7 +9,8 @@ export const Container = styled.div<SelectedType>`
     justify-content: center;
     align-items: center;
     background: #272727;
-    width: 172px;
+    width: fit-content;
+    padding: 4px;
     height: 48px;
     border: ${(props) => (props.type2 ? '2px solid #faff00' : 'none')};
     border-radius: ${(props) => (props.type2 ? '8px' : 'none')};
@@ -17,11 +18,9 @@ export const Container = styled.div<SelectedType>`
 export const Button = styled.span`
     font-family: 'Poppins', sans-serif;
     font-style: normal;
-    font-weight: 700;
     font-size: 16px;
     line-height: 16px;
     letter-spacing: 1.25px;
     cursor: pointer;
-    text-transform: uppercase;
     color: #fafafa;
 `;

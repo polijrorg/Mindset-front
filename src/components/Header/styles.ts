@@ -3,19 +3,19 @@ import styled from 'styled-components';
 export const Container = styled.div`
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    position: absolute;
+    justify-content: space-between;
     width: 100%;
-    height: 104px;
+    height: 88px;
     background: #272727;
 `;
 export const Logo = styled.img`
-    padding-top: 8px;
-    padding-left: 4px;
+    width: 156px;
+    height: 84px;
 `;
 export const SearchContainer = styled.div`
     display: flex;
-    background-color: none;
+    align-items: center;
+    gap: 8px;
 `;
 export const SearchImg = styled.img`
     width: 24px;
@@ -30,23 +30,29 @@ export const Search = styled.input`
     gap: 10px;
     width: 504px;
     height: 44px;
-    left: 708px;
-    top: 30px;
     border: 2px solid #ffffff;
+    font-color: #ffffff;
     border-radius: 8px;
     background-color: #272727;
 `;
 export const LoginContainer = styled.div`
     display: flex;
     justify-content: space-around;
-    gap: 64px;
+    gap: 32px;
+    align-items: center;
+    padding: 16px;
+`;
+export const LoginContainer2 = styled.div`
+    width: fit-content;
+    display: flex;
+    justify-content: center;
     align-items: center;
 `;
 export const Container1 = styled.div`
-    display: flex;
-    gap: 8px;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
+    display: flex;
+    gap: 80px;
 `;
 export const LoginImage = styled.img`
     width: 24px;

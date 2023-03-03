@@ -2,18 +2,18 @@ import Button from 'components/Button';
 import * as S from './styles';
 
 export type headerComponentProps = {
-    Logo: string;
-    SearchSelected?: boolean;
+    logo: string;
+    searchSelected?: boolean;
     logado?: boolean;
 };
 const Header: React.FC<headerComponentProps> = ({
-    Logo,
-    SearchSelected,
+    logo,
+    searchSelected,
     logado
 }) => (
     <S.Container>
-        <S.Logo src="\mindsetassets\LogoPng.png" />
-        {!SearchSelected || !logado ? (
+        <S.Logo src={logo} />
+        {searchSelected ? (
             <S.SearchContainer>
                 <S.SearchImg src="/assets/search.svg" />
                 <S.Search placeholder="Buscar..." />
@@ -28,10 +28,10 @@ const Header: React.FC<headerComponentProps> = ({
             </>
         )}
         <S.LoginContainer>
-            <S.Container1>
-                <S.LoginImage src="/assets/PersonYellow.png" />
+            <S.LoginContainer2>
+                <S.LoginImage src="assets/PersonYellow.png" />
                 <Button type2={false} Text="Entrar" />
-            </S.Container1>
+            </S.LoginContainer2>
             <Button type2 Text="Criar Conta" />
         </S.LoginContainer>
     </S.Container>
