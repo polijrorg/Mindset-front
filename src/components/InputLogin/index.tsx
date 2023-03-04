@@ -6,7 +6,7 @@ export type InputComponentsProps = {
 };
 const Input: React.FC<InputComponentsProps> = ({ Text, image }) => (
     <S.Container>
-        <S.Input placeholder="E-mail" />
+        <S.Input placeholder={Text} />
         <S.Image src={image} />
     </S.Container>
 );
