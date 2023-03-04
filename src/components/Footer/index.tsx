@@ -4,9 +4,8 @@ const Footer = () => (
     <S.Wrapper>
         <S.Container>
             <S.Container1>
-                <S.Text>Redes Sociais:</S.Text>
-                <br />
                 <S.SubContainer>
+                    <S.Text>Redes Sociais:</S.Text>
                     <S.MediasButton>
                         <S.MediaImage src="/assets/intagramMedia.svg" />
                     </S.MediasButton>
@@ -16,9 +15,11 @@ const Footer = () => (
                     <S.MediasButton>
                         <S.MediaImage src="/assets/facebookmedias.svg" />
                     </S.MediasButton>
+                    <img src="/assets/verticalBar.svg" alt="bar" />
                 </S.SubContainer>
             </S.Container1>
             <S.Logo src="/assets/LogoWithWhitLetters.svg" />
+            <img src="/assets/verticalBar.svg" alt="bar" />
             <S.Container1>
                 <S.Text>Pesquisa rápida: </S.Text>
                 <S.SubContainer2>

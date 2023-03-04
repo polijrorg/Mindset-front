@@ -27,8 +27,6 @@ export const Container1 = styled.div`
     align-items: center;
     padding-top: 32px;
     justify-content: center;
-    margin-right: 1px;
-    margin-color: #ffffff;
 `;
 export const Text = styled.span`
     font-family: 'Poppins';
