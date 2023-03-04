@@ -23,8 +23,10 @@
         "next-images": "^1.8.2",
         "nookies": "^2.5.2",
         "react": "^16.13.0",
+        "react-bootstrap": "^2.7.2",
         "react-dom": "^16.13.0",
-        "styled-components": "^5.0.0"
+        "styled-components": "^5.0.0",
+        "webkit": "^0.0.0"
     },
     "devDependencies": {
         "@babel/core": "^7.14.6",
