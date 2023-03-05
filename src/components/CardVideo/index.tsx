@@ -23,8 +23,8 @@ const CardVideo: React.FC<CardComponentProps> = ({
             )}
 
             <S.SubContainer2>
-                <S.Title>{title}</S.Title>
-                <S.Text>{description}</S.Text>
+                <S.Title isWhite={isWhite}>{title}</S.Title>
+                <S.Text isWhite={isWhite}>{description}</S.Text>
             </S.SubContainer2>
             <S.ButtonImage>
                 {isWhite ? (

@@ -6,14 +6,6 @@ export const Container = styled.div`
     height: 230px;
     border-radius: 16px;
 `;
-export const Wrapper = styled.div`
-    display: flex;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-    padding-top: 16px;
-`;
 export const Image = styled.img`
     width: 194px;
     height: 230px;
@@ -21,10 +13,8 @@ export const Image = styled.img`
     border-radius: 16px;
 `;
 export const SubContainer = styled.div`
-    position: fixed;
     width: 194px;
     height: 60px;
-    top: 188px;
     border-radius: 0px 0px 16px 16px;
     background: rgba(104, 104, 104, 0.2);
     backdrop-filter: blur(12.5px);

@@ -47,7 +47,7 @@ export const Title = styled.span<SelectedProps>`
     font-weight: 700;
     font-size: 28px;
     line-height: 42px;
-    color: ${(props) => (props.isWhite ? '#ffffff' : '#272727')};
+    color: ${(props) => (props.isWhite ? '#272727' : '#ffffff')};
 `;
 export const Text = styled.span<SelectedProps>`
     font-family: 'Poppins';
@@ -55,7 +55,7 @@ export const Text = styled.span<SelectedProps>`
     font-weight: 300;
     font-size: 20px;
     line-height: 24px;
-    color: ${(props) => (props.isWhite ? '#ffffff' : '#272727')};;
+    color: ${(props) => (props.isWhite ? '#272727' : '#ffffff')};
 `;
 export const ButtonImage = styled.a`
     display: flex;

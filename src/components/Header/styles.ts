@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
     height: 88px;
+    top: 0px;
+    position: fixed;
     background: #272727;
 `;
 export const Logo = styled.img`

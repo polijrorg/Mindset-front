@@ -10,20 +10,18 @@ const Card: React.FC<CardCompentsProps> = ({
     textoPrincipal,
     subTexto
 }) => (
-    <S.Wrapper>
-        <S.Container>
-            <S.Image src={image} alt="imagem" />
-            <S.SubContainer>
-                <S.TextContainer>
-                    <S.Text>{textoPrincipal}</S.Text>
-                    <S.Text>{subTexto}</S.Text>
-                </S.TextContainer>
-                <S.TextContainer2>
-                    <S.Text>{}</S.Text>
-                    <S.Text>{}</S.Text>
-                </S.TextContainer2>
-            </S.SubContainer>
-        </S.Container>
-    </S.Wrapper>
+    <S.Container>
+        <S.Image src={image} alt="imagem" />
+        <S.SubContainer>
+            <S.TextContainer>
+                <S.Text>{textoPrincipal}</S.Text>
+                <S.Text>{subTexto}</S.Text>
+            </S.TextContainer>
+            <S.TextContainer2>
+                <S.Text>{}</S.Text>
+                <S.Text>{}</S.Text>
+            </S.TextContainer2>
+        </S.SubContainer>
+    </S.Container>
 );
 export default Card;
