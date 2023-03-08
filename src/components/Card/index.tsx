@@ -11,7 +11,6 @@ const Card: React.FC<CardCompentsProps> = ({
     subTexto
 }) => (
     <S.Container>
-        <S.Image src={image} alt="imagem" />
         <S.SubContainer>
             <S.TextContainer>
                 <S.Text>{textoPrincipal}</S.Text>

@@ -1,8 +1,12 @@
 import styled from 'styled-components';
 
-export const Title = styled.h1`
-    font-size: 2rem;
-    color: black;
+export const Title = styled.span`
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 18px;
+    color: #ffffff;
 `;
 export const Container = styled.footer`
     display: flex;
@@ -20,7 +24,7 @@ export const Logo = styled.img`
     height: 108px;
 `;
 export const Text = styled.span`
-    font-family: 'Poppins';
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 12px;
@@ -38,10 +42,10 @@ export const SubContainer = styled.div`
 `;
 export const ButtonLink = styled.a`
     width: fit-content;
-    font-family: 'Poppins';
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 10px;
+    font-size: 12px;
     line-height: 15px;
     cursor: pointer;
     text-decoration-line: underline;

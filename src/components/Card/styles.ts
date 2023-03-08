@@ -5,6 +5,7 @@ export const Container = styled.div`
     width: 194px;
     height: 230px;
     border-radius: 16px;
+    background-image: url('/assets/imageTest.png');
 `;
 export const Image = styled.img`
     width: 194px;
@@ -13,11 +14,13 @@ export const Image = styled.img`
     border-radius: 16px;
 `;
 export const SubContainer = styled.div`
-    width: 194px;
+    width: fit-content;
     height: 60px;
     border-radius: 0px 0px 16px 16px;
     background: rgba(104, 104, 104, 0.2);
     backdrop-filter: blur(12.5px);
+    bottom: 0px;
+    padidng-top: 80px;
 `;
 export const TextContainer = styled.div`
     display: flex;
