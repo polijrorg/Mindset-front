@@ -2,54 +2,74 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
     display: flex;
-    width: 194px;
-    height: 230px;
-    border-radius: 16px;
-    background-image: url('/assets/imageTest.png');
-`;
-export const Image = styled.img`
-    width: 194px;
-    height: 230px;
-    margin-bottom: 0px;
+    width: 200px;
+    height: 236px;
+    background: url(/assets/imageTest.png);
     border-radius: 16px;
 `;
 export const SubContainer = styled.div`
-    width: fit-content;
-    height: 60px;
+    display: flex;
+    position: relative;
+    width: 200px;
+    height: 66px;
+    left: 0px;
+    gap: 24px;
+    top: 170px;
+    padding: 12px;
     border-radius: 0px 0px 16px 16px;
     background: rgba(104, 104, 104, 0.2);
     backdrop-filter: blur(12.5px);
-    bottom: 0px;
-    padidng-top: 80px;
 `;
-export const TextContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
-    width: fit-content;
-`;
-export const TextContainer2 = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-end;
-    pading: 4px;
-    gap: 9px;
-`;
-export const Text = styled.span`
-    font-family: 'Poppins';
+export const Title = styled.span`
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 12px;
     line-height: 18px;
     color: #ffffff;
 `;
-export const SubText = styled.span`
-    font-family: 'Poppins';
+export const Text = styled.span`
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 9px;
+    font-size: 12px;
     line-height: 14px;
     color: #ffffff;
+`;
+export const Star = styled.img`
+    width: 58px;
+    height: 10px;
+`;
+export const Price = styled.span`
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 14px;
+    color: #ffffff;
+`;
+export const Left = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 4px;
+    width: 88px;
+    height: 36px;
+    left: 12px;
+    top: 182px;
+`;
+export const Word = styled.span`
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 10px;
+    color: #ffffff;
+`;
+export const Right = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 72px;
+    height: 39px;
 `;

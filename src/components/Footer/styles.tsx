@@ -35,7 +35,7 @@ export const SubContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
+    gap: 8px;
     width: fit-content;
     height: 74px;
     padding: 0px 28px 0px 28px;
@@ -52,13 +52,22 @@ export const ButtonLink = styled.a`
     background: none;
     color: #ffffff;
 `;
+export const ContainerSub2 = styled.div`
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 2px;
+
+width: 74px;
+height: 53px;
+`;
 export const ContainerSub = styled.div`
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     gap: 8px;
-    width: fit-content;
     height: 44px;
+    flex-direction: row;
 `;
 export const MediasButton = styled.a`
     width: fit-content;

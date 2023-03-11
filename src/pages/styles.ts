@@ -9,13 +9,14 @@ export const Container = styled.div`
     padding-top: 88px;
     width: 100%;
     height: 100%;
+    padding-bottom: 100px;
 `;
 export const BackgroundImage = styled.img`
     width: 100%;
     height: 400px;
 `;
 export const Title = styled.span`
-    font-family: 'Poppins';
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 48px;
@@ -23,11 +24,15 @@ export const Title = styled.span`
     color: #ffffff;
 `;
 export const Title2 = styled.div`
-    font-family: 'Poppins';
+    font-family: 'Poppins', sans-serif;
+    width: 251px;
+    height: 48px;
     font-style: normal;
     font-weight: 700;
     font-size: 32px;
     line-height: 48px;
+    /* identical to box height */
+
     color: #fafafa;
     border-bottom: solid;
     border-width: 5px;
@@ -35,7 +40,7 @@ export const Title2 = styled.div`
     height: 56px;
 `;
 export const Text = styled.span`
-    font-family: 'Poppins';
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 28px;
@@ -56,29 +61,30 @@ export const TextContainer = styled.div`
 `;
 export const SubContainer = styled.div`
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
+    flex-direction: column;
     justify-content: center;
-    padding-top: 56px;
-    gap: 24px;
-    height: 310px;
-    width: 100%;
+    align-items: center;
+    gap: 32px;
+    width: 1434px;
+    height: 358px;
+    left: 243px;
+    top: 562px;
 `;
 export const TitleContainer = styled.div`
     display: flex;
-    width: 100%;
-    flex-direction: row;
-    align-items: center;
-    margin-right: 243px;
-    margin-left: 243px;
-    padding: 0px;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 200px;
+    width: 1360px;
+    height: 56px;
 `;
 
 export const CardsContainer = styled.div`
     display: flex;
-    flex-direction: collum;
-    align-items: flex-start;
-    gap: 54px;
-    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 243px;
+    gap: 39px;
+    width: 1434px;
     height: 230px;
 `;

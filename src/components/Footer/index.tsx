@@ -21,11 +21,11 @@ const Footer = () => (
         <img src="/assets/verticalBar.svg" alt="bar" />
         <S.SubContainer>
             <S.Text>Pesquisa rápida: </S.Text>
-            <S.ContainerSub>
+            <S.ContainerSub2>
                 <S.ButtonLink>Home</S.ButtonLink>
                 <S.ButtonLink>FAQ</S.ButtonLink>
                 <S.ButtonLink>Termo de uso</S.ButtonLink>
-            </S.ContainerSub>
+            </S.ContainerSub2>
         </S.SubContainer>
     </S.Container>
 );
