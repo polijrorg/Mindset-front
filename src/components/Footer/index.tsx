@@ -5,13 +5,13 @@ const Footer = () => (
         <S.SubContainer>
             <S.Text>Redes Sociais:</S.Text>
             <S.ContainerSub>
-                <S.MediasButton>
+                <S.MediasButton  href="https://www.instagram.com/mindsetedu/" target="_blank">
                     <S.MediaImage src="/assets/intagramMedia.svg" />
                 </S.MediasButton>
-                <S.MediasButton>
+                <S.MediasButton  href="https://www.linkedin.com/" target="_blank">
                     <S.MediaImage src="/assets/linkedinmedias.svg" />
                 </S.MediasButton>
-                <S.MediasButton>
+                <S.MediasButton  href="https://www.facebook.com/" target="_blank">
                     <S.MediaImage src="/assets/facebookmedias.svg" />
                 </S.MediasButton>
             </S.ContainerSub>
@@ -22,9 +22,7 @@ const Footer = () => (
         <S.SubContainer>
             <S.Text>Pesquisa rápida: </S.Text>
             <S.ContainerSub2>
-                <S.ButtonLink href="https://www.instagram.com/mindsetedu/">
-                    Home
-                </S.ButtonLink>
+                <S.ButtonLink> Home </S.ButtonLink>
                 <S.ButtonLink>FAQ</S.ButtonLink>
                 <S.ButtonLink>Termo de uso</S.ButtonLink>
             </S.ContainerSub2>

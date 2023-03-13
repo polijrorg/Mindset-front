@@ -6,6 +6,7 @@ export const Container = styled.div`
     height: 236px;
     background: url(/assets/imageTest.png);
     border-radius: 16px;
+    cursor: pointer;
 `;
 export const SubContainer = styled.div`
     display: flex;
@@ -27,6 +28,7 @@ export const Title = styled.span`
     font-size: 12px;
     line-height: 18px;
     color: #ffffff;
+    cursor: pointer;
 `;
 export const Text = styled.span`
     font-family: 'Poppins', sans-serif;
