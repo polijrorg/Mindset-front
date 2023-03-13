@@ -22,7 +22,9 @@ const Footer = () => (
         <S.SubContainer>
             <S.Text>Pesquisa rápida: </S.Text>
             <S.ContainerSub2>
-                <S.ButtonLink>Home</S.ButtonLink>
+                <S.ButtonLink href="https://www.instagram.com/mindsetedu/">
+                    Home
+                </S.ButtonLink>
                 <S.ButtonLink>FAQ</S.ButtonLink>
                 <S.ButtonLink>Termo de uso</S.ButtonLink>
             </S.ContainerSub2>

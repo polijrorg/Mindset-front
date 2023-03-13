@@ -5,10 +5,15 @@ export const Wrapper = styled.div`
     width: 100%;
     display: flex;
     justify-contente: space-between;
-    flax-direction: row;
-    background: url('/assets/background12.svg')
+    flex-direction: row;
+    background: URL('/assets/background12.svg');
     background-repeat: no-repeat;
-    backgroun-position: right;
+    background-position-x: right;
+`;
+export const InputContainer = styled.div`
+    gap: 48px;
+    justify-content: center;
+    align-items: center;
 `;
 export const Aux = styled.div`
     display: flex;
@@ -21,7 +26,6 @@ export const AuxII = styled.div`
     gap: 8px;
 `;
 export const ImageBack = styled.img`
-    padding: 0px 0px 0px 32px;
     width: 64px;
     height: 32px;
     position: absolute;
@@ -34,8 +38,8 @@ export const Login = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 64px;
     width: 40%;
+    padding-left: 24px;
     background: #272727;
 `;
 export const LoginName = styled.div`
@@ -52,7 +56,7 @@ export const EmailInput = styled.input`
     border-radius: 16px;
     display: flex;
     color: #55596b;
-    font-family: 'Nunito';
+    font-family: 'Poppins', sans-serif;
     font-style: italic;
     font-weight: 300;
     font-size: 16px;
@@ -66,7 +70,7 @@ export const PasswordInput = styled.input`
     border-radius: 16px;
     display: flex;
     color: #55596b;
-    font-family: 'Nunito';
+    font-family: 'Poppins', sans-serif;
     font-style: italic;
     font-weight: 300;
     font-size: 16px;
@@ -74,18 +78,16 @@ export const PasswordInput = styled.input`
     padding: 8px 16px;
 `;
 export const RecuperarSenha = styled.span`
-    font-family: 'Nunito';
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
-    line-height: 25px;
-    display: flex;
+    font-size: 14px;
     align-items: center;
     color: #e7a837;
     cursor: pointer;
 `;
 export const ErrorWrapper = styled.p`
-    font-family: 'Nunito';
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
@@ -94,52 +96,26 @@ export const ErrorWrapper = styled.p`
     color: red;
 `;
 export const SignInButton = styled.button`
-    width: 520px;
-    height: 64px;
+    width: 500px;
+    height: 50px;
     background: #eeac0e;
     border-radius: 16px;
     flex: none;
     border: 0;
     flex-grow: 0;
-    font-family: 'Nunito';
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 18px;
-    line-height: 22px;
     color: #ffffff;
     cursor: pointer;
 `;
 export const FootText = styled.span`
-    font-family: 'Poppins';
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
-    display: flex;
+    font-size: 14px;
     align-items: center;
     text-align: center;
     color: #ffffff;
-`;
-export const LoginBackground = styled.div`
-    width: 60%;
-    height: 100%;
-    background: linear-gradient(270deg, #004c97 -0.02%, #33a8eb 99.98%);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-`;
-export const PiuPiuwer = styled.span`
-    position: absolute;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 64px;
-    line-height: 96px;
-    color: #e1e7ff;
-    bottom: 16px;
-    right: 16px;
-`;
-export const ImageLogin = styled.img`
-    width: 480px;
-    height: 480px;
-    position: absolute;
-    left: 56%;
-    top: 16%;
 `;

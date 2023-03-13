@@ -6,7 +6,7 @@ import * as S from './styles';
 const HomePage = () => {
     return (
         <S.Wrapper>
-            <Header />
+            <Header /* searchSelected logado */ />
             <S.Container>
                 <S.BackgroundImage
                     src="/assets/background1.svg"

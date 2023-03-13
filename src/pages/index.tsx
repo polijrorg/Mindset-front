@@ -3,6 +3,6 @@ import HomePage from './HomePage';
 import Login from './Login';
 
 const Home: NextPage = () => {
-    return <Login />;
+    return <HomePage />;
 };
 export default Home;

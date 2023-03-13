@@ -28,16 +28,30 @@ const Login = () => {
                 <S.AuxII>
                     <S.LoginName>Faça Login</S.LoginName>
                     <S.Aux>
-                        <S.FootText>Ainda não tem uma conta?</S.FootText>
-                        <S.RecuperarSenha>Cadastre-se</S.RecuperarSenha>
+                        <S.FootText>
+                            Ainda não tem uma conta?{' '}
+                            <S.RecuperarSenha>Cadastre-se</S.RecuperarSenha>
+                        </S.FootText>
                     </S.Aux>
-                    <Input Text="E-mail..." type=" " />
-                    <Input Text="Senha" type="password" />
-                    <S.ErrorWrapper>{error}</S.ErrorWrapper>
-                    <S.FootText>
-                        Esqueceu senha
-                        <S.RecuperarSenha>Recupere aqui</S.RecuperarSenha>
-                    </S.FootText>
+                    <S.InputContainer>
+                        <Input
+                            Text="E-mail"
+                            type=" "
+                            image="/assets/Mailemail.png"
+                        />
+                        <Input
+                            Text="Senha"
+                            type="password"
+                            image="/assets/password.svg"
+                        />
+                        <S.ErrorWrapper>{error}</S.ErrorWrapper>
+                    </S.InputContainer>
+                    <S.Aux>
+                        <S.FootText>
+                            Esqueceu a senha?{' '}
+                            <S.RecuperarSenha>Recupere-a aqui</S.RecuperarSenha>
+                        </S.FootText>
+                    </S.Aux>
                     <S.SignInButton /* onClick={handleLogin} */>
                         ENTRAR
                     </S.SignInButton>
