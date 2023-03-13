@@ -67,16 +67,15 @@ export const SubContainer = styled.div`
     gap: 32px;
     width: 1434px;
     height: 358px;
-    left: 243px;
-    top: 562px;
 `;
 export const TitleContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding-left: 200px;
     width: 1360px;
     height: 56px;
+    padding-left: 124px;
+    padding-right: 80px;
 `;
 
 export const CardsContainer = styled.div`
@@ -85,6 +84,8 @@ export const CardsContainer = styled.div`
     align-items: center;
     padding-left: 243px;
     gap: 39px;
+    padding-left: 160px;
+    padding-right: 160px;
     width: 1434px;
     height: 230px;
 `;

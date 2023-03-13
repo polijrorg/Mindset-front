@@ -3,18 +3,15 @@ import { useState } from 'react';
 import * as S from './styles';
 
 export type headerComponentProps = {
-    logo: string;
     searchSelected?: boolean;
     logado?: boolean;
+    onclick?(): void;
 };
-const Header: React.FC<headerComponentProps> = ({
-    logo,
-    searchSelected,
-    logado
-}) => {
+const Header: React.FC<headerComponentProps> = ({ searchSelected, logado }) => {
     const [isHomeSelected, setIsHomeSelected] = useState(true);
     const [isFAQSelected, setIsFAQSelected] = useState(false);
     const [isWorkSelected, setIsWorkSelected] = useState(false);
+
     const onClickHome = () => {
         setIsFAQSelected(false);
         setIsWorkSelected(false);
@@ -33,7 +30,7 @@ const Header: React.FC<headerComponentProps> = ({
 
     return (
         <S.Container>
-            <S.Logo src={logo} />
+            <S.Logo />
             {logado ? (
                 <>
                     <S.Container1>

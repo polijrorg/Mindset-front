@@ -11,9 +11,14 @@ export const Container = styled.header`
     background: #272727;
     z-index: 250;
 `;
-export const Logo = styled.img`
-    width: 200px;
-    height: 84px;
+export const Logo = styled.div`
+    width: 100px;
+    background: url('/assets/logoMindset.svg');
+    height: 98px;
+    background-position: center;
+    background-size: 140px;
+    background-position-x: 32%;
+    background-repeat: no-repeat;
 `;
 export const SearchContainer = styled.div`
     display: flex;
@@ -55,13 +60,13 @@ export const Search = styled.input`
 export const SearchLogged = styled.input`
     box-sizing: border-box;
     background: none;
-    position: absolute;
+    position: relative;
     flex-direction: column;
     align-items: flex-start;
-    padding: 10px 360px 10px 16px;
+    left: 72px;
+    padding-left: 16px;
     width: 504px;
     height: 44px;
-    margin-left: 968px;
     color: #ffffff;
     border: 2px solid #ffffff;
     border-radius: 8px;
@@ -84,12 +89,10 @@ export const Container1 = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0px;
     gap: 80px;
-    position: absolute;
-    width: 501px;
+    position: relative;
+    width: fit-content;
     height: 38px;
-    left: 243px;
 `;
 export const LoginImage = styled.img`
     width: 24px;

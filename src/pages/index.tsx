@@ -1,58 +1,8 @@
 import { NextPage } from 'next';
-import Footer from 'components/Footer';
-import Header from 'components/Header';
-import Card from 'components/Card';
-import * as S from './styles';
+import HomePage from './HomePage';
+import Login from './Login';
 
 const Home: NextPage = () => {
-    return (
-        <S.Wrapper>
-            <Header
-                logo="/assets/LogoWithWhitLetters.svg"
-                
-                
-            />
-            <S.Container>
-                <S.BackgroundImage
-                    src="/assets/background1.svg"
-                    alt="background"
-                />
-                <S.TextContainer>
-                    <S.Title>Bem-Vindo à Mindset</S.Title>
-                    <S.Text>aprenda o que quiser, quando quiser</S.Text>
-                </S.TextContainer>
-                <br />
-                <S.SubContainer>
-                    <S.TitleContainer>
-                        <S.Title2>Cursos em alta</S.Title2>
-                    </S.TitleContainer>
-                    <S.CardsContainer>
-                        <Card
-                            subTexto="France - Paris "
-                            textoPrincipal="Eiffell Tower"
-                        />
-                        <Card
-                            subTexto="France - Paris "
-                            textoPrincipal="Eiffell Tower"
-                        />
-                        <Card
-                            subTexto="France - Paris "
-                            textoPrincipal="Eiffell Tower"
-                        />
-                        <Card
-                            subTexto="France - Paris "
-                            textoPrincipal="Eiffell Tower"
-                        />
-                        <Card
-                            subTexto="France - Paris "
-                            textoPrincipal="Eiffell Tower"
-                        />
-                    </S.CardsContainer>
-                </S.SubContainer>
-            </S.Container>
-            <Footer />
-        </S.Wrapper>
-    );
+    return <Login />;
 };
-
 export default Home;
