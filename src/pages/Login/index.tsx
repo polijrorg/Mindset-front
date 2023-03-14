@@ -1,5 +1,6 @@
 import Input from 'components/InputLogin';
 import Button from 'components/Button';
+import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
@@ -10,17 +11,15 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const router = useRouter();
-    /* const handleLogin = async () => {
+    const handleLogin = async () => {
         try {
-            await UserService.login({ email, password });
-            router.push('/piupiuwer/feed');
+            router.push('/mindset/home');
         } catch (err) {
             setError('Incorrect password or e-mail');
             setEmail('');
             setPassword('');
         }
     };
-    */
     return (
         <S.Wrapper>
             <S.Login>
@@ -52,7 +51,7 @@ const Login = () => {
                             <S.RecuperarSenha>Recupere-a aqui</S.RecuperarSenha>
                         </S.FootText>
                     </S.Aux>
-                    <S.SignInButton /* onClick={handleLogin} */>
+                    <S.SignInButton onClick={handleLogin}>
                         ENTRAR
                     </S.SignInButton>
                 </S.AuxII>

@@ -1,5 +1,6 @@
 import Button from 'components/Button';
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 import * as S from './styles';
 
 export type headerComponentProps = {
@@ -11,6 +12,7 @@ const Header: React.FC<headerComponentProps> = ({ searchSelected, logado }) => {
     const [isHomeSelected, setIsHomeSelected] = useState(true);
     const [isFAQSelected, setIsFAQSelected] = useState(false);
     const [isWorkSelected, setIsWorkSelected] = useState(false);
+    const router = useRouter();
 
     const onClickHome = () => {
         setIsFAQSelected(false);
@@ -26,6 +28,9 @@ const Header: React.FC<headerComponentProps> = ({ searchSelected, logado }) => {
         setIsFAQSelected(false);
         setIsWorkSelected(true);
         setIsHomeSelected(false);
+    };
+    const handleLogin = async () => {
+        router.push('/mindset/login');
     };
 
     return (
@@ -76,6 +81,7 @@ const Header: React.FC<headerComponentProps> = ({ searchSelected, logado }) => {
                         <S.LoginContainer2>
                             <S.LoginImage src="assets/PersonYellow.png" />
                             <Button
+                                onclick={handleLogin}
                                 selected={false}
                                 type2={false}
                                 Text="ENTRAR"
