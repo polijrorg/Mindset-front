@@ -1,4 +1,3 @@
-import { check } from 'prettier';
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
@@ -11,7 +10,7 @@ export const Wrapper = styled.div`
     background-repeat: no-repeat;
     background-position-x: right;
 `;
-export const Login = styled.div`
+export const SignIn = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -46,14 +45,14 @@ export const InputContainer = styled.div`
 export const LoginName = styled.div`
     font-family: 'Poppins', sans-serif;
     font-style: normal;
-    font-weight: 200;
+    font-weight: 400;
     font-size: 48px;
     color: #ffffff;
 `;
 export const RecuperarSenha = styled.span`
     font-family: 'Poppins', sans-serif;
     font-style: normal;
-    font-weight: 200;
+    font-weight: 400;
     font-size: 14px;
     align-items: center;
     color: #e7a837;
@@ -62,7 +61,7 @@ export const RecuperarSenha = styled.span`
 export const ErrorWrapper = styled.p`
     font-family: 'Poppins', sans-serif;
     font-style: normal;
-    font-weight: 200;
+    font-weight: 400;
     font-size: 18px;
     line-height: 25px;
     align-items: center;
@@ -83,7 +82,7 @@ export const SignInButton = styled.button`
 export const GeneralText = styled.span`
     font-family: 'Poppins', sans-serif;
     font-style: normal;
-    font-weight: 200;
+    font-weight: 400;
     font-size: 14px;
     color: #ffffff;
 `;
@@ -93,27 +92,5 @@ export const FooterLogo = styled.img`
     position: absolute;
     bottom: 0;
     right: 0;
-`;
-export const InputCheckbox = styled.input`
-    width: 14px;
-    height: 14px;
-    cursor: pointer;
-`;
-export const Checkbox = styled.div`
-    display: flex;
-    flex-direction: row;
-    width: fit-content;
-    gap: 4px;
-    font-family: 'Poppins', sans-serif;
-    font-style: normal;
-    font-weight: 200;
-    font-size: 14px;
-    letter-spacing: 0.5px;
-    color: #fafafa;
-`;
-export const ForgotPassword = styled.div`
-    gap: 12px;
-    justify-content: center;
-    align-items: center;
-    padding-left: 4px;
+    
 `;

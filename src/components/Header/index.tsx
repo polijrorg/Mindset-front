@@ -32,6 +32,9 @@ const Header: React.FC<headerComponentProps> = ({ searchSelected, logado }) => {
     const handleLogin = async () => {
         router.push('/mindset/login');
     };
+    const handleSignin = async () => {
+        router.push('/mindset/signin');
+    };
 
     return (
         <S.Container>
@@ -87,7 +90,12 @@ const Header: React.FC<headerComponentProps> = ({ searchSelected, logado }) => {
                                 Text="ENTRAR"
                             />
                         </S.LoginContainer2>
-                        <Button selected={false} type2 Text="CRIAR CONTA" />
+                        <Button
+                            selected={false}
+                            type2
+                            Text="CRIAR CONTA"
+                            onclick={handleSignin}
+                        />
                     </S.LoginContainer>
                 </>
             )}
