@@ -13,18 +13,17 @@ export const Container = styled.div<SelectedType>`
     justify-content: center;
     align-items: center;
     background: #272727;
-    width: fit-content;
+    width: 108px;
     padding: 4px;
-    height: 48px;
+    height: 36px;
     border: ${(props) => (props.type2 ? '2px solid #faff00' : 'none')};
     border-radius: ${(props) => (props.type2 ? '8px' : 'none')};
 `;
 export const Button = styled.span<OnClickButton>`
     font-family: 'Poppins', sans-serif;
     font-style: normal;
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: 1.25px;
+    font-size: 12px;
+    letter-spacing: 1px;
     cursor: pointer;
     text-transform: uppercase;
     text-underline-offset: 4px;

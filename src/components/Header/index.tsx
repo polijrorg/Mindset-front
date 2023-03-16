@@ -79,7 +79,7 @@ const Header: React.FC<headerComponentProps> = ({ searchSelected, logado }) => {
                     </S.SearchContainer>
                     <S.LoginContainer>
                         <S.LoginContainer2>
-                            <S.LoginImage src="assets/PersonYellow.png" />
+                            <S.LoginImage src="/assets/Personyello.svg" />
                             <Button
                                 onclick={handleLogin}
                                 selected={false}

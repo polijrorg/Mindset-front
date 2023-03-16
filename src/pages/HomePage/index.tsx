@@ -1,12 +1,14 @@
 import Footer from 'components/Footer';
 import Header from 'components/Header';
 import Card from 'components/Card';
+import { Search } from 'components/Header/styles';
+
 import * as S from './styles';
 
 const HomePage = () => {
     return (
         <S.Wrapper>
-            <Header /* searchSelected logado */ />
+            <Header />
             <S.Container>
                 <S.BackgroundImage
                     src="/assets/background1.svg"

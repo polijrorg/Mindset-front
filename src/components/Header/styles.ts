@@ -80,9 +80,8 @@ export const LoginContainer = styled.div`
     padding: 16px;
 `;
 export const LoginContainer2 = styled.div`
-    width: fit-content;
+    width: 100px;
     display: flex;
-    justify-content: center;
     align-items: center;
 `;
 export const Container1 = styled.div`
@@ -95,8 +94,8 @@ export const Container1 = styled.div`
     height: 38px;
 `;
 export const LoginImage = styled.img`
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
     border-radius: 50%;
 `;
 export const Perfil = styled.img`
