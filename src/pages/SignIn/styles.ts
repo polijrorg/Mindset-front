@@ -92,5 +92,4 @@ export const FooterLogo = styled.img`
     position: absolute;
     bottom: 0;
     right: 0;
-    
 `;
