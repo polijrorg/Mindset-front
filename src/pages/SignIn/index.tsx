@@ -1,6 +1,7 @@
 import Input from 'components/InputLogin';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import UserService from 'services/UserService';
 
 import * as S from './styles';
 
@@ -18,6 +19,10 @@ const SignIn = () => {
             setEmail('');
             setPassword('');
         }
+    };
+
+    const handleSignIn = async () => {
+        router.push('/mindset/login');
     };
     return (
         <S.Wrapper>
@@ -53,7 +58,9 @@ const SignIn = () => {
                         <S.ErrorWrapper>{error}</S.ErrorWrapper>
                     </S.InputContainer>
                 </S.AuxII>
-                <S.SignInButton onClick={handleLogin}>Cadastrar</S.SignInButton>
+                <S.SignInButton onClick={handleSignIn}>
+                    Cadastrar
+                </S.SignInButton>
             </S.SignIn>
             <S.FooterLogo src="/assets/logoWhite.svg" />
         </S.Wrapper>
