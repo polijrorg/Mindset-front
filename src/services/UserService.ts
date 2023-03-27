@@ -9,7 +9,12 @@ interface ILoginRequest {
     email: string;
     password: string;
 }
-
+interface ISignInRequest {
+    phone: string;
+}
+interface ISignInResponse {
+    phone: string;
+}
 interface ILoginResponse {
     token: string;
     user: User;
@@ -34,6 +39,20 @@ export default class UserService {
             const userId = response.data.user.id;
             setCookie(undefined, '@mindset:token', token);
             setCookie(undefined, '@mindset:useId', userId);
+            (api.defaults.headers as any).Authorization = `Bearer $(token)`;
+            return response.data;
+        } catch (err) {
+            throw new Error((err as any).response.data.message);
+        }
+    }
+
+    static async SignIn({ phone }: ISignInRequest): Promise<ISignInRequest> {
+        try {
+            const response: AxiosResponse<ISignInResponse> = await api.post(
+                'sessions/login',
+                { phone }
+            );
+            setCookie(undefined, '@mindset:phone', phone);
             (api.defaults.headers as any).Authorization = `Bearer $(token)`;
             return response.data;
         } catch (err) {
