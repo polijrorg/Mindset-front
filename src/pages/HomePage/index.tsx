@@ -1,105 +1,100 @@
-import Button from 'components/Button';
-import { useState } from 'react';
+import Footer from 'components/Footer';
+import Header from 'components/Header';
+import Card from 'components/Card';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import CoursesService from 'services/CourseService';
+import { Search } from 'components/Header/styles';
+import Transition from 'pages/Transition';
+import UserService from 'services/UserService';
+
 import * as S from './styles';
 
-export type headerComponentProps = {
-    searchSelected?: boolean;
-    logado?: boolean;
-    onclick?(): void;
-};
-const Header: React.FC<headerComponentProps> = ({ searchSelected, logado }) => {
-    const [isHomeSelected, setIsHomeSelected] = useState(true);
-    const [isFAQSelected, setIsFAQSelected] = useState(false);
-    const [isWorkSelected, setIsWorkSelected] = useState(false);
-    const router = useRouter();
+const HomePage = () => {
+    function Loading() {
+        const router = useRouter();
+        const [loading, setLoading] = useState(false);
+        useEffect(() => {
+            const handleStart = (url: string) =>
+                url !== router.asPath && setLoading(true);
+            const handleComplete = (url: string) =>
+                url === router.asPath &&
+                setTimeout(() => {
+                    setLoading(false);
+                    5000;
+                });
 
-    const onClickHome = () => {
-        setIsFAQSelected(false);
-        setIsWorkSelected(false);
-        setIsHomeSelected(true);
-    };
-    const onClickFAQ = () => {
-        setIsFAQSelected(true);
-        setIsWorkSelected(false);
-        setIsHomeSelected(false);
-    };
-    const onClickWork = () => {
-        setIsFAQSelected(false);
-        setIsWorkSelected(true);
-        setIsHomeSelected(false);
-    };
-    const handleLogin = async () => {
-        router.push('/mindset/login');
-    };
-    const handleSignin = async () => {
-        router.push('/mindset/signin');
-    };
+            router.events.on('routeChangeStart', handleStart);
+            router.events.on('routeChangeComplete', handleComplete);
+            router.events.on('routeChangeError', handleComplete);
 
+            return () => {
+                router.events.off('routeChangeStart', handleStart);
+                router.events.off('routeChangeComplete', handleComplete);
+                router.events.off('routeChangeError', handleComplete);
+            };
+        });
+        return loading && <Transition />;
+    }
+    useEffect(() => {
+        CoursesService.getCourses();
+        CoursesService.createCourse({
+            id: '123456',
+            name: 'Anna Teste',
+            numberOfVideos: 3,
+            avatar: 'none',
+            createdBy: 'Anna',
+            rating: 4,
+            description: 'Curso para testar integração',
+            userId: 'anna.cardoso'
+        });
+        UserService.signIn({ phone: '551345' });
+    });
     return (
-        <S.Container>
-            <S.Logo />
-            {logado ? (
-                <>
-                    <S.Container1>
-                        <Button
-                            onclick={onClickHome}
-                            selected={isHomeSelected}
-                            type2={false}
-                            Text="Home"
+        <S.Wrapper>
+            {Loading}
+            <Header />
+            <S.Container>
+                <S.BackgroundImage
+                    src="/assets/background1.svg"
+                    alt="background"
+                />
+                <S.TextContainer>
+                    <S.Title>Bem-Vindo à Mindset</S.Title>
+                    <S.Text>aprenda o que quiser, quando quiser</S.Text>
+                </S.TextContainer>
+                <br />
+                <S.SubContainer>
+                    <S.TitleContainer>
+                        <S.Title2>Cursos em alta</S.Title2>
+                    </S.TitleContainer>
+                    <S.CardsContainer>
+                        <Card
+                            subTexto="France - Paris "
+                            textoPrincipal="Eiffell Tower"
                         />
-                        <Button
-                            onclick={onClickFAQ}
-                            selected={isFAQSelected}
-                            type2={false}
-                            Text="FAQ"
+                        <Card
+                            subTexto="France - Paris "
+                            textoPrincipal="Eiffell Tower"
                         />
-                        <Button
-                            onclick={onClickWork}
-                            selected={isWorkSelected}
-                            type2={false}
-                            Text="Trabalhe Conosco"
+                        <Card
+                            subTexto="France - Paris "
+                            textoPrincipal="Eiffell Tower"
                         />
-                    </S.Container1>
-                    {searchSelected ? (
-                        <>
-                            <S.SearchLogged placeholder="Buscar..." />
-                            <S.Perfil src="/assets/perfil.svg" />
-                        </>
-                    ) : (
-                        <>
-                            <S.LoginContainer2>
-                                <S.SearchImg2 src="/assets/search.svg" />
-                                <S.Perfil src="/assets/perfil.svg" />
-                            </S.LoginContainer2>
-                        </>
-                    )}
-                </>
-            ) : (
-                <>
-                    <S.SearchContainer>
-                        <S.Search placeholder="Buscar..." />
-                    </S.SearchContainer>
-                    <S.LoginContainer>
-                        <S.LoginContainer2>
-                            <S.LoginImage src="/assets/Personyello.svg" />
-                            <Button
-                                onclick={handleLogin}
-                                selected={false}
-                                type2={false}
-                                Text="ENTRAR"
-                            />
-                        </S.LoginContainer2>
-                        <Button
-                            selected={false}
-                            type2
-                            Text="CRIAR CONTA"
-                            onclick={handleSignin}
+                        <Card
+                            subTexto="France - Paris "
+                            textoPrincipal="Eiffell Tower"
                         />
-                    </S.LoginContainer>
-                </>
-            )}
-        </S.Container>
+                        <Card
+                            subTexto="France - Paris "
+                            textoPrincipal="Eiffell Tower"
+                        />
+                    </S.CardsContainer>
+                </S.SubContainer>
+            </S.Container>
+            <Footer />
+        </S.Wrapper>
     );
 };
-export default Header;
+
+export default HomePage;

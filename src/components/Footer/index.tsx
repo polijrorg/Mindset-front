@@ -5,13 +5,22 @@ const Footer = () => (
         <S.SubContainer>
             <S.Text>Redes Sociais:</S.Text>
             <S.ContainerSub>
-                <S.MediasButton  href="https://www.instagram.com/mindsetedu/" target="_blank">
+                <S.MediasButton
+                    href="https://www.instagram.com/mindsetedu/"
+                    target="_blank"
+                >
                     <S.MediaImage src="/assets/intagramMedia.svg" />
                 </S.MediasButton>
-                <S.MediasButton  href="https://www.linkedin.com/" target="_blank">
+                <S.MediasButton
+                    href="https://www.linkedin.com/"
+                    target="_blank"
+                >
                     <S.MediaImage src="/assets/linkedinmedias.svg" />
                 </S.MediasButton>
-                <S.MediasButton  href="https://www.facebook.com/" target="_blank">
+                <S.MediasButton
+                    href="https://www.facebook.com/"
+                    target="_blank"
+                >
                     <S.MediaImage src="/assets/facebookmedias.svg" />
                 </S.MediasButton>
             </S.ContainerSub>
