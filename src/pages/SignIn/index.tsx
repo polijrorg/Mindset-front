@@ -14,7 +14,6 @@ const SignIn = () => {
         try {
             router.push('/mindset/login');
         } catch (err) {
-            // verificar se é um email válido, senha tem requisitos?, desabilitar o botão de cadastrar até que esteja tudo ok
             setError('');
             setEmail('');
             setPassword('');
@@ -22,6 +21,7 @@ const SignIn = () => {
     };
 
     const handleSignIn = async () => {
+        UserService.signIn({ phone: '12345678' });
         router.push('/mindset/login');
     };
     return (

@@ -1,4 +1,5 @@
 export interface Courses {
+    id: string;
     name: string;
     numberOfVideos: number;
     avatar: string;

@@ -1,4 +1,3 @@
-import { ProgressBar } from 'react-bootstrap';
 import * as S from './styles';
 
 export type CardComponentProps = {
@@ -11,7 +10,6 @@ export type CardComponentProps = {
 const CardVideo: React.FC<CardComponentProps> = ({
     title,
     description,
-    image,
     isWhite
 }) => (
     <S.Container isWhite={isWhite}>

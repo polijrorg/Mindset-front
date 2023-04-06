@@ -1,55 +1,105 @@
-import Footer from 'components/Footer';
-import Header from 'components/Header';
-import Card from 'components/Card';
-import { Search } from 'components/Header/styles';
-
+import Button from 'components/Button';
+import { useState } from 'react';
+import { useRouter } from 'next/router';
 import * as S from './styles';
 
-const HomePage = () => {
+export type headerComponentProps = {
+    searchSelected?: boolean;
+    logado?: boolean;
+    onclick?(): void;
+};
+const Header: React.FC<headerComponentProps> = ({ searchSelected, logado }) => {
+    const [isHomeSelected, setIsHomeSelected] = useState(true);
+    const [isFAQSelected, setIsFAQSelected] = useState(false);
+    const [isWorkSelected, setIsWorkSelected] = useState(false);
+    const router = useRouter();
+
+    const onClickHome = () => {
+        setIsFAQSelected(false);
+        setIsWorkSelected(false);
+        setIsHomeSelected(true);
+    };
+    const onClickFAQ = () => {
+        setIsFAQSelected(true);
+        setIsWorkSelected(false);
+        setIsHomeSelected(false);
+    };
+    const onClickWork = () => {
+        setIsFAQSelected(false);
+        setIsWorkSelected(true);
+        setIsHomeSelected(false);
+    };
+    const handleLogin = async () => {
+        router.push('/mindset/login');
+    };
+    const handleSignin = async () => {
+        router.push('/mindset/signin');
+    };
+
     return (
-        <S.Wrapper>
-            <Header />
-            <S.Container>
-                <S.BackgroundImage
-                    src="/assets/background1.svg"
-                    alt="background"
-                />
-                <S.TextContainer>
-                    <S.Title>Bem-Vindo à Mindset</S.Title>
-                    <S.Text>aprenda o que quiser, quando quiser</S.Text>
-                </S.TextContainer>
-                <br />
-                <S.SubContainer>
-                    <S.TitleContainer>
-                        <S.Title2>Cursos em alta</S.Title2>
-                    </S.TitleContainer>
-                    <S.CardsContainer>
-                        <Card
-                            subTexto="France - Paris "
-                            textoPrincipal="Eiffell Tower"
+        <S.Container>
+            <S.Logo />
+            {logado ? (
+                <>
+                    <S.Container1>
+                        <Button
+                            onclick={onClickHome}
+                            selected={isHomeSelected}
+                            type2={false}
+                            Text="Home"
                         />
-                        <Card
-                            subTexto="France - Paris "
-                            textoPrincipal="Eiffell Tower"
+                        <Button
+                            onclick={onClickFAQ}
+                            selected={isFAQSelected}
+                            type2={false}
+                            Text="FAQ"
                         />
-                        <Card
-                            subTexto="France - Paris "
-                            textoPrincipal="Eiffell Tower"
+                        <Button
+                            onclick={onClickWork}
+                            selected={isWorkSelected}
+                            type2={false}
+                            Text="Trabalhe Conosco"
                         />
-                        <Card
-                            subTexto="France - Paris "
-                            textoPrincipal="Eiffell Tower"
+                    </S.Container1>
+                    {searchSelected ? (
+                        <>
+                            <S.SearchLogged placeholder="Buscar..." />
+                            <S.Perfil src="/assets/perfil.svg" />
+                        </>
+                    ) : (
+                        <>
+                            <S.LoginContainer2>
+                                <S.SearchImg2 src="/assets/search.svg" />
+                                <S.Perfil src="/assets/perfil.svg" />
+                            </S.LoginContainer2>
+                        </>
+                    )}
+                </>
+            ) : (
+                <>
+                    <S.SearchContainer>
+                        <S.Search placeholder="Buscar..." />
+                    </S.SearchContainer>
+                    <S.LoginContainer>
+                        <S.LoginContainer2>
+                            <S.LoginImage src="/assets/Personyello.svg" />
+                            <Button
+                                onclick={handleLogin}
+                                selected={false}
+                                type2={false}
+                                Text="ENTRAR"
+                            />
+                        </S.LoginContainer2>
+                        <Button
+                            selected={false}
+                            type2
+                            Text="CRIAR CONTA"
+                            onclick={handleSignin}
                         />
-                        <Card
-                            subTexto="France - Paris "
-                            textoPrincipal="Eiffell Tower"
-                        />
-                    </S.CardsContainer>
-                </S.SubContainer>
-            </S.Container>
-            <Footer />
-        </S.Wrapper>
+                    </S.LoginContainer>
+                </>
+            )}
+        </S.Container>
     );
 };
-
-export default HomePage;
+export default Header;
