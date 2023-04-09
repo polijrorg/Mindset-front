@@ -29,18 +29,20 @@ export default class UserService {
             '/session/login',
             data
         );
-
-        setCookie(undefined, '@app:token', response.data.token);
-        setCookie(undefined, '@app:useId', response.data.user.id);
+        if (response.data.token) {
+            setCookie(undefined, '@mindset:token', response.data.token, {
+                path: '/',
+                maxAge: 60 * 60 * 24
+            });
+            setCookie(undefined, '@mindset:useId', response.data.user.id, {
+                path: '/',
+                maxAge: 60 * 60 * 24
+            });
+            (
+                api.defaults.headers as any
+            ).Authorization = `Bearer ${response.data.token}`;
+        }
 
         return response.data;
-    }
-
-    static async signIn(data: ISignInRequest): Promise<void> {
-        const response: AxiosResponse<ISignInResponse> = await api.post(
-            '/register',
-            data
-        );
-        // console.log(response.data);
     }
 }

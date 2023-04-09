@@ -14,8 +14,8 @@ const Home: NextPage = () => {
             const handleComplete = (url: string) =>
                 url === router.asPath &&
                 setTimeout(() => {
-                    setLoading(false);
-                    5000;
+                    setLoading(true);
+                    10000;
                 });
 
             router.events.on('routeChangeStart', handleStart);

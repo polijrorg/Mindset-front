@@ -7,7 +7,6 @@ export default class CoursesService {
         const response: AxiosResponse<Courses> = await api.get(
             '/courses/listPopular'
         );
-        console.log(response.data);
         return response.data;
     }
 
