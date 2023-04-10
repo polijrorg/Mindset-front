@@ -45,4 +45,12 @@ export default class UserService {
 
         return response.data;
     }
+
+    static async signIn(data: ISignInRequest): Promise<ISignInResponse> {
+        const response: AxiosResponse<ILoginResponse> = await api.post(
+            '/register',
+            data
+        );
+        return response.data;
+    }
 }

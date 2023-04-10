@@ -1,12 +1,17 @@
 import * as S from './styles';
 
 export type CardCompentsProps = {
+    image: string;
     textoPrincipal: string;
     subTexto: string;
     // image: string;
 };
-const Card: React.FC<CardCompentsProps> = ({ textoPrincipal, subTexto }) => (
-    <S.Container>
+const Card: React.FC<CardCompentsProps> = ({
+    textoPrincipal,
+    subTexto,
+    image
+}) => (
+    <S.Container image={image}>
         <S.SubContainer>
             <S.Left>
                 <S.Title>{textoPrincipal}</S.Title>

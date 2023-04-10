@@ -4,16 +4,19 @@ import { useRouter } from 'next/router';
 import * as S from './styles';
 
 export type headerComponentProps = {
-    searchSelected?: boolean;
     logado?: boolean;
     onclick?(): void;
 };
-const Header: React.FC<headerComponentProps> = ({ searchSelected, logado }) => {
+const Header: React.FC<headerComponentProps> = ({ logado }) => {
     const [isHomeSelected, setIsHomeSelected] = useState(true);
     const [isFAQSelected, setIsFAQSelected] = useState(false);
     const [isWorkSelected, setIsWorkSelected] = useState(false);
+    const [searchSelected, setSearchSelected] = useState(false);
     const router = useRouter();
 
+    const onClickSearch = () => {
+        setSearchSelected(true);
+    };
     const onClickHome = () => {
         setIsFAQSelected(false);
         setIsWorkSelected(false);
@@ -68,7 +71,7 @@ const Header: React.FC<headerComponentProps> = ({ searchSelected, logado }) => {
                         </>
                     ) : (
                         <>
-                            <S.LoginContainer2>
+                            <S.LoginContainer2 onClick={onClickSearch}>
                                 <S.SearchImg2 src="/assets/search.svg" />
                                 <S.Perfil src="/assets/perfil.svg" />
                             </S.LoginContainer2>

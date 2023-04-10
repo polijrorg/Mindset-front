@@ -7,6 +7,9 @@ export default class CoursesService {
         const response: AxiosResponse<Courses> = await api.get(
             '/courses/listPopular'
         );
+        // console.log(response.status);
+        // console.log(response);
+        // console.log(response.headers);
         return response.data;
     }
 
@@ -15,7 +18,7 @@ export default class CoursesService {
             '/courses/create',
             data
         );
-        // console.log(response.data);
+        console.log(response.data);
         return response.data;
     }
 

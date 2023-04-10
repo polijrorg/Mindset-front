@@ -8,6 +8,7 @@ import * as S from './styles';
 const SignIn = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [phone, setPhone] = useState('');
     const [error, setError] = useState('');
     const router = useRouter();
     const handleLogin = async () => {
@@ -21,7 +22,8 @@ const SignIn = () => {
     };
 
     const handleSignIn = async () => {
-        UserService.signIn({ phone: '12345678' });
+        UserService.signIn({ phone: '123456' });
+
         router.push('/mindset/login');
     };
     return (
