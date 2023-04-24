@@ -13,6 +13,7 @@ export const Container = styled.header`
 `;
 export const Logo = styled.div`
     width: 100px;
+    display: flex;
     background: url('/assets/logoMindset.svg');
     height: 98px;
     background-position: center;
@@ -50,8 +51,8 @@ export const Search = styled.input`
     align-items: flex-start;
     padding: 10px 360px 10px 17px;
     gap: 10px;
-    width: 504px;
-    height: 44px;
+    width: 400px;
+    height: 46px;
     border: 2px solid #ffffff;
     color: #ffffff;
     border-radius: 8px;
@@ -65,19 +66,24 @@ export const SearchLogged = styled.input`
     align-items: flex-start;
     left: 72px;
     padding-left: 16px;
-    width: 504px;
-    height: 44px;
+    width: 400px;
+    height: 36px;
     color: #ffffff;
     border: 2px solid #ffffff;
     border-radius: 8px;
+    ::placeholder,
+    ::-webkit-input-placeholder {
+        color: white;
+    }
+    :-ms-input-placeholder {
+        color: white;
+    }
 `;
-
 export const LoginContainer = styled.div`
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     gap: 32px;
     align-items: center;
-    padding: 16px;
 `;
 export const LoginContainer2 = styled.div`
     width: 100px;
@@ -104,6 +110,5 @@ export const Perfil = styled.img`
     height: 64px;
     justify-content: center;
     align-items: center;
-    margin-right: 32px;
     cursor: pointer;
 `;

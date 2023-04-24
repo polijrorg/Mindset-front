@@ -26,7 +26,7 @@ interface ISignInResponse {
 export default class UserService {
     static async login(data: ILoginRequest): Promise<ILoginResponse> {
         const response: AxiosResponse<ILoginResponse> = await api.post(
-            '/session/login',
+            '/sessions/login',
             data
         );
         if (response.data.token) {
@@ -42,7 +42,7 @@ export default class UserService {
                 api.defaults.headers as any
             ).Authorization = `Bearer ${response.data.token}`;
         }
-
+        console.log(response.data.token);
         return response.data;
     }
 

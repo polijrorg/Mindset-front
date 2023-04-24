@@ -1,7 +1,7 @@
 import Input from 'components/InputLogin';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
-import Link from 'next/link';
+import { SetStateAction, useState } from 'react';
+import UserService from 'services/UserService';
 import * as S from './styles';
 
 const Login = () => {
@@ -9,16 +9,35 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const router = useRouter();
+
+    const handleChangeEmail = (e: {
+        target: { value: SetStateAction<string> };
+    }) => {
+        setEmail(e.target.value);
+        console.log(email);
+    };
+    const handleChangePassword = (e: {
+        target: { value: SetStateAction<string> };
+    }) => {
+        setPassword(e.target.value);
+        console.log(password);
+    };
+
     const handleLogin = async () => {
         try {
+            UserService.login({
+                email,
+                password
+            });
             router.push('/mindset/home');
-        } catch (err) {
-            setError('Incorrect password or e-mail');
-            setEmail('');
+        } catch {
+            router.push('/mindset/login');
             setPassword('');
+            setEmail('');
+            setError('E-mail ou senha errada');
         }
     };
-    const handleSignin = async () => {
+    const goToSignIn = async () => {
         router.push('/mindset/signin');
     };
     return (
@@ -29,23 +48,23 @@ const Login = () => {
                     <S.LoginName>Faça Login</S.LoginName>
                     <S.GeneralText>
                         Ainda não tem uma conta?{' '}
-                        <S.RecuperarSenha onClick={handleSignin}>
+                        <S.RecuperarSenha onClick={goToSignIn}>
                             Cadastre-se
                         </S.RecuperarSenha>
                     </S.GeneralText>
                     <S.InputContainer>
-                        <Input
-                            isPassword={false}
-                            Text="E-mail"
-                            type=" "
-                            image="/assets/Mailemail.png"
+                        <input
+                            type="text"
+                            placeholder="E-mail"
+                            value={email}
+                            onChange={handleChangeEmail}
                         />
                         <S.ForgotPassword>
-                            <Input
-                                isPassword
-                                Text="Senha"
+                            <input
+                                placeholder="Senha"
                                 type="password"
-                                image="/assets/password.svg"
+                                value={password}
+                                onChange={handleChangePassword}
                             />
                             <S.GeneralText>
                                 Esqueceu a senha?{' '}

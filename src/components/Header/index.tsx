@@ -4,18 +4,22 @@ import { useRouter } from 'next/router';
 import * as S from './styles';
 
 export type headerComponentProps = {
-    logado?: boolean;
     onclick?(): void;
 };
-const Header: React.FC<headerComponentProps> = ({ logado }) => {
+const Header: React.FC<headerComponentProps> = () => {
     const [isHomeSelected, setIsHomeSelected] = useState(true);
     const [isFAQSelected, setIsFAQSelected] = useState(false);
     const [isWorkSelected, setIsWorkSelected] = useState(false);
     const [searchSelected, setSearchSelected] = useState(false);
+    const [isLogado, setIsLogado] = useState(true);
     const router = useRouter();
 
     const onClickSearch = () => {
         setSearchSelected(true);
+    };
+    const onClickLogado = () => {
+        router.push('/mindset/login');
+        setIsLogado(false);
     };
     const onClickHome = () => {
         setIsFAQSelected(false);
@@ -42,7 +46,7 @@ const Header: React.FC<headerComponentProps> = ({ logado }) => {
     return (
         <S.Container>
             <S.Logo />
-            {logado ? (
+            {isLogado ? (
                 <>
                     <S.Container1>
                         <Button
@@ -67,7 +71,16 @@ const Header: React.FC<headerComponentProps> = ({ logado }) => {
                     {searchSelected ? (
                         <>
                             <S.SearchLogged placeholder="Buscar..." />
-                            <S.Perfil src="/assets/perfil.svg" />
+                            <img
+                                src="/assets/LupaMini.svg"
+                                alt=" "
+                                width={40}
+                                height={40}
+                            />
+                            <S.Perfil
+                                src="/assets/perfil.svg"
+                                onClick={onClickLogado}
+                            />
                         </>
                     ) : (
                         <>
@@ -82,6 +95,12 @@ const Header: React.FC<headerComponentProps> = ({ logado }) => {
                 <>
                     <S.SearchContainer>
                         <S.Search placeholder="Buscar..." />
+                        <img
+                            src="/assets/LupaMini.svg"
+                            alt=" "
+                            width={40}
+                            height={40}
+                        />
                     </S.SearchContainer>
                     <S.LoginContainer>
                         <S.LoginContainer2>

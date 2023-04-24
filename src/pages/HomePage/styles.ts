@@ -1,15 +1,15 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
+    padding-top: 88px;
+    padding-bottom: 100px;
     width: 100%;
     height: 100%;
     background: #303030;
 `;
 export const Container = styled.div`
-    padding-top: 88px;
     width: 100%;
     height: 100%;
-    padding-bottom: 100px;
 `;
 export const BackgroundImage = styled.img`
     width: 100%;
@@ -31,8 +31,6 @@ export const Title2 = styled.div`
     font-weight: 700;
     font-size: 32px;
     line-height: 48px;
-    /* identical to box height */
-
     color: #fafafa;
     border-bottom: solid;
     border-width: 5px;
