@@ -1,4 +1,3 @@
-import Input from 'components/InputLogin';
 import { useRouter } from 'next/router';
 import { SetStateAction, useState } from 'react';
 import UserService from 'services/UserService';
@@ -9,37 +8,38 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const router = useRouter();
+    const [isPasswordShown, setPasswordShow] = useState('password');
 
     const handleChangeEmail = (e: {
         target: { value: SetStateAction<string> };
     }) => {
         setEmail(e.target.value);
-        console.log(email);
     };
     const handleChangePassword = (e: {
         target: { value: SetStateAction<string> };
     }) => {
         setPassword(e.target.value);
-        console.log(password);
     };
-
+    const handlePasswordShow = () => {
+        if (isPasswordShown === 'text') {
+            setPasswordShow('password');
+        } else {
+            setPasswordShow('text');
+        }
+    };
     const handleLogin = async () => {
         try {
             UserService.login({
                 email,
                 password
+            }).then(() => {
+                router.push('/mindset/home');
             });
-            router.push('/mindset/home');
-        } catch {
-            router.push('/mindset/login');
-            setPassword('');
-            setEmail('');
-            setError('E-mail ou senha errada');
+        } catch (err) {
+            setError('email ou senha errados');
         }
     };
-    const goToSignIn = async () => {
-        router.push('/mindset/signin');
-    };
+
     return (
         <S.Wrapper>
             <S.ImageBack src="/assets/backArrow.svg" />
@@ -48,32 +48,41 @@ const Login = () => {
                     <S.LoginName>Faça Login</S.LoginName>
                     <S.GeneralText>
                         Ainda não tem uma conta?{' '}
-                        <S.RecuperarSenha onClick={goToSignIn}>
+                        <S.RecuperarSenha
+                            onClick={() => router.push('/mindset/signin')}
+                        >
                             Cadastre-se
                         </S.RecuperarSenha>
                     </S.GeneralText>
                     <S.InputContainer>
-                        <input
-                            type="text"
-                            placeholder="E-mail"
-                            value={email}
-                            onChange={handleChangeEmail}
-                        />
-                        <S.ForgotPassword>
-                            <input
-                                placeholder="Senha"
-                                type="password"
-                                value={password}
-                                onChange={handleChangePassword}
+                        <S.Container>
+                            <S.Input
+                                placeholder="E-mail"
+                                onChange={handleChangeEmail}
                             />
+                            <S.Image src="/assets/Mail.svg" />
+                        </S.Container>
+                        <S.ForgotPassword>
+                            <S.Container>
+                                <S.Input
+                                    placeholder="Senha"
+                                    type={isPasswordShown}
+                                    onChange={handleChangePassword}
+                                />
+                                <S.Image
+                                    src="/assets/password.svg"
+                                    onClick={handlePasswordShow}
+                                />
+                            </S.Container>
                             <S.GeneralText>
+                                <br />
                                 Esqueceu a senha?{' '}
                                 <S.RecuperarSenha>
                                     Recupere-a aqui
                                 </S.RecuperarSenha>
                             </S.GeneralText>
                         </S.ForgotPassword>
-                        <S.ErrorWrapper>{error}</S.ErrorWrapper>
+                        <S.GeneralText>{error}</S.GeneralText>
                     </S.InputContainer>
                     <S.Checkbox>
                         <S.InputCheckbox type="checkbox" />

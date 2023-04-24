@@ -3,7 +3,6 @@ import Header from 'components/Header';
 import Card from 'components/Card';
 import { useEffect, useState } from 'react';
 import CoursesService from 'services/CourseService';
-import UserService from 'services/UserService';
 import Link from 'next/link';
 
 import * as S from './styles';
@@ -26,7 +25,6 @@ const HomePage = () => {
             setCourseimage(foundCourse.avatar);
         });
     });
-
     return logado ? (
         <>
             <S.Wrapper>

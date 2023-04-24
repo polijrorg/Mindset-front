@@ -42,7 +42,6 @@ export default class UserService {
                 api.defaults.headers as any
             ).Authorization = `Bearer ${response.data.token}`;
         }
-        console.log(response.data.token);
         return response.data;
     }
 
