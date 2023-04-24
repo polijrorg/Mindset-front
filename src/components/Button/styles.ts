@@ -12,10 +12,10 @@ export const Container = styled.div<SelectedType>`
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #272727;
-    width: 108px;
-    padding: 4px;
-    height: 36px;
+    background: none;
+    padding-top: 16px;
+    width: fit-content;
+    height: 100%;
     border: ${(props) => (props.type2 ? '2px solid #faff00' : 'none')};
     border-radius: ${(props) => (props.type2 ? '8px' : 'none')};
 `;

@@ -1,9 +1,15 @@
 import styled from 'styled-components';
 
-export const Container = styled.header`
+interface Search {
+    selected: boolean;
+}
+export const Container = styled.header<Search>`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: ${(prop) => (prop.selected ? '380px' : '0px')}
+    padding-right: 16px;
+    padding-left: 200px;
     width: 100%;
     height: 88px;
     top: 0px;
@@ -16,13 +22,14 @@ export const Logo = styled.div`
     display: flex;
     background: url('/assets/logoMindset.svg');
     height: 98px;
-    background-position: center;
     background-size: 140px;
     background-position-x: 32%;
     background-repeat: no-repeat;
+    position: fixed;
+    left: 16px;
+    top: 12px;
 `;
 export const SearchContainer = styled.div`
-    display: flex;
     align-items: center;
     gap: 8px;
     font-family: 'Poppins';
@@ -32,11 +39,6 @@ export const SearchContainer = styled.div`
     line-height: 24px;
     letter-spacing: 0.5px;
     color: #ffffff;
-`;
-export const SearchImg = styled.img`
-    width: 24px;
-    height: 24px;
-    left: 498px;
 `;
 export const SearchImg2 = styled.img`
     width: 32px;
@@ -85,10 +87,12 @@ export const LoginContainer = styled.div`
     gap: 32px;
     align-items: center;
 `;
-export const LoginContainer2 = styled.div`
-    width: 100px;
-    display: flex;
+export const LogedWithSearch = styled.div`
+    justify-content: center;
+    padding-right: 16px;
+    gap: 32px;
     align-items: center;
+    display: flex;
 `;
 export const Container1 = styled.div`
     display: flex;

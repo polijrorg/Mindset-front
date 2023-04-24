@@ -10,12 +10,12 @@ const Header: React.FC<headerComponentProps> = () => {
     const [isHomeSelected, setIsHomeSelected] = useState(true);
     const [isFAQSelected, setIsFAQSelected] = useState(false);
     const [isWorkSelected, setIsWorkSelected] = useState(false);
-    const [searchSelected, setSearchSelected] = useState(false);
+    const [isSearchSelected, setSearchSelected] = useState(false);
     const [isLogado, setIsLogado] = useState(true);
     const router = useRouter();
 
     const onClickSearch = () => {
-        setSearchSelected(true);
+        setSearchSelected(!isSearchSelected);
     };
     const onClickLogado = () => {
         router.push('/mindset/login');
@@ -44,7 +44,7 @@ const Header: React.FC<headerComponentProps> = () => {
     };
 
     return (
-        <S.Container>
+        <S.Container selected={isSearchSelected}>
             <S.Logo />
             {isLogado ? (
                 <>
@@ -68,8 +68,8 @@ const Header: React.FC<headerComponentProps> = () => {
                             Text="Trabalhe Conosco"
                         />
                     </S.Container1>
-                    {searchSelected ? (
-                        <>
+                    {isSearchSelected ? (
+                        <S.LogedWithSearch>
                             <S.SearchLogged placeholder="Buscar..." />
                             <img
                                 src="/assets/LupaMini.svg"
@@ -77,18 +77,22 @@ const Header: React.FC<headerComponentProps> = () => {
                                 width={40}
                                 height={40}
                             />
+
                             <S.Perfil
                                 src="/assets/perfil.svg"
                                 onClick={onClickLogado}
                             />
-                        </>
+                        </S.LogedWithSearch>
                     ) : (
-                        <>
-                            <S.LoginContainer2 onClick={onClickSearch}>
-                                <S.SearchImg2 src="/assets/search.svg" />
+                        <S.LogedWithSearch>
+                            <S.LoginContainer onClick={onClickSearch}>
+                                <S.SearchImg2
+                                    src="/assets/search.svg"
+                                    onClick={onClickSearch}
+                                />
                                 <S.Perfil src="/assets/perfil.svg" />
-                            </S.LoginContainer2>
-                        </>
+                            </S.LoginContainer>
+                        </S.LogedWithSearch>
                     )}
                 </>
             ) : (
@@ -103,7 +107,7 @@ const Header: React.FC<headerComponentProps> = () => {
                         />
                     </S.SearchContainer>
                     <S.LoginContainer>
-                        <S.LoginContainer2>
+                        <S.LoginContainer>
                             <S.LoginImage src="/assets/Personyello.svg" />
                             <Button
                                 onclick={handleLogin}
@@ -111,7 +115,7 @@ const Header: React.FC<headerComponentProps> = () => {
                                 type2={false}
                                 Text="ENTRAR"
                             />
-                        </S.LoginContainer2>
+                        </S.LoginContainer>
                         <Button
                             selected={false}
                             type2
