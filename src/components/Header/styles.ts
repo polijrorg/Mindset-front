@@ -11,7 +11,7 @@ export const Container = styled.header<Search>`
     padding-right: 16px;
     padding-left: 200px;
     width: 100%;
-    height: 88px;
+    height: 80px;
     top: 0px;
     position: fixed;
     background: #272727;

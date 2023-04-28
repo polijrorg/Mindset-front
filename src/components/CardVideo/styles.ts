@@ -10,7 +10,6 @@ export const Container = styled.div<SelectedProps>`
     padding: 49px 21px 28px 24px;
     gap: 20px;
     margin: 64px;
-    position: absolute;
     width: 500px;
     height: 277px;
     background: ${(props) => (props.isWhite ? '#ffffff' : '#272727')};
@@ -42,7 +41,7 @@ export const Image = styled.img`
     border: 6px solid #ffffff;
 `;
 export const Title = styled.span<SelectedProps>`
-    font-family: 'Poppins';
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 28px;
@@ -50,7 +49,7 @@ export const Title = styled.span<SelectedProps>`
     color: ${(props) => (props.isWhite ? '#272727' : '#ffffff')};
 `;
 export const Text = styled.span<SelectedProps>`
-    font-family: 'Poppins';
+    font-family: 'Poppins', sans-serif;
     font-style: italic;
     font-weight: 300;
     font-size: 20px;

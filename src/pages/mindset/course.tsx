@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import CoursePage from 'pages/Transition';
+import CoursePage from 'pages/CoursePage';
 
 const Course: NextPage = () => {
     return <CoursePage />;

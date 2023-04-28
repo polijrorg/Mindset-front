@@ -35,7 +35,7 @@ const Login = () => {
             }).then(() => {
                 router.push('/mindset/home');
             });
-        } catch (err) {
+        } finally {
             setError('email ou senha errados');
         }
     };
