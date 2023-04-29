@@ -7,11 +7,11 @@ export const Container = styled.div<SelectedProps>`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 49px 21px 28px 24px;
+    padding: 12px 21px 28px 24px;
     gap: 20px;
     margin: 64px;
-    width: 500px;
-    height: 277px;
+    width: 432px;
+    height: 200px;
     background: ${(props) => (props.isWhite ? '#ffffff' : '#272727')};
     box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.14), 0px 3px 3px rgba(0, 0, 0, 0.12),
         0px 1px 8px rgba(0, 0, 0, 0.2);
@@ -35,10 +35,8 @@ export const SubContainer2 = styled.div`
     height: 176px;
 `;
 export const Image = styled.img`
-    right: 65.47%;
-    top: 6.25%;
-    bottom: 6.25%;
-    border: 6px solid #ffffff;
+    width: 100px;
+    height: 100px;
 `;
 export const Title = styled.span<SelectedProps>`
     font-family: 'Poppins', sans-serif;

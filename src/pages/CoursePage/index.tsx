@@ -25,42 +25,67 @@ const CoursePage = () => {
                             </S.Text>{' '}
                         </S.PriceButtonWrapper>
                         <S.PriceWrapper>
-                            <S.Text>Prof. Ronaldo</S.Text>
-                            <br />
-                            <S.Avaliation>
+                            <S.ImageWrapper>
+                                <S.Image src="/assets/iconExemple.svg" />
+                                <S.Text>Prof. Ronaldo</S.Text>
+                            </S.ImageWrapper>
+                            <S.ImageWrapper>
                                 <S.Text>4.0</S.Text>
-                                {/* Colocar as estrelinhas de avaliação */}
-                            </S.Avaliation>
+                                <S.Image
+                                    src="/assets/avaliar5.svg"
+                                    style={{
+                                        width: '100px',
+                                        height: '28px',
+                                        cursor: 'pointer'
+                                    }}
+                                />
+                            </S.ImageWrapper>
                         </S.PriceWrapper>
                     </S.DescriptionWrapper>
                 </S.ContainerTop>
                 <S.ContainerMiddle>
-                    <S.Text>
-                        <S.Title>Sobre:</S.Title>
-                        <br />
-                        <br />
-                        <br />
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry. Lorem Ipsum is simply dummy text
-                        of the printing and typesetting industry. Lorem Ipsum is
-                        simply dummy text of the printing and typesetting
-                        industry. Lorem Ipsum is simply dummy text of the
-                        printing and typesetting industry. Lorem Ipsum is simply
-                        dummy text of the printing and typesetting industry.
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry. Lorem Ipsum is simply dummy text
-                        of the printing and typesetting industry. Lorem Ipsum is
-                        simply dummy text of the printing and typesetting
-                        industry. Lorem Ipsum is simply dummy text of the
-                        printing and typesetting industry. Lorem Ipsum is simply
-                        dummy text of the printing and typesetting industry.
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry.
-                    </S.Text>
+                    <S.About>
+                        <S.AboutTitle>Sobre:</S.AboutTitle>
+                        <S.AboutText>
+                            Lorem Ipsum is simply dummy text of the printing and
+                            typesetting industry. Lorem Ipsum is simply dummy
+                            text of the printing and typesetting industry. Lorem
+                            Ipsum is simply dummy text of the printing and
+                            typesetting industry. Lorem Ipsum is simply dummy
+                            text of the printing and typesetting industry. Lorem
+                            Ipsum is simply dummy text of the printing and
+                            typesetting industry. Lorem Ipsum is simply dummy
+                            text of the printing and typesetting industry. Lorem
+                            Ipsum is simply dummy text of the printing and
+                            typesetting industry. Lorem Ipsum is simply dummy
+                            text of the printing and typesetting industry. Lorem
+                            Ipsum is simply dummy text of the printing and
+                            typesetting industry. Lorem Ipsum is simply dummy
+                            text of the printing and typesetting industry. Lorem
+                            Ipsum is simply dummy text of the printing and
+                            typesetting industry.
+                        </S.AboutText>
+                    </S.About>
                     <S.VideoDescription>
-                        <S.Text>100% online</S.Text>
-                        <S.Text>Assista quando quiser</S.Text>
-                        <S.Text>Avaliar</S.Text>
+                        <S.ImageWrapper>
+                            <S.Image src="/assets/onlineradio.svg" />
+                            <S.AboutText>100% online</S.AboutText>
+                        </S.ImageWrapper>
+                        <S.ImageWrapper>
+                            <S.Image src="/assets/calendar.svg" />
+                            <S.AboutText>Assista quando quiser</S.AboutText>
+                        </S.ImageWrapper>
+                        <S.ImageWrapper>
+                            <S.Text>Avaliar: </S.Text>
+                            <S.Image
+                                src="/assets/avaliar5.svg"
+                                style={{
+                                    width: '100px',
+                                    height: '28px',
+                                    cursor: 'pointer'
+                                }}
+                            />
+                        </S.ImageWrapper>
                     </S.VideoDescription>
                 </S.ContainerMiddle>
                 <S.ContainerBottom>

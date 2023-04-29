@@ -36,4 +36,3 @@ const CardVideo: React.FC<CardComponentProps> = ({
     </S.Container>
 );
 export default CardVideo;
-/* utilizar o use Effect https://www.google.com/search?q=styled+progress+bar&source=lnms&tbm=vid&sa=X&ved=2ahUKEwiZvKW69sD9AhUhr5UCHYapCDgQ_AUoAnoECAEQBA&biw=1440&bih=671&dpr=2#fpstate=ive&vld=cid:eef93ea1,vid:3sH_Kq9e5hQ */

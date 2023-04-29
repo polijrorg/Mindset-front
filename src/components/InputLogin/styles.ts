@@ -13,6 +13,7 @@ export const Input = styled.input`
     justify-content: space-between;
     align-items: center;
     padding: 14px 16px;
+    border: none;
     background: #fafafa;
     box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.14), 0px 3px 3px rgba(0, 0, 0, 0.12),
         0px 1px 8px rgba(0, 0, 0, 0.2);

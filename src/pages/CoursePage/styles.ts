@@ -19,12 +19,12 @@ export const ContainerTop = styled.div`
 `;
 export const ContainerMiddle = styled.div`
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     width: 100%;
     height: 380px;
-    padding: 42px 72px 42px 72px;
-    gap: 150px;
+    gap: 72px;
+    padding: 42px 0px 0px 64px;
     background: #303030;
 `;
 export const ContainerBottom = styled.div`
@@ -35,6 +35,14 @@ export const ContainerBottom = styled.div`
 `;
 export const VideoWrapper = styled.div`
     width: 56%;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background: linear-gradient(
+        270deg,
+        #ff0000 17.4%,
+        rgba(40, 40, 40, 0) 54.82%
+    );
 `;
 export const DescriptionWrapper = styled.div`
     display: flex;
@@ -46,7 +54,20 @@ export const DescriptionWrapper = styled.div`
 export const VideoDescription = styled.div`
     width: fit-content
     height: 107px;
+    display: flex;
+    flex-direction: column;
     gap: 7px;
+`;
+export const Image = styled.img`
+    width: 40px;
+    height: 40px;
+`;
+export const ImageWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    gap: 8px;
 `;
 export const Title = styled.text`
     font-family: 'Poppins', sans-serif;
@@ -73,6 +94,7 @@ export const PriceButtonWrapper = styled.div`
 export const PriceWrapper = styled.div`
     display: flex;
     flex-direction: column;
+    gap: 16px;
     justify-content: space-between;
     align-items: center;
 `;
@@ -90,15 +112,35 @@ export const Text = styled.text`
     font-size: 20px;
     color: #ffffff;
 `;
+export const About = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 72%;
+    gap: 24px;
+`;
+export const AboutTitle = styled.text`
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    color: #fafafa;
+`;
+export const AboutText = styled.text`
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: justify;
+    color: #fafafa;
+`;
 
 export const CoursesContainer = styled.div`
     display: flex;
     flex-direction: row;
-    gap: 42px;
     height: 277px;
 `;
-export const About = styled.div``;
-export const ClassesContainer = styled.div``;
+
 export const Avaliation = styled.div`
     display: flex;
     flex-direction: row;

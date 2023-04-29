@@ -15,7 +15,9 @@ interface ILoginResponse {
     user: User;
 }
 interface ISignInRequest {
-    phone: string;
+    name: string;
+    email: string;
+    password: string;
 }
 
 interface ISignInResponse {
@@ -46,10 +48,13 @@ export default class UserService {
     }
 
     static async signIn(data: ISignInRequest): Promise<ISignInResponse> {
-        const response: AxiosResponse<ILoginResponse> = await api.post(
+        const response: AxiosResponse<ISignInResponse> = await api.post(
             '/register',
             data
         );
+        console.log(response.data);
+        console.log(response.status);
+        console.log(response);
         return response.data;
     }
 }

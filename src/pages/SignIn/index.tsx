@@ -1,6 +1,5 @@
-import Input from 'components/InputLogin';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { SetStateAction, useState } from 'react';
 import UserService from 'services/UserService';
 
 import * as S from './styles';
@@ -8,22 +7,49 @@ import * as S from './styles';
 const SignIn = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [phone, setPhone] = useState('');
+    const [name, setName] = useState('');
     const [error, setError] = useState('');
     const router = useRouter();
-    const handleLogin = async () => {
-        try {
-            router.push('/mindset/login');
-        } catch (err) {
-            setError('');
-            setEmail('');
-            setPassword('');
+    const [isPasswordShown, setPasswordShow] = useState('password');
+
+    const handleChangeEmail = (e: {
+        target: { value: SetStateAction<string> };
+    }) => {
+        setEmail(e.target.value);
+    };
+    const handleChangeName = (e: {
+        target: { value: SetStateAction<string> };
+    }) => {
+        setName(e.target.value);
+    };
+    const handleChangePassword = (e: {
+        target: { value: SetStateAction<string> };
+    }) => {
+        setPassword(e.target.value);
+    };
+    const handlePasswordShow = () => {
+        if (isPasswordShown === 'text') {
+            setPasswordShow('password');
+        } else {
+            setPasswordShow('text');
         }
     };
 
     const handleSignIn = async () => {
-        UserService.signIn({ phone: '123456' });
-
+        try {
+            UserService.signIn({
+                name,
+                email,
+                password
+            }).then(() => {
+                router.push('/mindset/login');
+            });
+        } catch (err) {
+            console.log(err);
+            setEmail('');
+            setPassword('');
+            setName('');
+        }
         router.push('/mindset/login');
     };
     return (
@@ -34,30 +60,38 @@ const SignIn = () => {
                     <S.LoginName>Cadastre-se</S.LoginName>
                     <S.GeneralText>
                         Já tem uma conta?{' '}
-                        <S.RecuperarSenha onClick={handleLogin}>
+                        <S.RecuperarSenha
+                            onClick={() => router.push('/mindset/login')}
+                        >
                             Faça Login
                         </S.RecuperarSenha>
                     </S.GeneralText>
                     <S.InputContainer>
-                        <Input
-                            isPassword={false}
-                            Text="Nome"
-                            type="text"
-                            image="/assets/whitepersonicon.svg"
-                        />
-                        <Input
-                            isPassword={false}
-                            Text="E-mail"
-                            type="text"
-                            image="/assets/Mail.svg"
-                        />
-                        <Input
-                            isPassword
-                            Text="Senha"
-                            type="password"
-                            image="/assets/password.svg"
-                        />
-                        <S.ErrorWrapper>{error}</S.ErrorWrapper>
+                        <S.Container>
+                            <S.Input
+                                placeholder="Nome"
+                                onChange={handleChangeName}
+                            />
+                            <S.Image src="/assets/whitepersonicon.svg" />
+                        </S.Container>
+                        <S.Container>
+                            <S.Input
+                                placeholder="E-mail"
+                                onChange={handleChangeEmail}
+                            />
+                            <S.Image src="/assets/Mail.svg" />
+                        </S.Container>
+                        <S.Container>
+                            <S.Input
+                                placeholder="Senha"
+                                type={isPasswordShown}
+                                onChange={handleChangePassword}
+                            />
+                            <S.Image
+                                src="/assets/password.svg"
+                                onClick={handlePasswordShow}
+                            />
+                        </S.Container>
                     </S.InputContainer>
                 </S.AuxII>
                 <S.SignInButton onClick={handleSignIn}>
