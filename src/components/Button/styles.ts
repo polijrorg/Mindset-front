@@ -13,7 +13,7 @@ export const Container = styled.div<SelectedType>`
     justify-content: center;
     align-items: center;
     background: none;
-    padding-top: 16px;
+    padding: 8px;
     width: fit-content;
     height: 100%;
     border: ${(props) => (props.type2 ? '2px solid #faff00' : 'none')};
