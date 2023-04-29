@@ -27,17 +27,22 @@ export const Logo = styled.div`
     background-repeat: no-repeat;
     position: fixed;
     left: 16px;
-    top: 12px;
+    top: 8px;
+`;
+export const WrapperLogout = styled.div`
+    display: flex;
+    width: 100%;
+    padding: 16px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 `;
 export const SearchContainer = styled.div`
     align-items: center;
+    justify-content: center;
+    display: flex;
     gap: 8px;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 24px;
-    letter-spacing: 0.5px;
+    padding-left: 200px;
     color: #ffffff;
 `;
 export const SearchImg2 = styled.img`
@@ -48,17 +53,24 @@ export const SearchImg2 = styled.img`
 `;
 export const Search = styled.input`
     box-sizing: border-box;
-    display: flex;
+    background: none;
+    position: relative;
     flex-direction: column;
     align-items: flex-start;
-    padding: 10px 360px 10px 17px;
-    gap: 10px;
+    left: 72px;
+    padding-left: 16px;
     width: 400px;
-    height: 46px;
-    border: 2px solid #ffffff;
+    height: 36px;
     color: #ffffff;
+    border: 2px solid #ffffff;
     border-radius: 8px;
-    background: none;
+    ::placeholder,
+    ::-webkit-input-placeholder {
+        color: white;
+    }
+    :-ms-input-placeholder {
+        color: white;
+    }
 `;
 export const SearchLogged = styled.input`
     box-sizing: border-box;

@@ -25,16 +25,19 @@ const Header: React.FC<headerComponentProps> = () => {
         setIsFAQSelected(false);
         setIsWorkSelected(false);
         setIsHomeSelected(true);
+        router.push('/mindset/home');
     };
     const onClickFAQ = () => {
-        setIsFAQSelected(true);
         setIsWorkSelected(false);
         setIsHomeSelected(false);
+        setIsFAQSelected(true);
+        router.push('/mindset/faq');
     };
     const onClickWork = () => {
         setIsFAQSelected(false);
-        setIsWorkSelected(true);
         setIsHomeSelected(false);
+        setIsWorkSelected(true);
+        router.push('/mindset/trabalhe-conosco');
     };
     const handleLogin = async () => {
         router.push('/mindset/login');
@@ -96,7 +99,7 @@ const Header: React.FC<headerComponentProps> = () => {
                     )}
                 </>
             ) : (
-                <>
+                <S.WrapperLogout>
                     <S.SearchContainer>
                         <S.Search placeholder="Buscar..." />
                         <img
@@ -123,7 +126,7 @@ const Header: React.FC<headerComponentProps> = () => {
                             onclick={handleSignin}
                         />
                     </S.LoginContainer>
-                </>
+                </S.WrapperLogout>
             )}
         </S.Container>
     );
