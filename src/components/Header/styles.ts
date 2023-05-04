@@ -1,13 +1,10 @@
 import styled from 'styled-components';
 
-interface Search {
-    selected: boolean;
-}
-export const Container = styled.header<Search>`
+export const Container = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: ${(prop) => (prop.selected ? '380px' : '0px')}
+    gap: '380px';
     padding-right: 16px;
     padding-left: 200px;
     width: 100%;
@@ -45,19 +42,13 @@ export const SearchContainer = styled.div`
     padding-left: 200px;
     color: #ffffff;
 `;
-export const SearchImg2 = styled.img`
-    width: 32px;
-    height: 32px;
-    margin-right: 32px;
-    cursor: pointer;
-`;
+
 export const Search = styled.input`
     box-sizing: border-box;
     background: none;
     position: relative;
     flex-direction: column;
     align-items: flex-start;
-    left: 72px;
     padding-left: 16px;
     width: 400px;
     height: 36px;
@@ -74,17 +65,16 @@ export const Search = styled.input`
 `;
 export const SearchLogged = styled.input`
     box-sizing: border-box;
-    background: none;
+    background: #272727;
     position: relative;
     flex-direction: column;
     align-items: flex-start;
-    left: 72px;
     padding-left: 16px;
     width: 400px;
     height: 36px;
     color: #ffffff;
     border: 2px solid #ffffff;
-    border-radius: 8px;
+    border-radius: 8px 0px 0px 8px;
     ::placeholder,
     ::-webkit-input-placeholder {
         color: white;
@@ -99,10 +89,21 @@ export const LoginContainer = styled.div`
     gap: 32px;
     align-items: center;
 `;
+export const SearchButton = styled.div`
+    display: flex;
+    width: fit-content;
+    height: 36px;
+    background: #fbfbf8;
+    cursor: pointer;
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+    padding-right: 4px;
+`;
 export const LogedWithSearch = styled.div`
     justify-content: center;
     padding-right: 16px;
-    gap: 32px;
+    gap: 0px;
     align-items: center;
     display: flex;
 `;
