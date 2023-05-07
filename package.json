@@ -19,12 +19,14 @@
     },
     "dependencies": {
         "axios": "^0.27.2",
+        "bootstrap": "^5.2.3",
         "next": "^13.4.1",
         "next-images": "^1.8.2",
         "nookies": "^2.5.2",
         "react": "^18.2.0",
         "react-bootstrap": "^2.7.2",
         "react-dom": "^18.2.0",
+        "reactstrap": "^9.1.9",
         "styled-components": "^5.3.10",
         "webkit": "^0.0.0"
     },

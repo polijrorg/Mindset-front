@@ -11,14 +11,10 @@ const Header: React.FC<headerComponentProps> = () => {
     const [isHomeSelected, setIsHomeSelected] = useState(true);
     const [isFAQSelected, setIsFAQSelected] = useState(false);
     const [isWorkSelected, setIsWorkSelected] = useState(false);
-    const [isSearchSelected, setSearchSelected] = useState(false);
     const [isLogado, setIsLogado] = useState(true);
     const router = useRouter();
 
-    const onClickSearch = () => {
-        setSearchSelected(!isSearchSelected);
-    };
-    const onClickLogado = () => {
+    const onClickMenu = () => {
         router.push('/mindset/login');
         setIsLogado(false);
     };
@@ -48,7 +44,7 @@ const Header: React.FC<headerComponentProps> = () => {
     };
 
     return (
-        <S.Container selected={isSearchSelected}>
+        <S.Container>
             <S.Logo />
             {isLogado ? (
                 <>
@@ -72,34 +68,25 @@ const Header: React.FC<headerComponentProps> = () => {
                             Text="Trabalhe Conosco"
                         />
                     </S.Container1>
-                    {isSearchSelected ? (
+                    <S.LoginContainer>
                         <S.LogedWithSearch>
-                            <S.SearchLogged placeholder="Buscar..." />
-                            <img
-                                src="/assets/LupaMini.svg"
-                                alt=" "
-                                width={40}
-                                height={40}
-                            />
-
+                            <S.SearchButton>
+                                <S.SearchLogged placeholder="Buscar..." />
+                                <img
+                                    src="/assets/blackSearch.svg"
+                                    alt=" "
+                                    width={30}
+                                    height={24}
+                                />
+                            </S.SearchButton>
+                        </S.LogedWithSearch>
+                        <Dropdown>
                             <S.Perfil
                                 src="/assets/perfil.svg"
-                                onClick={onClickLogado}
+                                onClick={onClickMenu}
                             />
-                        </S.LogedWithSearch>
-                    ) : (
-                        <S.LogedWithSearch>
-                            <S.LoginContainer onClick={onClickSearch}>
-                                <S.SearchImg2
-                                    src="/assets/search.svg"
-                                    onClick={onClickSearch}
-                                />
-                                <Dropdown>
-                                    <S.Perfil src="/assets/perfil.svg" />
-                                </Dropdown>
-                            </S.LoginContainer>
-                        </S.LogedWithSearch>
-                    )}
+                        </Dropdown>
+                    </S.LoginContainer>
                 </>
             ) : (
                 <S.WrapperLogout>

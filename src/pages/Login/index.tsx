@@ -8,6 +8,7 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const router = useRouter();
+    const [isLoading, setLoading] = useState(false);
     const [isPasswordShown, setPasswordShow] = useState('password');
 
     const handleChangeEmail = (e: {
@@ -33,10 +34,13 @@ const Login = () => {
                 email,
                 password
             }).then(() => {
+                setLoading(true);
                 router.push('/mindset/home');
+                setLoading(false);
             });
-        } finally {
-            setError('email ou senha errados');
+        } catch (err) {
+            alert('e-mail ou sneha errados');
+            console.log(err);
         }
     };
 
