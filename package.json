@@ -19,12 +19,12 @@
     },
     "dependencies": {
         "axios": "^0.27.2",
-        "next": "^12.1.0",
+        "next": "^13.4.1",
         "next-images": "^1.8.2",
         "nookies": "^2.5.2",
-        "react": "^16.13.0",
+        "react": "^18.2.0",
         "react-bootstrap": "^2.7.2",
-        "react-dom": "^16.13.0",
+        "react-dom": "^18.2.0",
         "styled-components": "^5.3.10",
         "webkit": "^0.0.0"
     },
@@ -40,7 +40,6 @@
         "@types/jest": "^27.4.0",
         "@types/node": "12.0.12",
         "@types/react": "16.8.23",
-        "@types/react-dom": "16.8.4",
         "@types/styled-components": "5.0.1",
         "@typescript-eslint/eslint-plugin": "^4.21.0",
         "@typescript-eslint/parser": "^4.21.0",
