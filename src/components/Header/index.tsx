@@ -1,6 +1,7 @@
 import Button from 'components/Button';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import { Dropdown } from 'react-bootstrap';
 import * as S from './styles';
 
 export type headerComponentProps = {
@@ -74,15 +75,17 @@ const Header: React.FC<headerComponentProps> = () => {
                                 <img
                                     src="/assets/blackSearch.svg"
                                     alt=" "
-                                    width={24}
-                                    height={20}
+                                    width={30}
+                                    height={24}
                                 />
                             </S.SearchButton>
                         </S.LogedWithSearch>
-                        <S.Perfil
-                            src="/assets/perfil.svg"
-                            onClick={onClickMenu}
-                        />
+                        <Dropdown>
+                            <S.Perfil
+                                src="/assets/perfil.svg"
+                                onClick={onClickMenu}
+                            />
+                        </Dropdown>
                     </S.LoginContainer>
                 </>
             ) : (
