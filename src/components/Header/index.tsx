@@ -1,7 +1,6 @@
 import Button from 'components/Button';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { Dropdown } from 'react-bootstrap';
 import * as S from './styles';
 
 export type headerComponentProps = {
@@ -12,11 +11,15 @@ const Header: React.FC<headerComponentProps> = () => {
     const [isFAQSelected, setIsFAQSelected] = useState(false);
     const [isWorkSelected, setIsWorkSelected] = useState(false);
     const [isLogado, setIsLogado] = useState(true);
+    const [isDropdownSelected, setDropdownSelected] = useState(false);
     const router = useRouter();
 
-    const onClickMenu = () => {
+    const handleLogout = () => {
         router.push('/mindset/login');
         setIsLogado(false);
+    };
+    const onCLickDropdown = () => {
+        setDropdownSelected(!isDropdownSelected);
     };
     const onClickHome = () => {
         setIsFAQSelected(false);
@@ -80,24 +83,30 @@ const Header: React.FC<headerComponentProps> = () => {
                                 />
                             </S.SearchButton>
                         </S.LogedWithSearch>
-                        <Dropdown>
-                            <S.Perfil
-                                src="/assets/perfil.svg"
-                                onClick={onClickMenu}
-                            />
-                        </Dropdown>
+                        <S.Dropdown onClick={onCLickDropdown}>
+                            <S.Perfil src="/assets/perfil.svg" />
+                            {isDropdownSelected ? (
+                                <S.DropdownMenu>
+                                    <S.DropdownItem onClick={handleLogout}>
+                                        Logout
+                                    </S.DropdownItem>
+                                </S.DropdownMenu>
+                            ) : null}
+                        </S.Dropdown>
                     </S.LoginContainer>
                 </>
             ) : (
                 <S.WrapperLogout>
                     <S.SearchContainer>
-                        <S.Search placeholder="Buscar..." />
-                        <img
-                            src="/assets/LupaMini.svg"
-                            alt=" "
-                            width={40}
-                            height={40}
-                        />
+                        <S.SearchButton>
+                            <S.SearchLogged placeholder="Buscar..." />
+                            <img
+                                src="/assets/blackSearch.svg"
+                                alt=" "
+                                width={30}
+                                height={24}
+                            />
+                        </S.SearchButton>
                     </S.SearchContainer>
                     <S.LoginContainer>
                         <S.LoginContainer>

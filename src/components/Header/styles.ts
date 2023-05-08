@@ -4,7 +4,6 @@ export const Container = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: '380px';
     padding-right: 16px;
     padding-left: 200px;
     width: 100%;
@@ -42,7 +41,6 @@ export const SearchContainer = styled.div`
     padding-left: 200px;
     color: #ffffff;
 `;
-
 export const Search = styled.input`
     box-sizing: border-box;
     background: none;
@@ -128,4 +126,40 @@ export const Perfil = styled.img`
     justify-content: center;
     align-items: center;
     cursor: pointer;
+`;
+export const Dropdown = styled.div`
+    display: flex;
+    padding-right: 24px;
+    background: none;
+    justify-content: start;
+    align-items: start;
+    width: fit-content;
+    height: fit-content;
+    flex-direction: column;
+`;
+export const DropdownMenu = styled.div`
+    display: flex;
+    position: absolute;
+    top: 80px;
+    right: 16px;
+    width: 100px;
+    justify-content: center;
+    align-items: flex-start;
+    height: 160;
+    position: flex;
+    flex-direction: column;
+`;
+export const DropdownItem = styled.button`
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 88px;
+    height: 44px;
+    cursor: pointer;
+    border: none;
+    background: #272727;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
 `;

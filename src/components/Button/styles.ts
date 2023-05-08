@@ -25,7 +25,6 @@ export const Button = styled.span<OnClickButton>`
     font-size: 12px;
     letter-spacing: 1px;
     cursor: pointer;
-    text-transform: uppercase;
     text-underline-offset: 4px;
     text-decoration: ${(props) => (props.selected ? 'underline' : 'none')};
     color: ${(props) => (props.selected ? '#faff00' : '#fafafa')};

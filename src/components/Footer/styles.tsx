@@ -53,13 +53,12 @@ export const ButtonLink = styled.a`
     color: #ffffff;
 `;
 export const ContainerSub2 = styled.div`
-display: flex;
-flex-direction: column;
-align-items: flex-start;
-gap: 2px;
-
-width: 74px;
-height: 53px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    width: 74px;
+    height: 53px;
 `;
 export const ContainerSub = styled.div`
     display: flex;
