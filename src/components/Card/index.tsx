@@ -1,23 +1,30 @@
 import { useRouter } from 'next/router';
+import CoursesService from 'services/CourseService';
 import * as S from './styles';
 
 export type CardCompentsProps = {
     image: string;
     textoPrincipal: string;
     subTexto: string;
-    // image: string;
+    price: string;
+    rating: number;
+    id: string;
 };
 const Card: React.FC<CardCompentsProps> = ({
     textoPrincipal,
     subTexto,
-    image
+    image,
+    price,
+    rating,
+    id
 }) => {
     const router = useRouter();
-    const goToCourse = async () => {
-        router.push('/mindset/course');
-    };
+    function goToCourse(CourseId: string) {
+        CoursesService.getCourseById(CourseId);
+        router.push('/mindset/course/');
+    }
     return (
-        <S.Container image={image} onClick={goToCourse}>
+        <S.Container image={image} onClick={() => goToCourse(id)}>
             <S.SubContainer>
                 <S.Left>
                     <S.Title>{textoPrincipal}</S.Title>
@@ -26,7 +33,7 @@ const Card: React.FC<CardCompentsProps> = ({
                 <S.Right>
                     <S.Star src="/assets/star.svg" />
                     <S.Price>
-                        <S.Word>Preço:</S.Word> $240
+                        <S.Word>Preço:</S.Word> {price}
                     </S.Price>
                 </S.Right>
             </S.SubContainer>

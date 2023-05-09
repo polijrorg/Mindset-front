@@ -2,6 +2,7 @@ import Footer from 'components/Footer';
 import Header from 'components/Header';
 import Card from 'components/Card';
 import { useEffect, useState } from 'react';
+import { Courses } from 'interfaces/Courses';
 import CoursesService from 'services/CourseService';
 import Link from 'next/link';
 
@@ -9,22 +10,18 @@ import * as S from './styles';
 
 const HomePage = () => {
     const [logado, setLogado] = useState(true);
-    const [courseName, setCourseName] = useState('');
-    const [courseTeacher, setCourseTeacher] = useState('');
-    const [courseImage, setCourseimage] = useState('');
-    const [coursePrice, setCoursePrice] = useState('');
-    const [courseStar, setCourseStar] = useState('');
+    const [coursesArray, setCoursesArray] = useState<Courses[]>([]);
+    const [onProgressCourses, setOnProgressCourses] = useState<Courses[]>([]);
+    const [boughtCoursesList, setBoughtCoursesList] = useState<Courses[]>([]);
 
     useEffect(() => {
-        // preciso pegar os cursos pelo id
-        CoursesService.getCourses().then((foundCourse) => {
-            setCourseName(foundCourse.name);
-            setCoursePrice('no price');
-            setCourseStar(String(foundCourse.rating));
-            setCourseTeacher(foundCourse.createdBy);
-            setCourseimage(foundCourse.avatar);
-        });
-    });
+        const asyncFunction = async () => {
+            const response = await CoursesService.getCourses();
+            setCoursesArray(response);
+        };
+        asyncFunction();
+    }, []);
+
     return logado ? (
         <>
             <S.Wrapper>
@@ -35,31 +32,7 @@ const HomePage = () => {
                             <S.Title2>Cursos em progresso</S.Title2>
                         </S.TitleContainer>
                         <S.CardsContainer>
-                            <Card
-                                image={courseImage}
-                                subTexto="France - Paris "
-                                textoPrincipal="Eiffell Tower"
-                            />
-                            <Card
-                                image={courseImage}
-                                subTexto="France - Paris "
-                                textoPrincipal="Eiffell Tower"
-                            />
-                            <Card
-                                image={courseImage}
-                                subTexto="France - Paris "
-                                textoPrincipal="Eiffell Tower"
-                            />
-                            <Card
-                                image={courseImage}
-                                subTexto="France - Paris "
-                                textoPrincipal="Eiffell Tower"
-                            />
-                            <Card
-                                image={courseImage}
-                                subTexto="France - Paris "
-                                textoPrincipal="Eiffell Tower"
-                            />
+                            {/* COLOCAR OS CURSOS EM PROGRESSO */}
                         </S.CardsContainer>
                     </S.SubContainer>
                 </S.Container>
@@ -69,31 +42,7 @@ const HomePage = () => {
                             <S.Title2>Seus cursos</S.Title2>
                         </S.TitleContainer>
                         <S.CardsContainer style={{ gap: '8' }}>
-                            <Card
-                                image={courseImage}
-                                subTexto="France - Paris "
-                                textoPrincipal="Eiffell Tower"
-                            />
-                            <Card
-                                image={courseImage}
-                                subTexto="France - Paris "
-                                textoPrincipal="Eiffell Tower"
-                            />
-                            <Card
-                                image={courseImage}
-                                subTexto="France - Paris "
-                                textoPrincipal="Eiffell Tower"
-                            />
-                            <Card
-                                image={courseImage}
-                                subTexto="France - Paris "
-                                textoPrincipal="Eiffell Tower"
-                            />
-                            <Card
-                                image={courseImage}
-                                subTexto="France - Paris "
-                                textoPrincipal="Eiffell Tower"
-                            />
+                            {/* COLOCAR OS CURSOS COMPRADOS */}
                         </S.CardsContainer>
                     </S.SubContainer>
                 </S.Container>
@@ -103,31 +52,16 @@ const HomePage = () => {
                             <S.Title2>Cursos em alta</S.Title2>
                         </S.TitleContainer>
                         <S.CardsContainer>
-                            <Card
-                                image={courseImage}
-                                subTexto="France - Paris "
-                                textoPrincipal="Eiffell Tower"
-                            />
-                            <Card
-                                image={courseImage}
-                                subTexto="France - Paris "
-                                textoPrincipal="Eiffell Tower"
-                            />
-                            <Card
-                                image={courseImage}
-                                subTexto="France - Paris "
-                                textoPrincipal="Eiffell Tower"
-                            />
-                            <Card
-                                image={courseImage}
-                                subTexto="France - Paris "
-                                textoPrincipal="Eiffell Tower"
-                            />
-                            <Card
-                                image={courseImage}
-                                subTexto="France - Paris "
-                                textoPrincipal="Eiffell Tower"
-                            />
+                            {coursesArray.map((course) => (
+                                <Card
+                                    image={course.avatar}
+                                    subTexto={course.description}
+                                    textoPrincipal={course.name}
+                                    price="240"
+                                    id={course.id}
+                                    rating={course.rating}
+                                />
+                            ))}
                         </S.CardsContainer>
                     </S.SubContainer>
                 </S.Container>
@@ -153,33 +87,16 @@ const HomePage = () => {
                             <S.Title2>Cursos em alta</S.Title2>
                         </S.TitleContainer>
                         <S.CardsContainer>
-                            <Link href="/CoursePage/index/">
+                            {coursesArray.map((course) => (
                                 <Card
-                                    image={courseImage}
-                                    subTexto="France - Paris "
-                                    textoPrincipal="Eiffell Tower"
+                                    image={course.avatar}
+                                    subTexto={course.description}
+                                    textoPrincipal={course.name}
+                                    price="240"
+                                    id={course.id}
+                                    rating={course.rating}
                                 />
-                            </Link>
-                            <Card
-                                image={courseImage}
-                                subTexto={courseName}
-                                textoPrincipal={courseTeacher}
-                            />
-                            <Card
-                                image={courseImage}
-                                subTexto={courseName}
-                                textoPrincipal={courseTeacher}
-                            />
-                            <Card
-                                image={courseImage}
-                                subTexto={courseName}
-                                textoPrincipal={courseTeacher}
-                            />
-                            <Card
-                                image={courseImage}
-                                subTexto={courseName}
-                                textoPrincipal={courseTeacher}
-                            />
+                            ))}
                         </S.CardsContainer>
                     </S.SubContainer>
                 </S.Container>

@@ -7,8 +7,7 @@ export const Container = styled.div<BackgroundImg>`
     display: flex;
     width: 200px;
     height: 236px;
-    background: url(${(props) =>
-        props.image ? `${props.image}` : '/assets/imageTest.png'});
+    background: url(${(props) => (props.image ? `${props.image}` : 'null')});
     border-radius: 16px;
     cursor: pointer;
 `;
