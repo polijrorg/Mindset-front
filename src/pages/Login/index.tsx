@@ -8,19 +8,8 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const router = useRouter();
-    const [isLoading, setLoading] = useState(false);
     const [isPasswordShown, setPasswordShow] = useState('password');
 
-    const handleChangeEmail = (e: {
-        target: { value: SetStateAction<string> };
-    }) => {
-        setEmail(e.target.value);
-    };
-    const handleChangePassword = (e: {
-        target: { value: SetStateAction<string> };
-    }) => {
-        setPassword(e.target.value);
-    };
     const handlePasswordShow = () => {
         if (isPasswordShown === 'text') {
             setPasswordShow('password');
@@ -30,17 +19,11 @@ const Login = () => {
     };
     const handleLogin = async () => {
         try {
-            UserService.login({
-                email,
-                password
-            }).then(() => {
-                setLoading(true);
-                router.push('/mindset/home');
-                setLoading(false);
-            });
+            const response = await UserService.login({ email, password });
         } catch (err) {
-            alert('e-mail ou sneha errados');
-            console.log(err);
+            setError('email ou senha errados');
+            setEmail('');
+            setPassword('');
         }
     };
 
@@ -62,7 +45,8 @@ const Login = () => {
                         <S.Container>
                             <S.Input
                                 placeholder="E-mail"
-                                onChange={handleChangeEmail}
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                             <S.Image src="/assets/Mail.svg" />
                         </S.Container>
@@ -71,7 +55,10 @@ const Login = () => {
                                 <S.Input
                                     placeholder="Senha"
                                     type={isPasswordShown}
-                                    onChange={handleChangePassword}
+                                    value={password}
+                                    onChange={(e) =>
+                                        setPassword(e.target.value)
+                                    }
                                 />
                                 <S.Image
                                     src="/assets/password.svg"
