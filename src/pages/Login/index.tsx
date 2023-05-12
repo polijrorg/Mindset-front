@@ -1,10 +1,12 @@
 import { useRouter } from 'next/router';
-import { SetStateAction, useState } from 'react';
+import { useState } from 'react';
 import UserService from 'services/UserService';
+import Transition from 'pages/Transition';
 import * as S from './styles';
 
 const Login = () => {
     const [email, setEmail] = useState('');
+    const [isLoading, setLoading] = useState(false);
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const router = useRouter();
@@ -19,7 +21,15 @@ const Login = () => {
     };
     const handleLogin = async () => {
         try {
+            setLoading(true);
             const response = await UserService.login({ email, password });
+            if (!response.token) {
+                setLoading(false);
+                setError('e-mail ou senha errados');
+            } else {
+                router.push('/mindset/home/');
+                setLoading(false);
+            }
         } catch (err) {
             setError('email ou senha errados');
             setEmail('');
@@ -27,7 +37,9 @@ const Login = () => {
         }
     };
 
-    return (
+    return isLoading ? (
+        <Transition />
+    ) : (
         <S.Wrapper>
             <S.ImageBack src="/assets/backArrow.svg" />
             <S.Login>
