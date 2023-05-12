@@ -43,9 +43,11 @@ export default class UserService {
             setCookie(undefined, '@mindset:useId', userId, {
                 maxAge: 60 * 60 * 24
             });
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             (api.defaults.headers as any).Authorization = `Bearer $(token)`;
             return response.data;
         } catch (err) {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             throw new Error((err as any).response.data.message);
         }
     }

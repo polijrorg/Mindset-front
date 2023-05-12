@@ -1,14 +1,13 @@
 import Footer from 'components/Footer';
-import Header from 'components/Header';
+import PublicHeader from 'components/Header1';
 import Card from 'components/Card';
 import { useEffect, useState } from 'react';
 import { Courses } from 'interfaces/Courses';
 import CoursesService from 'services/CourseService';
 import * as S from './styles';
 
-const HomePage = () => {
+const PublicHome = () => {
     const [coursesArray, setCoursesArray] = useState<Courses[]>([]);
-
     useEffect(() => {
         const asyncFunction = async () => {
             const response = await CoursesService.getCourses();
@@ -19,28 +18,17 @@ const HomePage = () => {
 
     return (
         <S.Wrapper>
-            <Header />
+            <PublicHeader />
             <S.Container>
-                <S.SubContainer>
-                    <S.TitleContainer>
-                        <S.Title2>Cursos em progresso</S.Title2>
-                    </S.TitleContainer>
-                    <S.CardsContainer>
-                        {/* COLOCAR OS CURSOS EM PROGRESSO */}
-                    </S.CardsContainer>
-                </S.SubContainer>
-            </S.Container>
-            <S.Container>
-                <S.SubContainer style={{ gap: '8' }}>
-                    <S.TitleContainer>
-                        <S.Title2>Seus cursos</S.Title2>
-                    </S.TitleContainer>
-                    <S.CardsContainer style={{ gap: '8' }}>
-                        {/* COLOCAR OS CURSOS COMPRADOS */}
-                    </S.CardsContainer>
-                </S.SubContainer>
-            </S.Container>
-            <S.Container style={{ gap: '8' }}>
+                <S.BackgroundImage
+                    src="/assets/background1.svg"
+                    alt="background"
+                />
+                <S.TextContainer>
+                    <S.Title>Bem-Vindo à Mindset</S.Title>
+                    <S.Text>aprenda o que quiser, quando quiser</S.Text>
+                </S.TextContainer>
+                <br />
                 <S.SubContainer>
                     <S.TitleContainer>
                         <S.Title2>Cursos em alta</S.Title2>
@@ -64,4 +52,4 @@ const HomePage = () => {
     );
 };
 
-export default HomePage;
+export default PublicHome;

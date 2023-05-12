@@ -15,7 +15,6 @@ const Card: React.FC<CardCompentsProps> = ({
     subTexto,
     image,
     price,
-    rating,
     id
 }) => {
     const router = useRouter();

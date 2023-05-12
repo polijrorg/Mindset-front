@@ -23,7 +23,7 @@ export default class CoursesService {
 
     static async getCourseById(id: string): Promise<Courses> {
         const response: AxiosResponse<Courses> = await api.get(
-            `courses/listById/e2246286-6ebc-421d-a10c-c73a8c435f18`
+            `courses/listById/${id}`
         );
         return response.data;
     }

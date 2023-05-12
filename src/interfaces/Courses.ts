@@ -1,6 +1,3 @@
-import User from './User';
-import { CourseRating } from './rating';
-
 export interface Courses {
     id: string;
     name: string;
