@@ -1,12 +1,10 @@
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import UserService from 'services/UserService';
-import Transition from 'template/Transition';
 import * as S from './styles';
 
 const Login = () => {
     const [email, setEmail] = useState('');
-    const [isLoading, setLoading] = useState(false);
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const router = useRouter();
@@ -21,25 +19,22 @@ const Login = () => {
     };
     const handleLogin = async () => {
         try {
-            setLoading(true);
-            const response = await UserService.login({ email, password });
-            if (!response.token) {
-                setLoading(false);
-                setError('e-mail ou senha errados');
-            } else {
-                router.push('/mindset/home/');
-                setLoading(false);
-            }
+            await UserService.login({
+                email,
+                password
+            }).then(() => {
+                router.push('/mindset/home');
+            });
         } catch (err) {
-            setError('email ou senha errados');
             setEmail('');
             setPassword('');
+            setError('email ou senha errados');
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            throw new Error((err as any).response.data.message);
         }
+        router.push('/mindset/login');
     };
-
-    return isLoading ? (
-        <Transition />
-    ) : (
+    return (
         <S.Wrapper>
             <S.ImageBack src="/assets/backArrow.svg" />
             <S.Login>
@@ -62,6 +57,9 @@ const Login = () => {
                             />
                             <S.Image src="/assets/Mail.svg" />
                         </S.Container>
+                        <br />
+                        <br />
+                        <br />
                         <S.ForgotPassword>
                             <S.Container>
                                 <S.Input

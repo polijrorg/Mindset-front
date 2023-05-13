@@ -43,7 +43,7 @@ const Header: React.FC<headerComponentProps> = () => {
         router.push('/mindset/login');
     };
     const handleSignin = async () => {
-        router.push('/mindset/signin');
+        router.push('/mindset/register');
     };
 
     return (

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
+    display: flex;
     height: 100vh;
     width: 100%;
     display: flex;
@@ -35,10 +36,11 @@ export const ImageBack = styled.img`
     cursor: pointer;
 `;
 export const InputContainer = styled.div`
-    display: flex;
     flex-direction: column;
-    align-items: center;
-    width: fit-content;
+    gap: 128px;
+    align-items: space-around;
+    justify-content: space-between;
+    width: 100%;
     gap: 48px;
 `;
 
@@ -110,9 +112,10 @@ export const ForgotPassword = styled.div`
 `;
 export const Container = styled.div`
     display: flex;
+    width: 100%;
 `;
 export const Input = styled.input`
-    width: 480px;
+    width: 100%;
     height: 48px;
     display: flex;
     justify-content: space-between;

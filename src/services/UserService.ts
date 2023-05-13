@@ -26,35 +26,26 @@ interface ISignInResponse {
 }
 
 export default class UserService {
-    static async login({
-        email,
-        password
-    }: ILoginRequest): Promise<ILoginResponse> {
-        try {
-            const response: AxiosResponse<ILoginResponse> = await api.post(
-                '/sessions/login',
-                { email, password }
-            );
-            const { token } = response.data;
-            const userId = response.data.user.id;
-            setCookie(undefined, '@mindset:token', token, {
-                maxAge: 60 * 60 * 24
-            });
-            setCookie(undefined, '@mindset:useId', userId, {
-                maxAge: 60 * 60 * 24
-            });
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            (api.defaults.headers as any).Authorization = `Bearer $(token)`;
-            return response.data;
-        } catch (err) {
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            throw new Error((err as any).response.data.message);
-        }
+    static async login(data: ILoginRequest): Promise<ILoginResponse> {
+        const response: AxiosResponse<ILoginResponse> = await api.post(
+            '/sessions/login',
+            data
+        );
+
+        setCookie(undefined, '@mindset:token', response.data.token, {
+            maxAge: 60 * 60 * 24
+        });
+        setCookie(undefined, '@mindset:userId', response.data.user.id, {
+            maxAge: 60 * 60 * 24
+        });
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (api.defaults.headers as any).Authorization = `Bearer $(token)`;
+        return response.data;
     }
 
     static async signIn(data: ISignInRequest): Promise<ISignInResponse> {
         const response: AxiosResponse<ISignInResponse> = await api.post(
-            '/register',
+            '',
             data
         );
         return response.data;

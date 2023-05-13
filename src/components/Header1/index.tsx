@@ -37,7 +37,7 @@ const PublicHeader: React.FC<headerComponentProps> = () => {
                         selected={false}
                         type2
                         Text="CRIAR CONTA"
-                        onclick={() => router.push('/mindset/signin')}
+                        onclick={() => router.push('/mindset/register')}
                     />
                 </S.LoginContainer>
             </S.WrapperLogout>

@@ -40,7 +40,7 @@ export const VideoWrapper = styled.div`
     height: 100%;
     background: linear-gradient(
         270deg,
-        #ff0000 17.4%,
+        #272727 17.4%,
         rgba(40, 40, 40, 0) 54.82%
     );
 `;

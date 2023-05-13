@@ -39,7 +39,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 
     const logout = () => {
         destroyCookie(undefined, '@mindset:token');
-        destroyCookie(undefined, '@mindset:useId');
+        destroyCookie(undefined, '@mindset:userId');
     };
 
     return (
