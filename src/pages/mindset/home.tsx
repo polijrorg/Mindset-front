@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import HomePage from 'pages/HomePage';
+import HomePage from 'template/HomePage';
 
 const Home: NextPage = () => {
     return <HomePage />;

@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import FAQ from 'pages/FAQ';
+import FAQ from 'template/FAQ';
 
 const Questions: NextPage = () => {
     return <FAQ />;

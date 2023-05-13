@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import Login from 'pages/Login';
+import Login from 'template/Login';
 
 const LoginHome: NextPage = () => {
     return <Login />;

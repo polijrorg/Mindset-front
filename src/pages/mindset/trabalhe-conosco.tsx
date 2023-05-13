@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import TrabalheConosco from 'pages/TrabalheConosco';
+import TrabalheConosco from 'template/TrabalheConosco';
 
 const Work: NextPage = () => {
     return <TrabalheConosco />;
