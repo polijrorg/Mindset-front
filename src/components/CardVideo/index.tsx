@@ -15,9 +15,9 @@ const CardVideo: React.FC<CardComponentProps> = ({
     <S.Container isWhite={isWhite}>
         <S.SubContainer>
             {isWhite ? (
-                <S.Image src="/assets/imgOptionBlack.svg" />
+                <S.Image src="/assets/logovideoforblackbg.svg" />
             ) : (
-                <S.Image src="/assets/imgOptionWhite.svg" />
+                <S.Image src="/assets/logovideoforblackbg.svg" />
             )}
 
             <S.SubContainer2>

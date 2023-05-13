@@ -84,7 +84,7 @@ const Header: React.FC<headerComponentProps> = () => {
                             </S.SearchButton>
                         </S.LogedWithSearch>
                         <S.Dropdown onClick={onCLickDropdown}>
-                            <S.Perfil src="/assets/perfil.svg" />
+                            <S.Perfil src="/assets/test-img.svg" />
                             {isDropdownSelected ? (
                                 <S.DropdownMenu>
                                     <S.DropdownItem onClick={handleLogout}>
