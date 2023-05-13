@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import UserService from 'services/UserService';
-import Transition from 'pages/Transition';
+import Transition from 'template/Transition';
 import * as S from './styles';
 
 const Login = () => {
