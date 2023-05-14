@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { SetStateAction, useState } from 'react';
+import { SetStateAction, useState, useEffect } from 'react';
 import UserService from 'services/UserService';
 
 import * as S from './styles';
@@ -10,7 +10,15 @@ const SignIn = () => {
     const [name, setName] = useState('');
     const router = useRouter();
     const [isPasswordShown, setPasswordShow] = useState('password');
+    const [isDisable, setIsDisable] = useState(true);
 
+    useEffect(() => {
+        if ((email.length && password.length) === 0) {
+            setIsDisable(true);
+        } else {
+            setIsDisable(false);
+        }
+    }, [email, password]);
     const handleChangeEmail = (e: {
         target: { value: SetStateAction<string> };
     }) => {
@@ -36,7 +44,7 @@ const SignIn = () => {
 
     const handleSignIn = async () => {
         try {
-            await UserService.signIn({
+            UserService.registerClient({
                 name,
                 email,
                 password
@@ -91,7 +99,11 @@ const SignIn = () => {
                         </S.Container>
                     </S.InputContainer>
                 </S.AuxII>
-                <S.SignInButton onClick={handleSignIn}>
+                <S.SignInButton
+                    onClick={handleSignIn}
+                    disabled={isDisable}
+                    disable={isDisable}
+                >
                     Cadastrar
                 </S.SignInButton>
             </S.SignIn>

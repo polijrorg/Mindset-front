@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 
+export interface Disabled {
+    disable: boolean;
+}
 export const Wrapper = styled.div`
     display: flex;
     height: 100vh;
@@ -60,7 +63,7 @@ export const RecuperarSenha = styled.span`
     color: #e7a837;
     cursor: pointer;
 `;
-export const SignInButton = styled.button`
+export const SignInButton = styled.button<Disabled>`
     width: 500px;
     height: 50px;
     background: #eeac0e;
@@ -71,7 +74,7 @@ export const SignInButton = styled.button`
     font-size: 18px;
     border: none;
     color: #ffffff;
-    cursor: pointer;
+    cursor: ${(props) => (props.disable ? 'not-allowed' : 'pointer')};
 `;
 export const GeneralText = styled.span`
     font-family: 'Poppins', sans-serif;

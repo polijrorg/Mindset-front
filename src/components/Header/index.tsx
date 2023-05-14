@@ -1,6 +1,7 @@
 import Button from 'components/Button';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import UserService from 'services/UserService';
 import * as S from './styles';
 
 export type headerComponentProps = {
@@ -15,8 +16,9 @@ const Header: React.FC<headerComponentProps> = () => {
     const router = useRouter();
 
     const handleLogout = () => {
-        router.push('/mindset/login');
         setIsLogado(false);
+        router.push('/');
+        UserService.logout();
     };
     const onCLickDropdown = () => {
         setDropdownSelected(!isDropdownSelected);
@@ -25,7 +27,7 @@ const Header: React.FC<headerComponentProps> = () => {
         setIsFAQSelected(false);
         setIsWorkSelected(false);
         setIsHomeSelected(true);
-        router.push('/mindset/home');
+        router.push('/');
     };
     const onClickFAQ = () => {
         setIsWorkSelected(false);

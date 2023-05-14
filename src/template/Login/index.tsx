@@ -1,13 +1,16 @@
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import UserService from 'services/UserService';
+import Transition from 'template/Transition';
 import * as S from './styles';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
+    const [isDisable, setIsDisable] = useState(true);
     const [isPasswordShown, setPasswordShow] = useState('password');
 
     const handlePasswordShow = () => {
@@ -17,15 +20,25 @@ const Login = () => {
             setPasswordShow('text');
         }
     };
+    useEffect(() => {
+        if ((email.length && password.length) === 0) {
+            setIsDisable(true);
+        } else {
+            setIsDisable(false);
+        }
+    }, [email, password]);
     const handleLogin = async () => {
         try {
+            setIsLoading(true);
             await UserService.login({
                 email,
                 password
             }).then(() => {
-                router.push('/mindset/home');
+                router.push('/');
+                setIsLoading(false);
             });
         } catch (err) {
+            setIsLoading(false);
             setEmail('');
             setPassword('');
             setError('email ou senha errados');
@@ -34,7 +47,9 @@ const Login = () => {
         }
         router.push('/mindset/login');
     };
-    return (
+    return isLoading ? (
+        <Transition />
+    ) : (
         <S.Wrapper>
             <S.ImageBack src="/assets/backArrow.svg" />
             <S.Login>
@@ -43,7 +58,7 @@ const Login = () => {
                     <S.GeneralText>
                         Ainda não tem uma conta?{' '}
                         <S.RecuperarSenha
-                            onClick={() => router.push('/mindset/signin')}
+                            onClick={() => router.push('/mindset/register')}
                         >
                             Cadastre-se
                         </S.RecuperarSenha>
@@ -89,7 +104,11 @@ const Login = () => {
                         <S.InputCheckbox type="checkbox" />
                         <span>Lembrar de mim</span>
                     </S.Checkbox>
-                    <S.SignInButton onClick={handleLogin}>
+                    <S.SignInButton
+                        onClick={handleLogin}
+                        disabled={isDisable}
+                        disable={isDisable}
+                    >
                         ENTRAR
                     </S.SignInButton>
                 </S.AuxII>

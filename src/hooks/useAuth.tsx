@@ -28,10 +28,10 @@ export const AuthProvider: React.FC = ({ children }) => {
             const response = await UserService.login(data);
 
             api.defaults.headers.common = {
-                Authorization: `Bearer ${response.token}`
+                Authorization: `Bearer ${response.data.token}`
             };
 
-            setUser(response.user);
+            setUser(response.data.user);
         } catch (error) {
             // Errors handling
         }
