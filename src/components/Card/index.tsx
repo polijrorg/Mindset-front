@@ -20,7 +20,7 @@ const Card: React.FC<CardCompentsProps> = ({
     const router = useRouter();
     function goToCourse(CourseId: string) {
         CoursesService.getCourseById(CourseId);
-        router.push('/mindset/course/');
+        router.push('/course/');
     }
     return (
         <S.Container image={image} onClick={() => goToCourse(id)}>

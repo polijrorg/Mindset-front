@@ -27,7 +27,7 @@ const PublicHeader: React.FC<headerComponentProps> = () => {
                     <S.LoginContainer>
                         <S.LoginImage src="/assets/Personyello.svg" />
                         <Button
-                            onclick={() => router.push('/mindset/login')}
+                            onclick={() => router.push('/login')}
                             selected={false}
                             type2={false}
                             Text="ENTRAR"
@@ -37,7 +37,7 @@ const PublicHeader: React.FC<headerComponentProps> = () => {
                         selected={false}
                         type2
                         Text="CRIAR CONTA"
-                        onclick={() => router.push('/mindset/register')}
+                        onclick={() => router.push('/register')}
                     />
                 </S.LoginContainer>
             </S.WrapperLogout>

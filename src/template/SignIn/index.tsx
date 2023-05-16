@@ -49,7 +49,7 @@ const SignIn = () => {
                 email,
                 password
             }).then(() => {
-                router.push('/mindset/login');
+                router.push('/login');
             });
         } catch (err) {
             setEmail('');
@@ -65,9 +65,7 @@ const SignIn = () => {
                     <S.LoginName>Cadastre-se</S.LoginName>
                     <S.GeneralText>
                         Já tem uma conta?{' '}
-                        <S.RecuperarSenha
-                            onClick={() => router.push('/mindset/login')}
-                        >
+                        <S.RecuperarSenha onClick={() => router.push('/login')}>
                             Faça Login
                         </S.RecuperarSenha>
                     </S.GeneralText>

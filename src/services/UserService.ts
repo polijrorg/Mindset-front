@@ -35,11 +35,9 @@ export default class UserService {
             setCookie(undefined, '@Mindset::token', response.data.token, {
                 maxAge: 60 * 60 * 24 // 1 dia
             });
-
             setCookie(undefined, '@Mindset::userId', user.id, {
                 maxAge: 60 * 60 * 24 // 1 dia
             });
-
             // eslint-disable-next-line @typescript-eslint/no-explicit-any, prettier/prettier
             (api.defaults.headers as any).Authorization = `Bearer ${response.data.token}`;
         }
@@ -51,11 +49,14 @@ export default class UserService {
         password,
         name
     }) => {
-        const response: AxiosResponse<User> = await api.post('/register', {
-            name,
-            email,
-            password
-        });
+        const response: AxiosResponse<User> = await api.post(
+            '/users/register',
+            {
+                name,
+                email,
+                password
+            }
+        );
         return { data: response.data };
     };
 

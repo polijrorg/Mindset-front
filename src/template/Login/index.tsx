@@ -29,23 +29,20 @@ const Login = () => {
     }, [email, password]);
     const handleLogin = async () => {
         try {
-            setIsLoading(true);
             await UserService.login({
                 email,
                 password
             }).then(() => {
+                setIsLoading(true);
                 router.push('/');
-                setIsLoading(false);
             });
         } catch (err) {
             setIsLoading(false);
-            setEmail('');
-            setPassword('');
             setError('email ou senha errados');
+            router.push('/login');
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            throw new Error((err as any).response.data.message);
         }
-        router.push('/mindset/login');
+        setIsLoading(false);
     };
     return isLoading ? (
         <Transition />
@@ -58,7 +55,7 @@ const Login = () => {
                     <S.GeneralText>
                         Ainda não tem uma conta?{' '}
                         <S.RecuperarSenha
-                            onClick={() => router.push('/mindset/register')}
+                            onClick={() => router.push('/register')}
                         >
                             Cadastre-se
                         </S.RecuperarSenha>
@@ -98,8 +95,10 @@ const Login = () => {
                                 </S.RecuperarSenha>
                             </S.GeneralText>
                         </S.ForgotPassword>
-                        <S.GeneralText>{error}</S.GeneralText>
                     </S.InputContainer>
+                    <text style={{ color: '#eeac0e', fontSize: '14px' }}>
+                        {error}
+                    </text>
                     <S.Checkbox>
                         <S.InputCheckbox type="checkbox" />
                         <span>Lembrar de mim</span>

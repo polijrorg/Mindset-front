@@ -78,12 +78,17 @@ export const TitleContainer = styled.div`
 
 export const CardsContainer = styled.div`
     display: flex;
-    flex-direction: row;
+    width: 1160px;
+    overflow-x: hidden;
+    gap: 32px;
+    background: #ff0000;
+    justify-content: center;
     align-items: center;
-    padding-left: 243px;
-    gap: 39px;
-    padding-left: 160px;
-    padding-right: 160px;
-    width: 1434px;
-    height: 230px;
+`;
+export const VideosContainer = styled.div`
+    display: flex;
+    gap: 32px;
+    background: #ff0000;
+    justify-content: center;
+    align-items: center;
 `;
