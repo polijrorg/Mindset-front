@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
     padding-bottom: 100px;
     width: 100%;
     height: 100%;
+    overflow: hidden;
     background: #303030;
 `;
 export const Container = styled.div`
@@ -49,7 +50,6 @@ export const TextContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 0px;
     gap: 15px;
     position: absolute;
     width: 532px;
@@ -59,31 +59,36 @@ export const TextContainer = styled.div`
 `;
 export const SubContainer = styled.div`
     display: flex;
+    padding: 0px 88px 0px 88px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 32px;
-    width: 1434px;
+    width: 100%;
     height: 358px;
 `;
 export const TitleContainer = styled.div`
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 1360px;
+    width: 1160px;
     height: 56px;
-    padding-left: 124px;
-    padding-right: 80px;
 `;
 
 export const CardsContainer = styled.div`
     display: flex;
-    width: 1160px;
-    overflow-x: hidden;
+    width: 1158px;
+    overflow-x: scroll;
+    flex-direction: row;
     gap: 32px;
-    background: #ff0000;
-    justify-content: center;
-    align-items: center;
+    ::-webkit-scrollbar-track {
+        background-color: ##303030;
+    }
+    ::-webkit-scrollbar {
+        width: 6px;
+        background: ##303030;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #272727;
+    }
 `;
 export const VideosContainer = styled.div`
     display: flex;

@@ -26,7 +26,7 @@ const CardVideo: React.FC<CardComponentProps> = ({
             </S.SubContainer2>
             <S.ButtonImage>
                 {isWhite ? (
-                    <img src="/assets/playwhite.svg" alt="play" />
+                    <img src="/assets/Frameplaywhite.svg" alt="play" />
                 ) : (
                     <img src="/assets/blackplay.svg" alt="play" />
                 )}

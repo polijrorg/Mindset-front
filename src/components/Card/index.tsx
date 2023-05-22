@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router';
-import CoursesService from 'services/CourseService';
 import * as S from './styles';
 
 export type CardCompentsProps = {
@@ -19,8 +18,7 @@ const Card: React.FC<CardCompentsProps> = ({
 }) => {
     const router = useRouter();
     function goToCourse(CourseId: string) {
-        CoursesService.getCourseById(CourseId);
-        router.push('/course/');
+        router.push(`/course/${CourseId}`);
     }
     return (
         <S.Container image={image} onClick={() => goToCourse(id)}>

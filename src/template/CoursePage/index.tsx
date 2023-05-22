@@ -1,33 +1,67 @@
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import CardVideo from 'components/CardVideo';
+import { useState, useEffect } from 'react';
+import CoursesService from 'services/CourseService';
+import { useRouter } from 'next/dist/client/router';
+
 import * as S from './styles';
 
 const CoursePage = () => {
+    const router = useRouter();
+    const { id } = router.query;
+    const [title, setTitle] = useState('');
+    const [subTitle, setSubTitle] = useState('');
+    const [description, setDescription] = useState('');
+    const [price, setPrice] = useState('');
+    const [teacher, setTeacher] = useState('');
+
+    const asyncFunction = async (ide: string) => {
+        const response = await CoursesService.getCourseById(ide);
+        setTitle(response.name);
+        setSubTitle('undefined');
+        setDescription(response.description);
+        setPrice('$$$');
+        setTeacher(response.createdBy);
+        /* console.log(
+            'titulo: ',
+            title,
+            'subtitulo: ',
+            subTitle,
+            'descricao: ',
+            description,
+            'preco: ',
+            price,
+            'prof: ',
+            teacher,
+            'id: ',
+            id
+        ); */
+    };
+    useEffect(() => {
+        asyncFunction(String(id));
+    });
     return (
         <>
             <Header />
             <S.Wrapper>
                 <S.ContainerTop>
-                    <S.VideoWrapper>video</S.VideoWrapper>
+                    <S.VideoWrapper />
                     <S.DescriptionWrapper>
-                        <S.Title>Python para iniciantes</S.Title>
-                        <S.SubTitle>
-                            Aprenda python do começo e descubra como desenvolver
-                            aplicativos
-                        </S.SubTitle>
+                        <S.Title>{title}</S.Title>
+                        <S.SubTitle>{subTitle}</S.SubTitle>
                         <S.PriceButtonWrapper>
                             <S.Button>comprar</S.Button>
                             <S.Text>
                                 Assinatura por:
                                 <br />
-                                <S.Price>R$ 243,00</S.Price>
+                                <S.Price>{price}</S.Price>
                             </S.Text>{' '}
                         </S.PriceButtonWrapper>
                         <S.PriceWrapper>
                             <S.ImageWrapper>
                                 <S.Image src="/assets/iconExemple.svg" />
-                                <S.Text>Prof. Ronaldo</S.Text>
+                                <S.Text>{teacher}</S.Text>
                             </S.ImageWrapper>
                             <S.ImageWrapper>
                                 <S.Text>4.0</S.Text>
@@ -46,25 +80,7 @@ const CoursePage = () => {
                 <S.ContainerMiddle>
                     <S.About>
                         <S.AboutTitle>Sobre:</S.AboutTitle>
-                        <S.AboutText>
-                            Lorem Ipsum is simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum is simply dummy
-                            text of the printing and typesetting industry. Lorem
-                            Ipsum is simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum is simply dummy
-                            text of the printing and typesetting industry. Lorem
-                            Ipsum is simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum is simply dummy
-                            text of the printing and typesetting industry. Lorem
-                            Ipsum is simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum is simply dummy
-                            text of the printing and typesetting industry. Lorem
-                            Ipsum is simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum is simply dummy
-                            text of the printing and typesetting industry. Lorem
-                            Ipsum is simply dummy text of the printing and
-                            typesetting industry.
-                        </S.AboutText>
+                        <S.AboutText>{description}</S.AboutText>
                     </S.About>
                     <S.VideoDescription>
                         <S.ImageWrapper>
