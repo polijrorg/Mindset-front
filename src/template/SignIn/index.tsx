@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { SetStateAction, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import UserService from 'services/UserService';
 
 import * as S from './styles';
@@ -19,21 +19,6 @@ const SignIn = () => {
             setIsDisable(false);
         }
     }, [email, password]);
-    const handleChangeEmail = (e: {
-        target: { value: SetStateAction<string> };
-    }) => {
-        setEmail(e.target.value);
-    };
-    const handleChangeName = (e: {
-        target: { value: SetStateAction<string> };
-    }) => {
-        setName(e.target.value);
-    };
-    const handleChangePassword = (e: {
-        target: { value: SetStateAction<string> };
-    }) => {
-        setPassword(e.target.value);
-    };
     const handlePasswordShow = () => {
         if (isPasswordShown === 'text') {
             setPasswordShow('password');
@@ -44,7 +29,7 @@ const SignIn = () => {
 
     const handleSignIn = async () => {
         try {
-            UserService.registerClient({
+            UserService.register({
                 name,
                 email,
                 password
@@ -59,7 +44,10 @@ const SignIn = () => {
     };
     return (
         <S.Wrapper>
-            <S.ImageBack src="/assets/backArrow.svg" />
+            <S.ImageBack
+                src="/assets/backArrow.svg"
+                onClick={() => router.push('/')}
+            />
             <S.SignIn>
                 <S.AuxII>
                     <S.LoginName>Cadastre-se</S.LoginName>
@@ -73,22 +61,31 @@ const SignIn = () => {
                         <S.Container>
                             <S.Input
                                 placeholder="Nome"
-                                onChange={handleChangeName}
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
                             />
                             <S.Image src="/assets/whitepersonicon.svg" />
                         </S.Container>
+                        <br />
+                        <br />
+                        <br />
                         <S.Container>
                             <S.Input
                                 placeholder="E-mail"
-                                onChange={handleChangeEmail}
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                             <S.Image src="/assets/Mail.svg" />
                         </S.Container>
+                        <br />
+                        <br />
+                        <br />
                         <S.Container>
                             <S.Input
                                 placeholder="Senha"
                                 type={isPasswordShown}
-                                onChange={handleChangePassword}
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                             />
                             <S.Image
                                 src="/assets/password.svg"
@@ -96,14 +93,14 @@ const SignIn = () => {
                             />
                         </S.Container>
                     </S.InputContainer>
+                    <S.SignInButton
+                        onClick={handleSignIn}
+                        disabled={isDisable}
+                        disable={isDisable}
+                    >
+                        Cadastrar
+                    </S.SignInButton>
                 </S.AuxII>
-                <S.SignInButton
-                    onClick={handleSignIn}
-                    disabled={isDisable}
-                    disable={isDisable}
-                >
-                    Cadastrar
-                </S.SignInButton>
             </S.SignIn>
             <S.FooterLogo src="/assets/logoWhite.svg" />
         </S.Wrapper>

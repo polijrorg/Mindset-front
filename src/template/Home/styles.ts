@@ -2,15 +2,12 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
     padding-top: 88px;
-    padding-bottom: 100px;
-    width: 100%;
-    height: 100%;
+    width: fit-content;
     overflow: hidden;
     background: #303030;
 `;
 export const Container = styled.div`
-    width: 100%;
-    height: 100%;
+    background: #303030;
 `;
 export const BackgroundImage = styled.img`
     width: 100%;
@@ -36,7 +33,7 @@ export const Title2 = styled.div`
     border-bottom: solid;
     border-width: 5px;
     width: 100%;
-    height: 56px;
+    background: #303030;
 `;
 export const Text = styled.span`
     font-family: 'Poppins', sans-serif;
@@ -59,13 +56,16 @@ export const TextContainer = styled.div`
 `;
 export const SubContainer = styled.div`
     display: flex;
-    padding: 0px 88px 0px 88px;
     flex-direction: column;
-    justify-content: center;
+    padding-left: 80px;
+    padding-right: 80px;
+    padding-top: 80px;
+    height: 100vh;
+    justify-content: top;
     align-items: center;
     gap: 32px;
     width: 100%;
-    height: 358px;
+    background: #303030;
 `;
 export const TitleContainer = styled.div`
     display: flex;
@@ -80,11 +80,11 @@ export const CardsContainer = styled.div`
     flex-direction: row;
     gap: 32px;
     ::-webkit-scrollbar-track {
-        background-color: ##303030;
+        background-color: #303030;
     }
     ::-webkit-scrollbar {
         width: 6px;
-        background: ##303030;
+        background: #303030;
     }
     ::-webkit-scrollbar-thumb {
         background: #272727;
@@ -93,7 +93,6 @@ export const CardsContainer = styled.div`
 export const VideosContainer = styled.div`
     display: flex;
     gap: 32px;
-    background: #ff0000;
     justify-content: center;
     align-items: center;
 `;

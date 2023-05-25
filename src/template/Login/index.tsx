@@ -103,13 +103,13 @@ const Login = () => {
                         <S.InputCheckbox type="checkbox" />
                         <span>Lembrar de mim</span>
                     </S.Checkbox>
-                    <S.SignInButton
+                    <S.LoginButton
                         onClick={handleLogin}
                         disabled={isDisable}
                         disable={isDisable}
                     >
                         ENTRAR
-                    </S.SignInButton>
+                    </S.LoginButton>
                 </S.AuxII>
             </S.Login>
             <S.FooterLogo src="/assets/logoWhite.svg" />

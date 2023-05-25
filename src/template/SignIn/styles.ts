@@ -4,9 +4,10 @@ export interface Disabled {
     disable: boolean;
 }
 export const Wrapper = styled.div`
-    height: 100vh;
-    width: 100%;
     display: flex;
+    min-width: 712px;
+    width: 100%;
+    height: 100vh;
     justify-contente: space-between;
     flex-direction: row;
     background: URL('/assets/background12.svg');
@@ -14,17 +15,18 @@ export const Wrapper = styled.div`
     background-position-x: right;
 `;
 export const SignIn = styled.div`
-    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 40%;
     gap: 32px;
+    padding-top: 100px;
     padding-left: 24px;
     background: #272727;
 `;
 export const AuxII = styled.div`
     display: flex;
+    padding-right: 18px;
     justify-content: center;
     flex-direction: column;
     gap: 38px;
@@ -38,24 +40,25 @@ export const ImageBack = styled.img`
     cursor: pointer;
 `;
 export const InputContainer = styled.div`
-    display: flex;
     flex-direction: column;
-    align-items: center;
-    width: fit-content;
+    gap: 128px;
+    align-items: space-around;
+    justify-content: space-between;
+    width: 100%;
     gap: 48px;
 `;
 
 export const LoginName = styled.div`
     font-family: 'Poppins', sans-serif;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 200;
     font-size: 48px;
     color: #ffffff;
 `;
 export const RecuperarSenha = styled.span`
     font-family: 'Poppins', sans-serif;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 200;
     font-size: 14px;
     align-items: center;
     color: #e7a837;
@@ -71,22 +74,25 @@ export const ErrorWrapper = styled.p`
     color: red;
 `;
 export const SignInButton = styled.button<Disabled>`
-    width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: border-box;
     height: 50px;
     background: #eeac0e;
-    border: none;
     border-radius: 16px;
     font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 18px;
+    border: none;
     color: #ffffff;
     cursor: ${(props) => (props.disable ? 'not-allowed' : 'pointer')};
 `;
 export const GeneralText = styled.span`
     font-family: 'Poppins', sans-serif;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 200;
     font-size: 14px;
     color: #ffffff;
 `;
@@ -99,9 +105,10 @@ export const FooterLogo = styled.img`
 `;
 export const Container = styled.div`
     display: flex;
+    width: 100%;
 `;
 export const Input = styled.input`
-    width: 480px;
+    width: 100%;
     height: 48px;
     display: flex;
     justify-content: space-between;

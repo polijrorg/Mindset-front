@@ -5,9 +5,9 @@ export interface Disabled {
 }
 export const Wrapper = styled.div`
     display: flex;
-    height: 100vh;
+    min-width: 712px;
     width: 100%;
-    display: flex;
+    height: 100vh;
     justify-contente: space-between;
     flex-direction: row;
     background: URL('/assets/background12.svg');
@@ -15,17 +15,18 @@ export const Wrapper = styled.div`
     background-position-x: right;
 `;
 export const Login = styled.div`
-    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 40%;
     gap: 32px;
+    padding-top: 100px;
     padding-left: 24px;
     background: #272727;
 `;
 export const AuxII = styled.div`
     display: flex;
+    padding-right: 18px;
     justify-content: center;
     flex-direction: column;
     gap: 38px;
@@ -63,8 +64,11 @@ export const RecuperarSenha = styled.span`
     color: #e7a837;
     cursor: pointer;
 `;
-export const SignInButton = styled.button<Disabled>`
-    width: 500px;
+export const LoginButton = styled.button<Disabled>`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: border-box;
     height: 50px;
     background: #eeac0e;
     border-radius: 16px;

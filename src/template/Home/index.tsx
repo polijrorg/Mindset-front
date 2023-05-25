@@ -19,16 +19,12 @@ const PublicHome = () => {
     return (
         <S.Wrapper>
             <PublicHeader />
+            <S.BackgroundImage src="/assets/background1.svg" alt="background" />
             <S.Container>
-                <S.BackgroundImage
-                    src="/assets/background1.svg"
-                    alt="background"
-                />
                 <S.TextContainer>
                     <S.Title>Bem-Vindo à Mindset</S.Title>
                     <S.Text>aprenda o que quiser, quando quiser</S.Text>
                 </S.TextContainer>
-                <br />
                 <S.SubContainer>
                     <S.TitleContainer>
                         <S.Title2>Cursos em alta</S.Title2>
