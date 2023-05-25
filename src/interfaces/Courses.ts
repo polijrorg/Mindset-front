@@ -7,4 +7,6 @@ export interface Courses {
     rating: number;
     description: string;
     userId: string;
+    introVideo: string;
+    price: number;
 }

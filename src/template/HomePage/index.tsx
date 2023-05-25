@@ -11,8 +11,21 @@ const HomePage = () => {
 
     useEffect(() => {
         const asyncFunction = async () => {
-            const response = await CoursesService.getCourses();
+            const response = await CoursesService.getRecommendedCourses();
             setCoursesArray(response);
+            /* const creatVideoResponse = await CoursesService.createCourse({
+                id: '131415',
+                name: 'teste45',
+                numberOfVideos: 200,
+                avatar: 'https://hubbseguros.com.br/wp-content/uploads/2020/04/blog-2-financas.png',
+                createdBy: 'Luiz',
+                rating: 10,
+                description: 'esse é um teste ',
+                userId: '45af3d6a-c7da-4229-bf12-196c1c3e2c98',
+                introVideo: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+                price: 89
+            });
+            */
         };
         asyncFunction();
     }, []);

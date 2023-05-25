@@ -10,7 +10,7 @@ const PublicHome = () => {
     const [coursesArray, setCoursesArray] = useState<Courses[]>([]);
     useEffect(() => {
         const asyncFunction = async () => {
-            const response = await CoursesService.getCourses();
+            const response = await CoursesService.getRecommendedCourses();
             setCoursesArray(response);
         };
         asyncFunction();

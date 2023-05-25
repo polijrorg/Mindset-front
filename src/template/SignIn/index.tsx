@@ -29,7 +29,7 @@ const SignIn = () => {
 
     const handleSignIn = async () => {
         try {
-            UserService.register({
+            UserService.registerClient({
                 name,
                 email,
                 password
