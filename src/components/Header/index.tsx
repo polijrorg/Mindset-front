@@ -2,6 +2,8 @@ import Button from 'components/Button';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import UserService from 'services/UserService';
+// import CoursesService from 'services/CourseService';
+// import { Courses } from 'interfaces/Courses';
 import * as S from './styles';
 
 export type headerComponentProps = {
@@ -12,6 +14,10 @@ const Header: React.FC<headerComponentProps> = () => {
     const [isFAQSelected, setIsFAQSelected] = useState(false);
     const [isWorkSelected, setIsWorkSelected] = useState(false);
     const [isDropdownSelected, setDropdownSelected] = useState(false);
+    const [course, setCourse] = useState('');
+    // const [suggestions, setSuggestions] = useState<Courses[]>([]);
+    // const [hideSuggestions, setHideSuggestions] = useState(true);
+    // https://upmostly.com/tutorials/how-to-create-a-search-bar-in-react
     const router = useRouter();
 
     const handleLogout = () => {
@@ -39,6 +45,19 @@ const Header: React.FC<headerComponentProps> = () => {
         setIsWorkSelected(true);
         router.push('/trabalhe-conosco');
     };
+    /* useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await CoursesService.getRecommendedCourses();
+                setSuggestions(response);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        fetchData();
+    }, [course]);
+    */
     return (
         <S.Container>
             <S.Logo onClick={() => router.push('/')} />
@@ -66,7 +85,11 @@ const Header: React.FC<headerComponentProps> = () => {
                 <S.LoginContainer>
                     <S.LogedWithSearch>
                         <S.SearchButton>
-                            <S.SearchLogged placeholder="Buscar..." />
+                            <S.SearchLogged
+                                placeholder="Buscar..."
+                                value={course}
+                                onChange={(e) => setCourse(e.target.value)}
+                            />
                             <img
                                 src="/assets/blackSearch.svg"
                                 alt=" "

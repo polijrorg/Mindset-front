@@ -12,12 +12,12 @@ const resize = keyframes`
   from {
   }
   to {
-    transform: translateX(-10px) scale(500);
-    transform: translateY(-10px) scale(500);
+    transform: translateX(-10px) scale(700);
+    transform: translateY(-10px) scale(700);
   }
 `;
 export const Image = styled.img`
     width: 1px;
     height: 1px;
-    animation: ${resize} 1s linear;
+    animation: ${resize} 5s linear;
 `;

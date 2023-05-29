@@ -29,12 +29,13 @@ const Login = () => {
     }, [email, password]);
     const handleLogin = async () => {
         try {
+            setIsLoading(true);
             await UserService.login({
                 email,
                 password
             }).then(() => {
-                setIsLoading(true);
                 router.push('/');
+                setIsLoading(false);
             });
         } catch (err) {
             setIsLoading(false);
