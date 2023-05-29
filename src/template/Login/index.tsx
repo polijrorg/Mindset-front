@@ -48,7 +48,10 @@ const Login = () => {
         <Transition />
     ) : (
         <S.Wrapper>
-            <S.ImageBack src="/assets/backArrow.svg" />
+            <S.ImageBack
+                src="/assets/backArrow.svg"
+                onClick={() => router.push('/')}
+            />
             <S.Login>
                 <S.AuxII>
                     <S.LoginName>Faça Login</S.LoginName>

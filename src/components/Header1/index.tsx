@@ -10,7 +10,7 @@ const PublicHeader: React.FC<headerComponentProps> = () => {
 
     return (
         <S.Container>
-            <S.Logo />
+            <S.Logo onClick={() => router.push('/')} />
             <S.WrapperLogout>
                 <S.SearchContainer>
                     <S.SearchButton>

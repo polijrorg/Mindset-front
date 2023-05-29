@@ -41,7 +41,7 @@ const Header: React.FC<headerComponentProps> = () => {
     };
     return (
         <S.Container>
-            <S.Logo />
+            <S.Logo onClick={() => router.push('/')} />
             <>
                 <S.Container1>
                     <Button

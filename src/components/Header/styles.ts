@@ -24,6 +24,7 @@ export const Logo = styled.div`
     position: fixed;
     left: 16px;
     top: 8px;
+    cursor: pointer;
 `;
 export const WrapperLogout = styled.div`
     display: flex;

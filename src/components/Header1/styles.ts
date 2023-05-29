@@ -16,6 +16,7 @@ export const Container = styled.header`
 export const Logo = styled.div`
     width: 100px;
     display: flex;
+    cursor: pointer;
     background: url('/assets/logoMindset.svg');
     height: 98px;
     background-size: 140px;
