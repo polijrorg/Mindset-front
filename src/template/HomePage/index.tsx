@@ -8,27 +8,22 @@ import * as S from './styles';
 
 const HomePage = () => {
     const [coursesArray, setCoursesArray] = useState<Courses[]>([]);
-
+    const [privateCoursesArray, setPrivateCoursesArray] = useState<Courses[]>(
+        []
+    );
+    const [token, setToken] = useState<string | null>();
     useEffect(() => {
+        setToken(localStorage.getItem('mindset:token'));
         const asyncFunction = async () => {
             const response = await CoursesService.getRecommendedCourses();
             setCoursesArray(response);
-            /* const creatVideoResponse = await CoursesService.createCourse({
-                id: '131415',
-                name: 'teste45',
-                numberOfVideos: 200,
-                avatar: 'https://hubbseguros.com.br/wp-content/uploads/2020/04/blog-2-financas.png',
-                createdBy: 'Luiz',
-                rating: 10,
-                description: 'esse é um teste ',
-                userId: '45af3d6a-c7da-4229-bf12-196c1c3e2c98',
-                introVideo: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-                price: 89
-            });
-            */
+            const userResponse = await CoursesService.getUsersCourses(
+                String(token)
+            );
+            setPrivateCoursesArray(userResponse);
         };
         asyncFunction();
-    }, []);
+    }, [token]);
 
     return (
         <S.Wrapper>
@@ -49,7 +44,16 @@ const HomePage = () => {
                         <S.Title2>Seus cursos</S.Title2>
                     </S.TitleContainer>
                     <S.CardsContainer style={{ gap: '8' }}>
-                        {/* COLOCAR OS CURSOS COMPRADOS */}
+                        {privateCoursesArray.map((course) => (
+                            <Card
+                                image={course.avatar}
+                                subTexto={course.description}
+                                textoPrincipal={course.name}
+                                price="240"
+                                id={course.id}
+                                rating={course.rating}
+                            />
+                        ))}
                     </S.CardsContainer>
                 </S.SubContainer>
             </S.Container>

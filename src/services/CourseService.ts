@@ -16,10 +16,14 @@ export default class CoursesService {
         return response.data;
     }
 
-    // isso será mudado com a nova rota, essa rota é para retornar os cursos do usuário
+    static async getUsersCourses(id: string): Promise<Courses[]> {
+        const response = await api.get(`/courses/listById/${id}`);
+        return response.data;
+    }
+
     static async getCourseById(id: string): Promise<Courses> {
         const response: AxiosResponse<Courses> = await api.get(
-            `/courses/listById/${id}`
+            `/courses/getById/${id}`
         );
         return response.data;
     }

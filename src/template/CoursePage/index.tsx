@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/media-has-caption */
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import CardVideo from 'components/CardVideo';
@@ -5,6 +6,7 @@ import { useState, useEffect } from 'react';
 import CoursesService from 'services/CourseService';
 import { useRouter } from 'next/dist/client/router';
 
+import VideoPlayer from 'components/Player';
 import * as S from './styles';
 
 const CoursePage = () => {
@@ -13,30 +15,18 @@ const CoursePage = () => {
     const [title, setTitle] = useState('');
     const [subTitle, setSubTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [price, setPrice] = useState('');
+    const [price, setPrice] = useState<number>();
     const [teacher, setTeacher] = useState('');
+    const [video, setVideo] = useState('');
 
     const asyncFunction = async (ide: string) => {
         const response = await CoursesService.getCourseById(ide);
         setTitle(response.name);
-        setSubTitle('undefined');
+        setSubTitle('Sub descrição');
         setDescription(response.description);
-        setPrice('$$$');
+        setPrice(response.price);
         setTeacher(response.createdBy);
-        /* console.log(
-            'titulo: ',
-            title,
-            'subtitulo: ',
-            subTitle,
-            'descricao: ',
-            description,
-            'preco: ',
-            price,
-            'prof: ',
-            teacher,
-            'id: ',
-            id
-        ); */
+        setVideo(response.introVideo);
     };
     useEffect(() => {
         asyncFunction(String(id));
@@ -46,7 +36,9 @@ const CoursePage = () => {
             <Header />
             <S.Wrapper>
                 <S.ContainerTop>
-                    <S.VideoWrapper />
+                    <S.VideoWrapper>
+                        <VideoPlayer videoLink={video} />
+                    </S.VideoWrapper>
                     <S.DescriptionWrapper>
                         <S.Title>{title}</S.Title>
                         <S.SubTitle>{subTitle}</S.SubTitle>

@@ -49,14 +49,11 @@ export default class UserService {
         password,
         name
     }) => {
-        const response: AxiosResponse<User> = await api.post(
-            '/users/register',
-            {
-                name,
-                email,
-                password
-            }
-        );
+        const response = await api.post('/users/register', {
+            name,
+            email,
+            password
+        });
         return { data: response.data };
     };
 

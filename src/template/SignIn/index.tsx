@@ -29,7 +29,7 @@ const SignIn = () => {
 
     const handleSignIn = async () => {
         try {
-            UserService.registerClient({
+            await UserService.registerClient({
                 name,
                 email,
                 password
@@ -37,9 +37,7 @@ const SignIn = () => {
                 router.push('/login');
             });
         } catch (err) {
-            setEmail('');
-            setPassword('');
-            setName('');
+            router.push('/register');
         }
     };
     return (

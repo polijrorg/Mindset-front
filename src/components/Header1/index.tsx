@@ -29,7 +29,7 @@ const PublicHeader: React.FC<headerComponentProps> = () => {
                         <Button
                             onclick={() => router.push('/login')}
                             selected={false}
-                            type2={false}
+                            type2
                             Text="ENTRAR"
                         />
                     </S.LoginContainer>
