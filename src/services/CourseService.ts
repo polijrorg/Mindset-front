@@ -28,10 +28,8 @@ export default class CoursesService {
         return response.data;
     }
 
-    /* static async searchCourse(course: string): Promise<Courses> {
-        const response: AxiosResponse<Courses> = await api.get(
-            `/courses/searchCourses/it`
-        );
+    static async searchCourse(course: string): Promise<Courses> {
+        const response = await api.get(`/courses/searchCourses/${course}`);
         return response.data;
-    } */
+    }
 }
