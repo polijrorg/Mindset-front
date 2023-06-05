@@ -8,5 +8,5 @@ export interface Courses {
     description: string;
     userId: string;
     introVideo: string;
-    price: number;
+    price: string;
 }

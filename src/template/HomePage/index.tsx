@@ -49,7 +49,7 @@ const HomePage = () => {
                                 image={course.avatar}
                                 subTexto={course.description}
                                 textoPrincipal={course.name}
-                                price="240"
+                                price={course.price}
                                 id={course.id}
                                 rating={course.rating}
                             />
@@ -68,7 +68,7 @@ const HomePage = () => {
                                 image={course.avatar}
                                 subTexto={course.description}
                                 textoPrincipal={course.name}
-                                price="240"
+                                price={course.price}
                                 id={course.id}
                                 rating={course.rating}
                             />
