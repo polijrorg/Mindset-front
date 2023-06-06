@@ -1,11 +1,15 @@
 import styled from 'styled-components';
 
+interface IsBlocked {
+    isOpen: boolean;
+}
+
 export const SearchContainer = styled.div`
     align-items: center;
     justify-content: center;
     display: flex;
+    flex-direction: column;
     gap: 8px;
-    padding-left: 200px;
     color: #ffffff;
 `;
 export const Search = styled.input`
@@ -68,4 +72,42 @@ export const LogedWithSearch = styled.div`
     gap: 0px;
     align-items: center;
     display: flex;
+`;
+export const SearchItem = styled.div`
+    background: #262626;
+    gap: 2px;
+    padding: 8px;
+    border-radius: 2px;
+    display: flex;
+    width: 400px;
+    height: 36px;
+`;
+export const ItemFont = styled.span`
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-size: 12px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-underline-offset: 4px;
+    text-decoration: underline;
+    color: #fafafa;
+`;
+export const Dropdown = styled.div`
+    display: flex;
+    background: none;
+    justify-content: start;
+    align-items: start;
+    width: fit-content;
+    height: fit-content;
+    flex-direction: column;
+`;
+export const DropdownMenu = styled.div<IsBlocked>`
+    display: ${(props) => (props.isOpen ? 'flex' : 'none')};
+    position: absolute;
+    top: 80px;
+    width: 100px;
+    justify-content: start;
+    align-items: flex-start;
+    height: 160;
+    flex-direction: column;
 `;

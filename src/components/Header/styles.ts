@@ -62,49 +62,11 @@ export const Search = styled.input`
         color: white;
     }
 `;
-export const SearchLogged = styled.input`
-    box-sizing: border-box;
-    background: #272727;
-    position: relative;
-    flex-direction: column;
-    align-items: flex-start;
-    padding-left: 32px;
-    width: 380px;
-    height: 36px;
-    color: #ffffff;
-    border: 1px solid #fbfbfb;
-    border-radius: 12px 0px 0px 12px;
-    ::placeholder,
-    ::-webkit-input-placeholder {
-        color: white;
-    }
-    :-ms-input-placeholder {
-        color: white;
-    }
-`;
 export const LoginContainer = styled.div`
     display: flex;
     justify-content: space-between;
     gap: 32px;
     align-items: center;
-`;
-export const SearchButton = styled.div`
-    display: flex;
-    width: 440;
-    height: 36px;
-    background: #fbfbf8;
-    cursor: pointer;
-    border-radius: 16px;
-    justify-content: space-between;
-    align-items: center;
-    padding-right: 4px;
-`;
-export const LogedWithSearch = styled.div`
-    justify-content: center;
-    padding-right: 16px;
-    gap: 0px;
-    align-items: center;
-    display: flex;
 `;
 export const Container1 = styled.div`
     display: flex;

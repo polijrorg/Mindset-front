@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import CourseService from 'services/CourseService';
 import { Courses } from 'interfaces/Courses';
 import * as S from './styles';
@@ -6,6 +6,8 @@ import * as S from './styles';
 const SearchBar: React.FC = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState<Courses[]>([]);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const dropdownRef = useRef<HTMLDivElement>(null);
 
     const handleInputChange = async (
         event: React.ChangeEvent<HTMLInputElement>
@@ -24,11 +26,13 @@ const SearchBar: React.FC = () => {
                     ? response
                     : [response];
                 setSearchResults(resultsArray);
+                setIsDropdownOpen(true);
             } catch (error) {
                 setSearchTerm('');
             }
         }
     };
+
     const handleOnClick = async () => {
         try {
             const response = await CourseService.searchCourse(searchTerm);
@@ -36,13 +40,30 @@ const SearchBar: React.FC = () => {
                 ? response
                 : [response];
             setSearchResults(resultsArray);
+            setIsDropdownOpen(true);
         } catch (error) {
             setSearchTerm('');
         }
     };
 
+    const handleClickOutside = (event: MouseEvent) => {
+        if (
+            dropdownRef.current &&
+            !dropdownRef.current.contains(event.target as Node)
+        ) {
+            setIsDropdownOpen(false);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+
     return (
-        <div>
+        <S.Dropdown>
             <S.SearchContainer>
                 <S.SearchButton>
                     <S.SearchLogged
@@ -61,13 +82,14 @@ const SearchBar: React.FC = () => {
                     </S.DivImg>
                 </S.SearchButton>
             </S.SearchContainer>
-
-            <ul>
+            <S.DropdownMenu ref={dropdownRef} isOpen={isDropdownOpen}>
                 {searchResults.map((result) => (
-                    <li key={result.id}>{result.name}</li>
+                    <S.SearchItem key={result.id}>
+                        <S.ItemFont>{result.name}</S.ItemFont>
+                    </S.SearchItem>
                 ))}
-            </ul>
-        </div>
+            </S.DropdownMenu>
+        </S.Dropdown>
     );
 };
 
