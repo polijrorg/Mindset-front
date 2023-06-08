@@ -15,7 +15,7 @@ const CoursePage = () => {
     const [title, setTitle] = useState('');
     const [subTitle, setSubTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [price, setPrice] = useState<number>();
+    const [price, setPrice] = useState('');
     const [teacher, setTeacher] = useState('');
     const [video, setVideo] = useState('');
 
