@@ -28,6 +28,7 @@ export const Logo = styled.div`
 `;
 export const WrapperLogout = styled.div`
     display: flex;
+    left: 24px;
     width: 100%;
     padding: 16px;
     flex-direction: row;

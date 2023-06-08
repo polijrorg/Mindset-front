@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import CourseService from 'services/CourseService';
+import { useRouter } from 'next/router';
 import { Courses } from 'interfaces/Courses';
 import * as S from './styles';
 
@@ -8,7 +9,7 @@ const SearchBar: React.FC = () => {
     const [searchResults, setSearchResults] = useState<Courses[]>([]);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
-
+    const router = useRouter();
     const handleInputChange = async (
         event: React.ChangeEvent<HTMLInputElement>
     ) => {
@@ -84,8 +85,12 @@ const SearchBar: React.FC = () => {
             </S.SearchContainer>
             <S.DropdownMenu ref={dropdownRef} isOpen={isDropdownOpen}>
                 {searchResults.map((result) => (
-                    <S.SearchItem key={result.id}>
-                        <S.ItemFont>{result.name}</S.ItemFont>
+                    <S.SearchItem>
+                        <S.ItemFont
+                            onClick={() => router.push(`/course/${result.id}`)}
+                        >
+                            {result.name}
+                        </S.ItemFont>
                     </S.SearchItem>
                 ))}
             </S.DropdownMenu>
