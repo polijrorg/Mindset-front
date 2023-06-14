@@ -2,7 +2,7 @@ import Header from 'components/Header';
 import Footer from 'components/Footer';
 import * as S from './styles';
 
-const TrabalheConosco = () => {
+const Produtor = () => {
     return (
         <>
             <Header />
@@ -11,4 +11,4 @@ const TrabalheConosco = () => {
         </>
     );
 };
-export default TrabalheConosco;
+export default Produtor;

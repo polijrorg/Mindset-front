@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
-import TrabalheConosco from 'template/TrabalheConosco';
+import Produtor from 'template/Produtor';
 
 const Work: NextPage = () => {
-    return <TrabalheConosco />;
+    return <Produtor />;
 };
 export default Work;

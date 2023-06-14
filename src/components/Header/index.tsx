@@ -38,7 +38,7 @@ const Header: React.FC<headerComponentProps> = () => {
         setIsFAQSelected(false);
         setIsHomeSelected(false);
         setIsWorkSelected(true);
-        router.push('/trabalhe-conosco');
+        router.push('/produtor');
     };
     return (
         <S.Container>
@@ -61,7 +61,7 @@ const Header: React.FC<headerComponentProps> = () => {
                         onclick={onClickWork}
                         selected={isWorkSelected}
                         type2={false}
-                        Text="Trabalhe Conosco"
+                        Text="Seja um produtor"
                     />
                 </S.Container1>
                 <S.LoginContainer>
