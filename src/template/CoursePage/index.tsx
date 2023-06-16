@@ -5,6 +5,7 @@ import CardVideo from 'components/CardVideo';
 import { useState, useEffect } from 'react';
 import CoursesService from 'services/CourseService';
 import { useRouter } from 'next/dist/client/router';
+import RatingComponent from 'components/Rating';
 
 import VideoPlayer from 'components/Player';
 import * as S from './styles';
@@ -18,6 +19,7 @@ const CoursePage = () => {
     const [price, setPrice] = useState('');
     const [teacher, setTeacher] = useState('');
     const [video, setVideo] = useState('');
+    const [rating, setRating] = useState<number>(0);
 
     const asyncFunction = async (ide: string) => {
         const response = await CoursesService.getCourseById(ide);
@@ -27,6 +29,7 @@ const CoursePage = () => {
         setPrice(response.price);
         setTeacher(response.createdBy);
         setVideo(response.introVideo);
+        setRating(response.rating);
     };
     useEffect(() => {
         asyncFunction(String(id));
@@ -56,7 +59,7 @@ const CoursePage = () => {
                                 <S.Text>{teacher}</S.Text>
                             </S.ImageWrapper>
                             <S.ImageWrapper>
-                                <S.Text>4.0</S.Text>
+                                <S.Text>{rating}</S.Text>
                                 <S.Image
                                     src="/assets/avaliar5.svg"
                                     style={{
@@ -85,14 +88,7 @@ const CoursePage = () => {
                         </S.ImageWrapper>
                         <S.ImageWrapper>
                             <S.Text>Avaliar: </S.Text>
-                            <S.Image
-                                src="/assets/avaliar5.svg"
-                                style={{
-                                    width: '100px',
-                                    height: '28px',
-                                    cursor: 'pointer'
-                                }}
-                            />
+                            <RatingComponent />
                         </S.ImageWrapper>
                     </S.VideoDescription>
                 </S.ContainerMiddle>
