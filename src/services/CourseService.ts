@@ -32,4 +32,10 @@ export default class CoursesService {
         const response = await api.get(`/courses/searchCourses/${course}`);
         return response.data;
     }
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    static async ratingCourse(data: any) {
+        const response = await api.post('/courses/rating', data);
+        return response.data;
+    }
 }
