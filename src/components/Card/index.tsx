@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import RatingComponent from 'components/Rating';
 import * as S from './styles';
 
 export type CardCompentsProps = {
@@ -14,7 +15,8 @@ const Card: React.FC<CardCompentsProps> = ({
     subTexto,
     image,
     price,
-    id
+    id,
+    rating
 }) => {
     const router = useRouter();
     function goToCourse(CourseId: string) {
@@ -28,7 +30,7 @@ const Card: React.FC<CardCompentsProps> = ({
                     <S.Text>{subTexto}</S.Text>
                 </S.Left>
                 <S.Right>
-                    <S.Star src="/assets/star.svg" />
+                    <RatingComponent initialValue={rating} onCard />
                     <S.Price>
                         <S.Word>Preço:</S.Word> {price}
                     </S.Price>

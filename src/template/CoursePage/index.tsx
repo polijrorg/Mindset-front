@@ -59,15 +59,7 @@ const CoursePage = () => {
                                 <S.Text>{teacher}</S.Text>
                             </S.ImageWrapper>
                             <S.ImageWrapper>
-                                <S.Text>{rating}</S.Text>
-                                <S.Image
-                                    src="/assets/avaliar5.svg"
-                                    style={{
-                                        width: '100px',
-                                        height: '28px',
-                                        cursor: 'pointer'
-                                    }}
-                                />
+                                <RatingComponent initialValue={rating} />
                             </S.ImageWrapper>
                         </S.PriceWrapper>
                     </S.DescriptionWrapper>

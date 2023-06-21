@@ -4,9 +4,12 @@ export const Star = styled.img`
     width: 24px;
     height: 24px;
 `;
+export const StarOnCard = styled.img`
+    width: 12px;
+    height: 12px;
+`;
 export const Container = styled.div`
     width: fit-content;
-    height: 80px;
     display: flex;
     gap: 8px;
     flex-direction: column;
