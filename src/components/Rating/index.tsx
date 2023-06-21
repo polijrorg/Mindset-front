@@ -46,7 +46,11 @@ const RatingComponent: React.FC<{ initialValue?: number; onCard?: boolean }> =
                                 readOnly
                                 name="hover-feedback"
                                 value={initialValue}
-                                style={{ color: '#f0f0f0', fontSize: '16px' }}
+                                style={{
+                                    color: '#f0f0f0',
+                                    fontSize: '14px',
+                                    gap: '1px'
+                                }}
                                 emptyIcon={
                                     <S.StarOnCard src="/assets/singleSatr.svg" />
                                 }
