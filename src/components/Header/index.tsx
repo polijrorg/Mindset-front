@@ -10,7 +10,6 @@ export type headerComponentProps = {
 };
 const Header: React.FC<headerComponentProps> = () => {
     const [isHomeSelected, setIsHomeSelected] = useState(true);
-    const [isFAQSelected, setIsFAQSelected] = useState(false);
     const [isWorkSelected, setIsWorkSelected] = useState(false);
     const [isDropdownSelected, setDropdownSelected] = useState(false);
     const router = useRouter();
@@ -23,19 +22,11 @@ const Header: React.FC<headerComponentProps> = () => {
         setDropdownSelected(!isDropdownSelected);
     };
     const onClickHome = () => {
-        setIsFAQSelected(false);
         setIsWorkSelected(false);
         setIsHomeSelected(true);
         router.push('/');
     };
-    const onClickFAQ = () => {
-        setIsWorkSelected(false);
-        setIsHomeSelected(false);
-        setIsFAQSelected(true);
-        router.push('/faq');
-    };
     const onClickWork = () => {
-        setIsFAQSelected(false);
         setIsHomeSelected(false);
         setIsWorkSelected(true);
         router.push('/produtor');
@@ -52,12 +43,6 @@ const Header: React.FC<headerComponentProps> = () => {
                         Text="Home"
                     />
                     <Button
-                        onclick={onClickFAQ}
-                        selected={isFAQSelected}
-                        type2={false}
-                        Text="FAQ"
-                    />
-                    <Button
                         onclick={onClickWork}
                         selected={isWorkSelected}
                         type2={false}
@@ -66,7 +51,6 @@ const Header: React.FC<headerComponentProps> = () => {
                 </S.Container1>
                 <S.LoginContainer>
                     <SearchBar />
-
                     <S.Dropdown onClick={onCLickDropdown}>
                         <S.Perfil src="/assets/test-img.svg" />
                         {isDropdownSelected ? (

@@ -31,6 +31,13 @@ export const AuxII = styled.div`
     flex-direction: column;
     gap: 38px;
 `;
+export const AuxI = styled.div`
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: row;
+    gap: 8px;
+`;
 export const ImageBack = styled.img`
     width: 24px;
     height: 24px;

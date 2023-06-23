@@ -21,6 +21,7 @@
         "@emotion/react": "^11.11.1",
         "@emotion/styled": "^11.11.0",
         "@mui/material": "^5.13.5",
+        "@types/react-modal": "^3.16.0",
         "axios": "^0.27.2",
         "bootstrap": "^5.2.3",
         "next": "^13.4.1",
@@ -29,6 +30,7 @@
         "react": "^18.2.0",
         "react-bootstrap": "^2.7.2",
         "react-dom": "^18.2.0",
+        "react-modal": "^3.16.1",
         "reactstrap": "^9.1.9",
         "styled-components": "^5.3.10",
         "webkit": "^0.0.0"

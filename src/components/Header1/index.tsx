@@ -1,5 +1,6 @@
 import Button from 'components/Button';
 import { useRouter } from 'next/router';
+import SearchBar from 'components/SearchBar';
 import * as S from './styles';
 
 export type headerComponentProps = {
@@ -12,6 +13,7 @@ const PublicHeader: React.FC<headerComponentProps> = () => {
             <S.Logo onClick={() => router.push('/')} />
             <S.WrapperLogout>
                 <S.LoginContainer>
+                    <SearchBar />
                     <S.LoginContainer>
                         <S.LoginImage src="/assets/Personyello.svg" />
                         <Button

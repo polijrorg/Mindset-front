@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import UserService from 'services/UserService';
+import { Checkbox } from '@mui/material';
 import Transition from 'template/Transition';
 import * as S from './styles';
 
@@ -103,10 +104,19 @@ const Login = () => {
                     <text style={{ color: '#eeac0e', fontSize: '14px' }}>
                         {error}
                     </text>
-                    <S.Checkbox>
-                        <S.InputCheckbox type="checkbox" />
-                        <span>Lembrar de mim</span>
-                    </S.Checkbox>
+                    <S.AuxI>
+                        <Checkbox
+                            defaultChecked
+                            color="primary"
+                            style={{
+                                width: '24px',
+                                height: '24px',
+                                color: '#eeac0e'
+                            }}
+                        />
+                        <S.GeneralText>Lembrar de mim</S.GeneralText>
+                    </S.AuxI>
+
                     <S.LoginButton
                         onClick={handleLogin}
                         disabled={isDisable}
