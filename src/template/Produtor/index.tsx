@@ -8,10 +8,15 @@ import * as S from './styles';
 const Produtor = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isModalOpen2, setIsModalOpen2] = useState(false);
+    const [isDataSent, setIsDataSent] = useState(false);
 
     const openModal = () => {
         setIsModalOpen2(false);
         setIsModalOpen(true);
+    };
+    const sendCurriculum = () => {
+        setIsModalOpen2(false);
+        setIsDataSent(true);
     };
     const openModal2 = () => {
         setIsModalOpen(false);
@@ -33,7 +38,7 @@ const Produtor = () => {
                     <S.SubContainer>
                         <S.ContainerMiddle>
                             <S.About>
-                                <S.AboutTitle>Sobre:</S.AboutTitle>
+                                <S.AboutTitle>Sobre</S.AboutTitle>
                                 <S.AboutText>Texto</S.AboutText>
                             </S.About>
                             <S.VideoDescription>
@@ -55,11 +60,11 @@ const Produtor = () => {
                                         Ganhe uma renda extra!
                                     </S.AboutText>
                                 </S.ImageWrapper>
-                                <S.CurriculumButton onClick={openModal}>
-                                    envie seu currículo
-                                </S.CurriculumButton>
                             </S.VideoDescription>
                         </S.ContainerMiddle>
+                        <S.CurriculumButton onClick={openModal}>
+                            envie seu currículo
+                        </S.CurriculumButton>
                     </S.SubContainer>
                 </S.Container>
                 <Footer />
@@ -69,12 +74,59 @@ const Produtor = () => {
                 isOpen={isModalOpen}
                 onRequestClose={() => setIsModalOpen(false)}
                 contentLabel="Modal"
+                style={{
+                    overlay: {
+                        position: 'fixed',
+                        zIndex: 1020,
+                        top: 0,
+                        left: 0,
+                        width: '100vw',
+                        height: '100vh',
+                        background: 'rgba(48, 48, 48, 0.75)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                    },
+                    content: {
+                        background: '#303030',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexDirection: 'column',
+                        width: '64rem',
+                        gap: '12px',
+                        maxWidth: 'calc(100vw - 2rem)',
+                        maxHeight: 'calc(100vh - 2rem)',
+                        overflowY: 'auto',
+                        position: 'relative',
+                        border: '1p solid #282828',
+                        boxShadow:
+                            '0px 3px 5px 0px rgba(0, 0, 0, 0.20), 0px 1px 18px 0px rgba(0, 0, 0, 0.12), 0px 6px 10px 0px rgba(0, 0, 0, 0.14)',
+                        borderRadius: '8px'
+                    }
+                }}
             >
-                <S.Input placeholder="Nome completo" />
-                <S.Input placeholder="Cpf" />
-                <S.Input placeholder="RG" />
-                <S.Input placeholder="Data de nascimento" />
-                <S.Input placeholder="curso" />
+                <S.InputTextContainer>
+                    <S.TextInput>Nome completo</S.TextInput>
+                    <S.Input placeholder="Nome completo" />
+                </S.InputTextContainer>
+                <S.InputTextContainer>
+                    <S.TextInput>CPF</S.TextInput>
+                    <S.Input placeholder="_ _ _._ _ _._ _ _-_ _" />
+                </S.InputTextContainer>
+                <S.InputTextContainer>
+                    <S.TextInput>RG</S.TextInput>
+                    <S.Input placeholder="_ _. _ _ _._ _ _-_ " />
+                </S.InputTextContainer>
+                <S.InputTextContainer>
+                    <S.TextInput>Data de nascimento</S.TextInput>
+                    <S.Input placeholder="__/__/____" />
+                </S.InputTextContainer>
+                <S.InputTextContainer>
+                    <S.TextInput>Curso</S.TextInput>
+                    <S.Input placeholder="Curso" />
+                </S.InputTextContainer>
+
                 <S.CurriculumButton onClick={openModal2}>
                     Próximo
                 </S.CurriculumButton>
@@ -90,17 +142,102 @@ const Produtor = () => {
                 isOpen={isModalOpen2}
                 onRequestClose={() => setIsModalOpen2(false)}
                 contentLabel="Modal"
+                style={{
+                    overlay: {
+                        position: 'fixed',
+                        zIndex: 1020,
+                        top: 0,
+                        left: 0,
+                        width: '100vw',
+                        height: '100vh',
+                        background: 'rgba(48, 48, 48, 0.75)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                    },
+                    content: {
+                        background: '#303030',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexDirection: 'column',
+                        width: '64rem',
+                        gap: '32px',
+                        maxWidth: 'calc(100vw - 2rem)',
+                        maxHeight: 'calc(100vh - 2rem)',
+                        overflowY: 'auto',
+                        position: 'relative',
+                        border: '1p solid #282828',
+                        boxShadow:
+                            '0px 3px 5px 0px rgba(0, 0, 0, 0.20), 0px 1px 18px 0px rgba(0, 0, 0, 0.12), 0px 6px 10px 0px rgba(0, 0, 0, 0.14)',
+                        borderRadius: '8px'
+                    }
+                }}
             >
-                {/* Conteúdo do modal */}
-                <S.Input placeholder="RG Frente" type="file" />
-                <S.Input placeholder="RG Verso" type="file" />
-                <S.CurriculumButton>Enviar dados</S.CurriculumButton>
+                <S.TextInputFile>
+                    Certifique-se que todas as imagens estejam nítidas!
+                </S.TextInputFile>
+                <br />
+                <S.InputTextContainer>
+                    <S.TextInputFile>Foto do RG (frente):</S.TextInputFile>
+                    <S.InputFile placeholder="RG Frente" type="file" />
+                </S.InputTextContainer>
+                <S.InputTextContainer>
+                    <S.TextInputFile>Foto do RG (verso):</S.TextInputFile>
+                    <S.InputFile placeholder="RG Verso" type="file" />
+                </S.InputTextContainer>
+                <S.CurriculumButton onClick={sendCurriculum}>
+                    Enviar dados
+                </S.CurriculumButton>
+
                 <Button
                     Text="voltar"
                     type2={false}
                     selected
                     onclick={openModal}
                 />
+            </ReactModal>
+            <ReactModal
+                isOpen={isDataSent}
+                onRequestClose={() => setIsDataSent(false)}
+                contentLabel="Modal"
+                style={{
+                    overlay: {
+                        position: 'fixed',
+                        zIndex: 1020,
+                        top: 0,
+                        left: 0,
+                        width: '100vw',
+                        height: '100vh',
+                        background: 'rgba(48, 48, 48, 0.75)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                    },
+                    content: {
+                        background: '#303030',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexDirection: 'column',
+                        width: '64rem',
+                        gap: '32px',
+                        maxWidth: 'calc(100vw - 2rem)',
+                        maxHeight: 'calc(100vh - 2rem)',
+                        overflowY: 'auto',
+                        position: 'relative',
+                        border: '1p solid #282828',
+                        boxShadow:
+                            '0px 3px 5px 0px rgba(0, 0, 0, 0.20), 0px 1px 18px 0px rgba(0, 0, 0, 0.12), 0px 6px 10px 0px rgba(0, 0, 0, 0.14)',
+                        borderRadius: '8px'
+                    }
+                }}
+            >
+                {isDataSent && (
+                    <S.SuccessMessage className="success-message">
+                        Dados enviados!
+                    </S.SuccessMessage>
+                )}
             </ReactModal>
         </>
     );

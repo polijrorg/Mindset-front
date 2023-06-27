@@ -13,6 +13,7 @@ export const Container = styled.div<SelectedType>`
     justify-content: center;
     align-items: center;
     background: none;
+    cursor: pointer;
     padding: 8px;
     width: fit-content;
     height: 100%;

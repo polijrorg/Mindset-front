@@ -6,6 +6,14 @@ export const Wrapper = styled.div`
     overflow: hidden;
     background: #303030;
 `;
+export const SuccessMessage = styled.span`
+    color: green;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 64px;
+`;
 export const Container = styled.div`
     background: #303030;
 `;
@@ -45,7 +53,6 @@ export const SubContainer = styled.div`
     flex-direction: column;
     padding-left: 80px;
     padding-right: 80px;
-    padding-top: 80px;
     height: 100vh;
     justify-content: top;
     align-items: center;
@@ -55,17 +62,19 @@ export const SubContainer = styled.div`
 `;
 export const ContainerMiddle = styled.div`
     display: flex;
-    justify-content: start;
-    align-items: center;
+    justify-content: center;
+    align-items: start;
     width: 100%;
     height: 380px;
-    gap: 72px;
-    padding: 42px 0px 0px 64px;
+    gap: 64px;
     background: #303030;
 `;
 export const VideoDescription = styled.div`
-    width: fit-content
-    height: 107px;
+    justify-content: center;
+    align-items: start;
+    width: 32%;
+    height: 160px;
+    padding-top: 108px;
     display: flex;
     flex-direction: column;
     gap: 7px;
@@ -85,7 +94,7 @@ export const About = styled.div`
     display: flex;
     flex-direction: column;
     width: 72%;
-    gap: 24px;
+    padding-top: 32px;
 `;
 export const AboutTitle = styled.text`
     font-family: 'Poppins', sans-serif;
@@ -107,7 +116,8 @@ export const CurriculumButton = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: border-box;
+    cursor: pointer;
+    width: 400px;
     height: 50px;
     background: #eeac0e;
     border-radius: 16px;
@@ -130,4 +140,36 @@ export const Input = styled.input`
     box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.14), 0px 3px 3px rgba(0, 0, 0, 0.12),
         0px 1px 8px rgba(0, 0, 0, 0.2);
     border-radius: 16px;
+`;
+export const InputFile = styled.input`
+    width: 100%;
+    height: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 16px;
+    background: #eeac0e;
+    border: none;
+    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.14), 0px 3px 3px rgba(0, 0, 0, 0.12),
+        0px 1px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+`;
+export const TextInput = styled.span`
+    color: #949494;
+    font-size: 12px;
+    font-family: poppins, sans-serif;
+    font-weight: 700;
+`;
+export const TextInputFile = styled.span`
+    color: #ffffff;
+    font-size: 12px;
+    font-family: poppins, sans-serif;
+    font-weight: 700;
+`;
+export const InputTextContainer = styled.div`
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
 `;
