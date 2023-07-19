@@ -79,13 +79,13 @@ export const CardsContainer = styled.div`
     flex-direction: row;
     gap: 32px;
     ::-webkit-scrollbar-track {
-        background-color: ##303030;
+        background-color: #272727;
     }
     ::-webkit-scrollbar {
         width: 6px;
-        background: ##303030;
+        background: #272727;
     }
     ::-webkit-scrollbar-thumb {
-        background: #272727;
+        background: #303030;
     }
 `;

@@ -8,6 +8,18 @@ export default class CoursesService {
         return response.data;
     }
 
+    /* list popular por enqunto */
+    static async getProducerCourse(id: string): Promise<Courses[]> {
+        const response = await api.get(`/courses/listById/${id}`);
+        return response.data;
+    }
+
+    /* pergunta pro usuário se ele realmente deseja iniciar o curso? */
+    static async getStartedCourses(id: string): Promise<Courses[]> {
+        const response = await api.get(`/courses/listById/${id}`);
+        return response.data;
+    }
+
     static async createCourse(data: Courses): Promise<Courses> {
         const response: AxiosResponse<Courses> = await api.post(
             '/courses/create',

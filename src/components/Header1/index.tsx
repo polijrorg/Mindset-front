@@ -11,26 +11,22 @@ const PublicHeader: React.FC<headerComponentProps> = () => {
     return (
         <S.Container>
             <S.Logo onClick={() => router.push('/')} />
-            <S.WrapperLogout>
-                <S.LoginContainer>
-                    <SearchBar />
-                    <S.LoginContainer>
-                        <S.LoginImage src="/assets/Personyello.svg" />
-                        <Button
-                            onclick={() => router.push('/login')}
-                            selected={false}
-                            type2
-                            Text="ENTRAR"
-                        />
-                    </S.LoginContainer>
-                    <Button
-                        selected={false}
-                        type2
-                        Text="CRIAR CONTA"
-                        onclick={() => router.push('/register')}
-                    />
-                </S.LoginContainer>
-            </S.WrapperLogout>
+            <SearchBar />
+            <S.LoginContainer>
+                <S.LoginImage src="/assets/Personyello.svg" />
+                <Button
+                    onclick={() => router.push('/login')}
+                    selected={false}
+                    type2
+                    Text="ENTRAR"
+                />
+                <Button
+                    selected={false}
+                    type2
+                    Text="CRIAR CONTA"
+                    onclick={() => router.push('/register')}
+                />
+            </S.LoginContainer>
         </S.Container>
     );
 };

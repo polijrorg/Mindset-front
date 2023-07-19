@@ -12,7 +12,7 @@ export const Container = styled.footer`
     display: flex;
     width: 100%;
     height: 88px;
-    background: #272727;
+    background: #262626;
     flex-direction: colum;
     justify-content: center;
     bottom: 0%;

@@ -1,12 +1,17 @@
 import Footer from 'components/Footer';
 import Header from 'components/Header';
 import Card from 'components/Card';
+import ProducerHome from 'template/ProducerHome';
 import { useEffect, useState } from 'react';
 import { Courses } from 'interfaces/Courses';
 import CoursesService from 'services/CourseService';
 import * as S from './styles';
 
-const HomePage = () => {
+interface HomePageProps {
+    clientType: boolean;
+}
+
+const HomePage: React.FC<HomePageProps> = ({ clientType }) => {
     const [coursesArray, setCoursesArray] = useState<Courses[]>([]);
     const [privateCoursesArray, setPrivateCoursesArray] = useState<Courses[]>(
         []
@@ -24,10 +29,12 @@ const HomePage = () => {
         };
         asyncFunction();
     }, [token]);
-
-    return (
+    return clientType ? (
+        <ProducerHome />
+    ) : (
         <S.Wrapper>
             <Header />
+
             <S.Container>
                 <S.SubContainer>
                     <S.TitleContainer>

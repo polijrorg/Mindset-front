@@ -32,6 +32,7 @@ export default class UserService {
         if (response.data.token) {
             localStorage.setItem('mindset:token', response.data.token);
             localStorage.setItem('mindset:name', response.data.user.name);
+            localStorage.setItem('mindset:ClientType', 'producer');
             setCookie(undefined, '@Mindset::token', response.data.token, {
                 maxAge: 60 * 60 * 24 // 1 dia
             });
@@ -49,7 +50,7 @@ export default class UserService {
         password,
         name
     }) => {
-        const response = await api.post('/users/register', {
+        const response = await api.post('users/register', {
             name,
             email,
             password
