@@ -1,52 +1,114 @@
-import { destroyCookie } from 'nookies';
-import React, { useContext, useState, createContext } from 'react';
-
-import api from 'services/api';
-
+import { useRouter } from 'next/router';
+import { destroyCookie, parseCookies } from 'nookies';
+import React, { useState, createContext, useContext, useEffect } from 'react';
 import UserService from 'services/UserService';
-
-import User from '../interfaces/User';
+import { InfosUser } from 'interfaces/User';
 
 interface ILoginRequest {
     email: string;
     password: string;
 }
 
+interface IRegisterRequest {
+    email: string;
+    password: string;
+    name: string;
+}
+
 interface AuthContextData {
-    user: User;
+    infosuser: InfosUser;
     login: (data: ILoginRequest) => void;
     logout: () => void;
+    errorLogin: boolean;
+    errorRegister: string;
+    register: (data: IRegisterRequest) => void;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 export const AuthProvider: React.FC = ({ children }) => {
-    const [user, setUser] = useState({} as User);
+    const navigation = useRouter();
+    const [infosuser, setInfosUser] = useState({} as InfosUser);
+    const [errorLogin, seterrorLogin] = useState(false);
+    const [errorRegister, seterrorRegister] = useState('');
+
+    useEffect(() => {
+        const getRecentUserData = async () => {
+            const { '@Mindset:userId': userId } = parseCookies();
+            const { '@Mindset:userName': userName } = parseCookies();
+            const { '@Mindset:userEmail': userEmail } = parseCookies();
+            const { '@Mindset:userType': userType } = parseCookies();
+            /* console.log('useAuth: ', userId, userName, userEmail, userType); */
+            setInfosUser({
+                // precisa ter uma rota com o get user que devolve os dados do usuário quando passo o id dele
+                id: userId,
+                name: userName,
+                /* photo: string;
+                cartao: string; */
+                email: userEmail,
+                productor: Boolean(userType)
+            });
+        };
+        getRecentUserData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const login = async (data: ILoginRequest) => {
         try {
             const response = await UserService.login(data);
-
-            api.defaults.headers.common = {
-                Authorization: `Bearer ${response.data.token}`
-            };
-
-            setUser(response.data.user);
+            if (response.data.token) {
+                seterrorLogin(false);
+            }
+            if (!response.data.token) {
+                seterrorLogin(true);
+                return;
+            }
+            navigation.push('/');
         } catch (error) {
-            // Errors handling
+            navigation.push('/login');
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            throw new Error(error as any);
         }
     };
 
-    const logout = () => {
-        destroyCookie(undefined, '@mindset:token');
-        destroyCookie(undefined, '@mindset:userId');
+    const logout = async () => {
+        destroyCookie(undefined, '@Mindset:token', {
+            path: '/' // THE KEY IS TO SET THE SAME PATH
+        });
+        destroyCookie(undefined, '@Mindset:userId', {
+            path: '/' // THE KEY IS TO SET THE SAME PATH
+        });
+        setInfosUser({} as InfosUser);
+        navigation.push('/');
+    };
+
+    const register = async (data: IRegisterRequest) => {
+        try {
+            await UserService.register(data);
+            seterrorRegister('');
+            navigation.push('/login');
+        } catch (error) {
+            seterrorRegister((error as Error).message);
+            /* console.log((error as Error).message); */
+            navigation.push('/register');
+        }
     };
 
     return (
-        <AuthContext.Provider value={{ user, login, logout }}>
+        <AuthContext.Provider
+            value={{
+                infosuser,
+                login,
+                logout,
+                errorLogin,
+                errorRegister,
+                register
+            }}
+        >
             {children}
         </AuthContext.Provider>
     );
 };
 
-export default () => useContext(AuthContext);
+const useAuth = () => useContext(AuthContext);
+export default useAuth;

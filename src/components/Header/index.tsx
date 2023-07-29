@@ -1,8 +1,9 @@
 import Button from 'components/Button';
-import { useState } from 'react';
 import { useRouter } from 'next/router';
-import UserService from 'services/UserService';
+import React, { useState, useContext } from 'react';
 import SearchBar from 'components/SearchBar';
+import useAuth from 'hooks/useAuth';
+import { FetchCourses } from 'hooks/useFetchCourses';
 import * as S from './styles';
 
 export type headerComponentProps = {
@@ -12,28 +13,33 @@ const Header: React.FC<headerComponentProps> = () => {
     const [isHomeSelected, setIsHomeSelected] = useState(true);
     const [isWorkSelected, setIsWorkSelected] = useState(false);
     const [isDropdownSelected, setDropdownSelected] = useState(false);
+    const { logout, infosuser } = useAuth();
+    const { backToPage } = useContext(FetchCourses);
     const router = useRouter();
 
-    const handleLogout = () => {
-        UserService.logout();
-        router.push('/');
-    };
     const onCLickDropdown = () => {
         setDropdownSelected(!isDropdownSelected);
     };
     const onClickHome = () => {
         setIsWorkSelected(false);
         setIsHomeSelected(true);
+        backToPage();
         router.push('/');
     };
     const onClickWork = () => {
         setIsHomeSelected(false);
         setIsWorkSelected(true);
+        backToPage();
         router.push('/produtor');
     };
-    return (
+    return infosuser.id ? (
         <S.Container>
-            <S.Logo onClick={() => router.push('/')} />
+            <S.Logo
+                onClick={() => {
+                    router.push('/');
+                    backToPage();
+                }}
+            />
             <>
                 <S.Container1>
                     <Button
@@ -55,7 +61,7 @@ const Header: React.FC<headerComponentProps> = () => {
                         <S.Perfil src="/assets/test-img.svg" />
                         {isDropdownSelected ? (
                             <S.DropdownMenu>
-                                <S.DropdownItem onClick={handleLogout}>
+                                <S.DropdownItem onClick={() => logout()}>
                                     Logout
                                 </S.DropdownItem>
                             </S.DropdownMenu>
@@ -63,6 +69,31 @@ const Header: React.FC<headerComponentProps> = () => {
                     </S.Dropdown>
                 </S.LoginContainer>
             </>
+        </S.Container>
+    ) : (
+        <S.Container>
+            <S.Logo
+                onClick={() => {
+                    router.push('/');
+                    backToPage();
+                }}
+            />
+            <SearchBar />
+            <S.LoginContainer>
+                <S.LoginImage src="/assets/Personyello.svg" />
+                <Button
+                    onclick={() => router.push('/login')}
+                    selected={false}
+                    type2
+                    Text="ENTRAR"
+                />
+                <Button
+                    selected={false}
+                    type2
+                    Text="CRIAR CONTA"
+                    onclick={() => router.push('/register')}
+                />
+            </S.LoginContainer>
         </S.Container>
     );
 };

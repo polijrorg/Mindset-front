@@ -1,52 +1,28 @@
-import React, { useState, useEffect, useRef } from 'react';
-import CourseService from 'services/CourseService';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import { useRouter } from 'next/router';
-import SearchResults from 'template/SearchResults';
-import { Courses } from 'interfaces/Courses';
+import { FetchCourses } from 'hooks/useFetchCourses';
 import * as S from './styles';
 
 const SearchBar: React.FC = () => {
     const [searchTerm, setSearchTerm] = useState('');
-    const [searchResults, setSearchResults] = useState<Courses[]>([]);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
+    const { searchResults, handleKeyPress, handleOnClick, handleInputChange } =
+        useContext(FetchCourses);
     const router = useRouter();
 
-    const handleInputChange = async (
+    const OnInputChange = async (
         event: React.ChangeEvent<HTMLInputElement>
     ) => {
-        const { value } = event.target;
-        setSearchTerm(value);
+        setIsDropdownOpen(true);
+        setSearchTerm(event.target.value);
+        handleInputChange(searchTerm);
     };
 
-    const handleKeyPress = async (
-        event: React.KeyboardEvent<HTMLInputElement>
-    ) => {
+    const OnKeyPress = async (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key === 'Enter') {
-            try {
-                const response = await CourseService.searchCourse(searchTerm);
-                const resultsArray = Array.isArray(response)
-                    ? response
-                    : [response];
-                setSearchResults(resultsArray);
-                setIsDropdownOpen(true);
-                <SearchResults courses={resultsArray} />;
-            } catch (error) {
-                setSearchTerm('');
-            }
-        }
-    };
-
-    const handleOnClick = async () => {
-        try {
-            const response = await CourseService.searchCourse(searchTerm);
-            const resultsArray = Array.isArray(response)
-                ? response
-                : [response];
-            setSearchResults(resultsArray);
-            setIsDropdownOpen(true);
-        } catch (error) {
-            setSearchTerm('');
+            handleKeyPress(searchTerm);
+            setIsDropdownOpen(false);
         }
     };
 
@@ -64,7 +40,7 @@ const SearchBar: React.FC = () => {
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, []);
+    });
 
     return (
         <S.Dropdown>
@@ -73,10 +49,10 @@ const SearchBar: React.FC = () => {
                     <S.SearchLogged
                         placeholder="Buscar..."
                         value={searchTerm}
-                        onChange={handleInputChange}
-                        onKeyDown={handleKeyPress}
+                        onChange={OnInputChange}
+                        onKeyDown={OnKeyPress}
                     />
-                    <S.DivImg onClick={handleOnClick}>
+                    <S.DivImg onClick={() => handleOnClick(searchTerm)}>
                         <img
                             src="/assets/blackSearch.svg"
                             alt=" "

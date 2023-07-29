@@ -149,3 +149,22 @@ export const Image = styled.img`
     top: 12px;
     cursor: pointer;
 `;
+interface Show {
+    visible: boolean;
+}
+
+export const Error = styled.span<Show>`
+    position: relative;
+    width: 100%;
+    color: red;
+    font-size: 14px;
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+    text-align: center;
+    justify-content: center;
+    display: ${(e) => (e.visible ? 'flex' : 'none')};
+    @media only screen and (max-width: 600px) {
+        font-size: 12px;
+    }
+`;

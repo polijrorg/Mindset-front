@@ -1,49 +1,31 @@
 import Footer from 'components/Footer';
 import Header from 'components/Header';
-import { Courses } from 'interfaces/Courses';
 import Card from 'components/Card';
-import CoursesService from 'services/CourseService';
+import AddVideoCard from 'components/AddVideoCard';
 import Button from 'components/Button';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import useFetch from 'hooks/useFetchCourses';
+import useAuth from 'hooks/useAuth';
 import * as S from './styles';
 
 const ProducerHome = () => {
+    const { infosuser } = useAuth();
+    const {
+        privateCoursesArray,
+        inProgressCoursesArray,
+        recordedCoursesArray
+    } = useFetch();
     const [isCourseSelected, setCourseSelected] = useState(true);
     const [isInProgressSelected, setProgressSelected] = useState(false);
     const [isRecordedSelected, setRecordedSelected] = useState(false);
-    const [coursesArray, setCoursesArray] = useState<Courses[]>([]);
-    const [recordedCoursesArray, setRecordedCoursesArray] = useState<Courses[]>(
-        []
-    );
-    const [inProgressCoursesArray, setInProgressCoursesArray] = useState<
-        Courses[]
-    >([]);
-    const [token, setToken] = useState<string | null>();
-    useEffect(() => {
-        setToken(localStorage.getItem('mindset:token'));
-        const asyncFunction = async () => {
-            const courseResponse = await CoursesService.getRecommendedCourses();
-            setCoursesArray(courseResponse);
 
-            const producerResponse = await CoursesService.getProducerCourse(
-                String(token)
-            );
-            setRecordedCoursesArray(producerResponse);
-
-            const inProgressResponse = await CoursesService.getStartedCourses(
-                String(token)
-            );
-            setInProgressCoursesArray(inProgressResponse);
-        };
-        asyncFunction();
-    }, [token]);
     return (
         <S.Wrapper>
             <Header />
             <S.BackgrounImg src="/assets/background1.svg" />
             <S.MainContainer>
                 <S.Perfil src="/assets/test-img.svg" />
-                <S.Text>{localStorage.getItem('mindset:name')}</S.Text>
+                <S.Text>{infosuser.name}</S.Text>
                 <Button Text="Ver minhas informações" type2 selected={false} />
                 <S.ButtonsWrapper>
                     <S.Button
@@ -79,7 +61,7 @@ const ProducerHome = () => {
                 </S.ButtonsWrapper>
                 {isCourseSelected ? (
                     <S.CardsContainer>
-                        {coursesArray.map((course) => (
+                        {privateCoursesArray.map((course) => (
                             <Card
                                 image={course.avatar}
                                 subTexto={course.description}
@@ -89,6 +71,7 @@ const ProducerHome = () => {
                                 rating={course.rating}
                             />
                         ))}
+                        <AddVideoCard />
                     </S.CardsContainer>
                 ) : null}
                 {isInProgressSelected ? (

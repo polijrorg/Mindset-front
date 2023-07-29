@@ -1,7 +1,8 @@
 import { NextPage } from 'next';
 import SignIn from 'template/SignIn';
+import withAuthToken from 'components/Auth/withAuth';
 
-const LoginHome: NextPage = () => {
+const Cadastro: NextPage = () => {
     return <SignIn />;
 };
-export default LoginHome;
+export default withAuthToken(Cadastro);

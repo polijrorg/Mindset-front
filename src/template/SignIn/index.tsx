@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
-import UserService from 'services/UserService';
+import useAuth from 'hooks/useAuth';
 
 import * as S from './styles';
 
@@ -11,6 +11,7 @@ const SignIn = () => {
     const router = useRouter();
     const [isPasswordShown, setPasswordShow] = useState('password');
     const [isDisable, setIsDisable] = useState(true);
+    const { register } = useAuth();
 
     useEffect(() => {
         if ((email.length && password.length) === 0) {
@@ -26,20 +27,11 @@ const SignIn = () => {
             setPasswordShow('text');
         }
     };
-
-    const handleSignIn = async () => {
-        try {
-            await UserService.registerClient({
-                name,
-                email,
-                password
-            }).then(() => {
-                router.push('/login');
-            });
-        } catch (err) {
-            router.push('/register');
-        }
+    const handleRegister = (e: { preventDefault: () => void }) => {
+        e.preventDefault();
+        register({ email, password, name });
     };
+
     return (
         <S.Wrapper>
             <S.ImageBack
@@ -92,7 +84,7 @@ const SignIn = () => {
                         </S.Container>
                     </S.InputContainer>
                     <S.SignInButton
-                        onClick={handleSignIn}
+                        onClick={handleRegister}
                         disabled={isDisable}
                         disable={isDisable}
                     >

@@ -1,15 +1,13 @@
 import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
-import UserService from 'services/UserService';
+import React, { useState, useEffect } from 'react';
 import { Checkbox } from '@mui/material';
-import Transition from 'template/Transition';
+import useAuth from 'hooks/useAuth';
 import * as S from './styles';
 
-const Login = () => {
+const Login: React.FC = () => {
+    const { login, errorLogin } = useAuth();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
-    const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
     const [isDisable, setIsDisable] = useState(true);
     const [isPasswordShown, setPasswordShow] = useState('password');
@@ -28,27 +26,11 @@ const Login = () => {
             setIsDisable(false);
         }
     }, [email, password]);
-    const handleLogin = async () => {
-        try {
-            setIsLoading(true);
-            await UserService.login({
-                email,
-                password
-            }).then(() => {
-                router.push('/');
-                setIsLoading(false);
-            });
-        } catch (err) {
-            setIsLoading(false);
-            setError('email ou senha errados');
-            router.push('/login');
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        }
-        setIsLoading(false);
+    const handleLogin = (e: { preventDefault: () => void }) => {
+        e.preventDefault();
+        login({ email, password });
     };
-    return isLoading ? (
-        <Transition />
-    ) : (
+    return (
         <S.Wrapper>
             <S.ImageBack
                 src="/assets/backArrow.svg"
@@ -101,9 +83,9 @@ const Login = () => {
                             </S.GeneralText>
                         </S.ForgotPassword>
                     </S.InputContainer>
-                    <text style={{ color: '#eeac0e', fontSize: '14px' }}>
-                        {error}
-                    </text>
+                    <S.Error visible={errorLogin}>
+                        Usuário ou senha incorreto
+                    </S.Error>
                     <S.AuxI>
                         <Checkbox
                             defaultChecked
