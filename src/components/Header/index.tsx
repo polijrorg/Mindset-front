@@ -13,7 +13,7 @@ const Header: React.FC<headerComponentProps> = () => {
     const [isHomeSelected, setIsHomeSelected] = useState(true);
     const [isWorkSelected, setIsWorkSelected] = useState(false);
     const [isDropdownSelected, setDropdownSelected] = useState(false);
-    const { logout, infosuser } = useAuth();
+    const { logout } = useAuth();
     const { backToPage } = useContext(FetchCourses);
     const router = useRouter();
 
@@ -32,7 +32,7 @@ const Header: React.FC<headerComponentProps> = () => {
         backToPage();
         router.push('/produtor');
     };
-    return infosuser.id ? (
+    return (
         <S.Container>
             <S.Logo
                 onClick={() => {
@@ -69,31 +69,6 @@ const Header: React.FC<headerComponentProps> = () => {
                     </S.Dropdown>
                 </S.LoginContainer>
             </>
-        </S.Container>
-    ) : (
-        <S.Container>
-            <S.Logo
-                onClick={() => {
-                    router.push('/');
-                    backToPage();
-                }}
-            />
-            <SearchBar />
-            <S.LoginContainer>
-                <S.LoginImage src="/assets/Personyello.svg" />
-                <Button
-                    onclick={() => router.push('/login')}
-                    selected={false}
-                    type2
-                    Text="ENTRAR"
-                />
-                <Button
-                    selected={false}
-                    type2
-                    Text="CRIAR CONTA"
-                    onclick={() => router.push('/register')}
-                />
-            </S.LoginContainer>
         </S.Container>
     );
 };

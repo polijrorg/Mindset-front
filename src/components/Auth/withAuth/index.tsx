@@ -28,7 +28,6 @@ const withAuthToken = (WrappedComponent: NextComponentType) => {
                 context.res?.end();
             }
         }
-
         return {
             props: {}
         };

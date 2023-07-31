@@ -1,5 +1,5 @@
 import Footer from 'components/Footer';
-import Header from 'components/Header';
+import LandingHeader from 'components/LandingHeader';
 import Card from 'components/Card';
 import useFetch from 'hooks/useFetchCourses';
 import * as S from './styles';
@@ -10,7 +10,7 @@ const LandingPage: React.FC = () => {
 
     return (
         <S.Wrapper>
-            <Header />
+            <LandingHeader />
             {isSearching ? (
                 <S.SubContainer>
                     <S.TitleContainer>
