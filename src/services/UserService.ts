@@ -53,7 +53,7 @@ export default class UserService {
                 setCookie(
                     undefined,
                     '@Mindset:userType',
-                    String(user.productor),
+                    String(user.producer),
                     {
                         path: '/',
                         maxAge: 60 * 60 * 24 // 1 dia

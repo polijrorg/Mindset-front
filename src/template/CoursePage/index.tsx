@@ -4,6 +4,9 @@ import Footer from 'components/Footer';
 import CardVideo from 'components/CardVideo';
 import { useState, useEffect } from 'react';
 import CoursesService from 'services/CourseService';
+import Transition from 'template/Transition';
+import LandingHeader from 'components/LandingHeader';
+import useAuth from 'hooks/useAuth';
 import { useRouter } from 'next/dist/client/router';
 import RatingComponent from 'components/Rating';
 
@@ -20,6 +23,7 @@ const CoursePage = () => {
     const [teacher, setTeacher] = useState('');
     const [video, setVideo] = useState('');
     const [rating, setRating] = useState<number>(0);
+    const { infosuser } = useAuth();
 
     const asyncFunction = async (ide: string) => {
         const response = await CoursesService.getCourseById(ide);
@@ -31,12 +35,21 @@ const CoursePage = () => {
         setVideo(response.introVideo);
         setRating(response.rating);
     };
+    const [isLoading, setIsLoading] = useState(true);
+    useEffect(() => {
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 3000);
+    }, []);
     useEffect(() => {
         asyncFunction(String(id));
     });
+    if (isLoading) {
+        return <Transition />;
+    }
     return (
         <>
-            <Header />
+            {infosuser.id ? <Header /> : <LandingHeader />}
             <S.Wrapper>
                 <S.ContainerTop>
                     <S.VideoWrapper>

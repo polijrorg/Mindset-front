@@ -13,7 +13,7 @@ const Header: React.FC<headerComponentProps> = () => {
     const [isHomeSelected, setIsHomeSelected] = useState(true);
     const [isWorkSelected, setIsWorkSelected] = useState(false);
     const [isDropdownSelected, setDropdownSelected] = useState(false);
-    const { logout } = useAuth();
+    const { logout, infosuser } = useAuth();
     const { backToPage } = useContext(FetchCourses);
     const router = useRouter();
 
@@ -24,19 +24,27 @@ const Header: React.FC<headerComponentProps> = () => {
         setIsWorkSelected(false);
         setIsHomeSelected(true);
         backToPage();
-        router.push('/');
+        if (infosuser.producer) {
+            router.push('/producer/home');
+        } else {
+            router.push('/student/home');
+        }
     };
     const onClickWork = () => {
         setIsHomeSelected(false);
         setIsWorkSelected(true);
         backToPage();
-        router.push('/produtor');
+        router.push('/producer');
     };
     return (
         <S.Container>
             <S.Logo
                 onClick={() => {
-                    router.push('/');
+                    if (infosuser.producer) {
+                        router.push('/producer/home');
+                    } else {
+                        router.push('/student/home');
+                    }
                     backToPage();
                 }}
             />

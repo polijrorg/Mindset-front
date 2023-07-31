@@ -4,7 +4,7 @@ export interface User {
     /* photo: string;
     cartao: string; */
     email: string;
-    productor: boolean;
+    producer: boolean;
     token: string;
     // deixar apenas id e token
 }
@@ -15,11 +15,11 @@ export interface InfosUser {
     /* photo: string;
     cartao: string; */
     email: string;
-    productor: boolean;
+    producer: boolean;
 }
 export interface UpdateUser {
     id: string;
     name: string;
     email: string;
-    productor: string;
+    producer: string;
 }

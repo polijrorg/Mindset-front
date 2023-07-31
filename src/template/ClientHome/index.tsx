@@ -1,11 +1,14 @@
 /* eslint-disable no-nested-ternary */
 import Footer from 'components/Footer';
 import Header from 'components/Header';
+import { useEffect, useState } from 'react';
 import Card from 'components/Card';
+import Transition from 'template/Transition';
 import useFetch from 'hooks/useFetchCourses';
 import * as S from './styles';
 
 const Homepage: React.FC = () => {
+    const [isLoading, setIsLoading] = useState(true);
     const {
         recommendedCoursesArray,
         privateCoursesArray,
@@ -13,7 +16,14 @@ const Homepage: React.FC = () => {
         allCoursesArray,
         isSearching
     } = useFetch();
-
+    useEffect(() => {
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 3000);
+    }, []);
+    if (isLoading) {
+        return <Transition />;
+    }
     return (
         <S.Wrapper>
             <Header />

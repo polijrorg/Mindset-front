@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
+import Transition from 'template/Transition';
 import useAuth from 'hooks/useAuth';
 
 import * as S from './styles';
@@ -31,7 +32,15 @@ const SignIn = () => {
         e.preventDefault();
         register({ email, password, name });
     };
-
+    const [isLoading, setIsLoading] = useState(true);
+    useEffect(() => {
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 3000);
+    }, []);
+    if (isLoading) {
+        return <Transition />;
+    }
     return (
         <S.Wrapper>
             <S.ImageBack

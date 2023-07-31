@@ -1,9 +1,10 @@
 import Footer from 'components/Footer';
 import Header from 'components/Header';
 import Card from 'components/Card';
+import Transition from 'template/Transition';
 import AddVideoCard from 'components/AddVideoCard';
 import Button from 'components/Button';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import useFetch from 'hooks/useFetchCourses';
 import useAuth from 'hooks/useAuth';
 import * as S from './styles';
@@ -18,7 +19,15 @@ const ProducerHome = () => {
     const [isCourseSelected, setCourseSelected] = useState(true);
     const [isInProgressSelected, setProgressSelected] = useState(false);
     const [isRecordedSelected, setRecordedSelected] = useState(false);
-
+    const [isLoading, setIsLoading] = useState(true);
+    useEffect(() => {
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 3000);
+    }, []);
+    if (isLoading) {
+        return <Transition />;
+    }
     return (
         <S.Wrapper>
             <Header />

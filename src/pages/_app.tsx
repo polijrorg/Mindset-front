@@ -12,10 +12,15 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
                 <AuthProvider>
                     <GlobalStyles />
                     <Head>
-                        <style>
-                            @import
-                            url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,400;0,700;0,900;1,400&display=swap');{' '}
-                        </style>
+                        <link
+                            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Poppins:wght@400;500;600&display=swap"
+                            rel="stylesheet"
+                        />
+                        <link rel="icon" href="/assets/Logo.svg" />
+                        <script
+                            async
+                            src="https://www.googletagmanager.com/gtag/js?id=G-QFMW1WX907"
+                        />
                     </Head>
                     <Component {...pageProps} />
                 </AuthProvider>

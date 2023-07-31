@@ -46,7 +46,7 @@ export const AuthProvider: React.FC = ({ children }) => {
                 /* photo: string;
                 cartao: string; */
                 email: userEmail,
-                productor: Boolean(userType)
+                producer: Boolean(userType)
             });
         };
         getRecentUserData();
@@ -63,11 +63,15 @@ export const AuthProvider: React.FC = ({ children }) => {
                 seterrorLogin(true);
                 return;
             }
-            navigation.push('/');
+            if (infosuser.producer) {
+                navigation.push('/producer/home');
+            } else {
+                navigation.push('/student/home');
+            }
         } catch (error) {
             navigation.push('/login');
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            throw new Error(error as any);
+            seterrorLogin(true);
         }
     };
 
@@ -76,6 +80,15 @@ export const AuthProvider: React.FC = ({ children }) => {
             path: '/' // THE KEY IS TO SET THE SAME PATH
         });
         destroyCookie(undefined, '@Mindset:userId', {
+            path: '/' // THE KEY IS TO SET THE SAME PATH
+        });
+        destroyCookie(undefined, '@Mindset:userName', {
+            path: '/' // THE KEY IS TO SET THE SAME PATH
+        });
+        destroyCookie(undefined, '@Mindset:userEmail', {
+            path: '/' // THE KEY IS TO SET THE SAME PATH
+        });
+        destroyCookie(undefined, '@Mindset:userType', {
             path: '/' // THE KEY IS TO SET THE SAME PATH
         });
         setInfosUser({} as InfosUser);

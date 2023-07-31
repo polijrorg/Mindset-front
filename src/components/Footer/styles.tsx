@@ -11,7 +11,7 @@ export const Title = styled.span`
 export const Container = styled.footer`
     display: flex;
     width: 100%;
-    height: 88px;
+    height: 80px;
     background: #262626;
     flex-direction: colum;
     justify-content: center;
@@ -57,7 +57,7 @@ export const ContainerSub2 = styled.div`
     flex-direction: column;
     align-items: flex-start;
     gap: 2px;
-    width: 74px;
+    width: fit-content;
     height: 53px;
 `;
 export const ContainerSub = styled.div`

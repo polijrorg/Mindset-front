@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import React, { useState, useEffect } from 'react';
 import { Checkbox } from '@mui/material';
 import useAuth from 'hooks/useAuth';
+import Transition from 'template/Transition';
 import * as S from './styles';
 
 const Login: React.FC = () => {
@@ -30,6 +31,15 @@ const Login: React.FC = () => {
         e.preventDefault();
         login({ email, password });
     };
+    const [isLoading, setIsLoading] = useState(true);
+    useEffect(() => {
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 3000);
+    }, []);
+    if (isLoading) {
+        return <Transition />;
+    }
     return (
         <S.Wrapper>
             <S.ImageBack

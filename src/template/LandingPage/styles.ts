@@ -15,6 +15,8 @@ export const BackgroundImage = styled.img`
 `;
 export const Title = styled.span`
     font-family: 'Poppins', sans-serif;
+    src: url('/fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap')
+        format('truetype');
     font-style: normal;
     font-weight: 700;
     font-size: 48px;
@@ -23,6 +25,8 @@ export const Title = styled.span`
 `;
 export const Title2 = styled.div`
     font-family: 'Poppins', sans-serif;
+    src: url('/fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap')
+        format('truetype');
     width: 251px;
     height: 48px;
     font-style: normal;
@@ -37,6 +41,8 @@ export const Title2 = styled.div`
 `;
 export const Text = styled.span`
     font-family: 'Poppins', sans-serif;
+    src: url('/fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap')
+        format('truetype');
     font-style: normal;
     font-weight: 400;
     font-size: 28px;
