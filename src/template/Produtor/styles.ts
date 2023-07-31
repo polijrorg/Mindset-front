@@ -112,22 +112,6 @@ export const AboutText = styled.text`
     text-align: justify;
     color: #fafafa;
 `;
-export const CurriculumButton = styled.button`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    width: 400px;
-    height: 50px;
-    background: #eeac0e;
-    border-radius: 16px;
-    font-family: 'Poppins', sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
-    border: none;
-    color: #ffffff;
-`;
 export const Input = styled.input`
     width: 100%;
     height: 48px;

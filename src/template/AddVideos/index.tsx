@@ -1,6 +1,7 @@
 import NoBorderButton from 'components/Button-2';
+import ButtonO from 'components/ButtonY';
+import InputFile from 'components/Input';
 import { useState } from 'react';
-import Button from 'components/Button';
 import * as S from './styles';
 
 const AddVideos = () => {
@@ -8,21 +9,17 @@ const AddVideos = () => {
     return (
         <S.Wrapper>
             <S.TopContainer>
-                <Button
-                    Text="Adicionar Trailer"
-                    type2={false}
-                    selected={false}
-                />
+                <InputFile Text="Adicionar Trailer" Type="video/*" />
             </S.TopContainer>
             <S.BottomContainer>
-                <S.AddVideo type="file" />
-                <Button Text="Enviar" type2={false} selected={false} />
+                <InputFile Text="Adicionar vídeo" Type="video/*" />
+                <ButtonO Text="Publicar" />
+                <NoBorderButton
+                    Text="voltar"
+                    selected={isSelected}
+                    onclick={() => setSelected(true)}
+                />
             </S.BottomContainer>
-            <NoBorderButton
-                Text="voltar"
-                selected={isSelected}
-                onclick={() => setSelected(true)}
-            />
         </S.Wrapper>
     );
 };

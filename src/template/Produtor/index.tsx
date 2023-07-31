@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import InputFile from 'components/Input';
 import ReactModal from 'react-modal';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import Button from 'components/Button';
+import ButtonO from 'components/ButtonY';
 import * as S from './styles';
 
 const Produtor = () => {
@@ -62,9 +64,10 @@ const Produtor = () => {
                                 </S.ImageWrapper>
                             </S.VideoDescription>
                         </S.ContainerMiddle>
-                        <S.CurriculumButton onClick={openModal}>
-                            envie seu currículo
-                        </S.CurriculumButton>
+                        <ButtonO
+                            Text="envie seu currículo"
+                            onclick={openModal}
+                        />
                     </S.SubContainer>
                 </S.Container>
                 <Footer />
@@ -127,9 +130,7 @@ const Produtor = () => {
                     <S.Input placeholder="Curso" />
                 </S.InputTextContainer>
 
-                <S.CurriculumButton onClick={openModal2}>
-                    Próximo
-                </S.CurriculumButton>
+                <ButtonO Text="Próximo" onclick={openModal2} />
                 <Button
                     Text="voltar"
                     selected
@@ -180,16 +181,13 @@ const Produtor = () => {
                 <br />
                 <S.InputTextContainer>
                     <S.TextInputFile>Foto do RG (frente):</S.TextInputFile>
-                    <S.InputFile placeholder="RG Frente" type="file" />
                 </S.InputTextContainer>
+                <InputFile Text="RG Frente" Type="image/*, application/pdf" />
                 <S.InputTextContainer>
                     <S.TextInputFile>Foto do RG (verso):</S.TextInputFile>
-                    <S.InputFile placeholder="RG Verso" type="file" />
                 </S.InputTextContainer>
-                <S.CurriculumButton onClick={sendCurriculum}>
-                    Enviar dados
-                </S.CurriculumButton>
-
+                <InputFile Text="RG Verso" Type="image/*, application/pdf" />
+                <ButtonO Text="Enviar Dados" onclick={sendCurriculum} />
                 <Button
                     Text="voltar"
                     type2={false}

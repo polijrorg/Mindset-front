@@ -80,7 +80,6 @@ const ProducerHome = () => {
                                 rating={course.rating}
                             />
                         ))}
-                        <AddVideoCard />
                     </S.CardsContainer>
                 ) : null}
                 {isInProgressSelected ? (
@@ -99,6 +98,7 @@ const ProducerHome = () => {
                 ) : null}
                 {isRecordedSelected ? (
                     <S.CardsContainer>
+                        <AddVideoCard />
                         {recordedCoursesArray.map((course) => (
                             <Card
                                 image={course.avatar}
